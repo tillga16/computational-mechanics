@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01 - Cheers! Stats with Beers &#8212; Computational Mechanics</title>
     
-  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -44,7 +41,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -58,14 +55,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="02 - Seeing stats in a new light" href="02_Seeing_Stats.html" />
     <link rel="prev" title="Computational Mechanics 02 - Analyze Data" href="README.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -74,45 +71,45 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Computational Mechanics</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Computational Mechanics</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../README.html">
    Computational Mechanics
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../syllabus.html">
    Syllabus - Computational Mechanics
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../module_01/README.html">
    Computational Mechanics 01 - Getting Started
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../module_01/01_Interacting_with_Python.html">
      01 - Interacting with Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module_01/01_Interacting_with_Python.html#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -121,18 +118,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../module_01/02_Working_with_Python.html#problems">
-     Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../module_01/03_Numerical_error.html">
      03 - Numerical Error
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module_01/03_Numerical_error.html#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -141,22 +128,20 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="README.html">
    Computational Mechanics 02 - Analyze Data
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      01 - Cheers!  Stats with Beers
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -165,18 +150,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_Seeing_Stats.html#problems">
-     Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="03_Linear_Regression_with_Real_Data.html">
      03 - Linear regression with real data
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03_Linear_Regression_with_Real_Data.html#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -185,32 +160,25 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04_Stats_and_Montecarlo.html#problems">
-     Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../projects/02_Analyze-data_project.html">
      Project #02 - NYSE random walk predictor
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../module_03/README.html">
    Computational Mechanics 03- Initial Value Problems
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../module_03/01_Catch_Motion.html">
      Catch things in motion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module_03/01_Catch_Motion.html#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -219,18 +187,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../module_03/02_Step_Future.html#problems">
-     Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../module_03/03_Get_Oscillations.html">
      Get with the oscillations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../module_03/03_Get_Oscillations.html#problems">
-     Problems
     </a>
    </li>
    <li class="toctree-l2">
@@ -239,21 +197,15 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../module_03/04_Getting_to_the_root.html#problems">
-     Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../projects/03_IVP-project.html">
      Initial Value Problems - Project
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -322,12 +274,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -359,17 +311,16 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i>
-            Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    01 - Cheers!  Stats with Beers
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-read-the-data-file">
      Step 1: Read the data file
@@ -484,8 +435,7 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
         </div>
     </div>
 </div>
@@ -531,6 +481,17 @@ columns that you need—which you’ll convert to <code class="docutils literal 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1931</span><span class="o">/</span><span class="mf">2162656668.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="step-1-read-the-data-file">
 <h2>Step 1: Read the data file<a class="headerlink" href="#step-1-read-the-data-file" title="Permalink to this headline">¶</a></h2>
@@ -542,20 +503,6 @@ a URL on the Internet. You created a short URL for the data file in the public r
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head <span class="s2">&quot;../data/beers.csv&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>,abv,ibu,id,name,style,brewery_id,ounces
-0,0.05,,1436,Pub Beer,American Pale Lager,408,12.0
-1,0.066,,2265,Devil&#39;s Cup,American Pale Ale (APA),177,12.0
-2,0.071,,2264,Rise of the Phoenix,American IPA,177,12.0
-3,0.09,,2263,Sinister,American Double / Imperial IPA,177,12.0
-4,0.075,,2262,Sex and Candy,American IPA,177,12.0
-5,0.077,,2261,Black Exodus,Oatmeal Stout,177,12.0
-6,0.045,,2260,Lake Street Express,American Pale Ale (APA),177,12.0
-7,0.065,,2259,Foreman,American Porter,177,12.0
-8,0.055,,2258,Jade,American Pale Ale (APA),177,12.0
 </pre></div>
 </div>
 </div>
@@ -576,11 +523,6 @@ new variable—rememeber that you can use the function <code class="docutils lit
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
-</pre></div>
-</div>
-</div>
 </div>
 <p>This is a new data type for us: a <code class="docutils literal notranslate"><span class="pre">pandas</span> <span class="pre">DataFrame</span></code>. From the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> documentation: “A <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>  is a 2-dimensional labeled data structure with columns of potentially different types” [4]. You can think of it as the contens of a spreadsheet, saved into one handy Python variable. If you print it out, you get a nicely laid-out table:</p>
 <div class="cell docutils container">
@@ -589,161 +531,6 @@ new variable—rememeber that you can use the function <code class="docutils lit
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>abv</th>
-      <th>ibu</th>
-      <th>id</th>
-      <th>name</th>
-      <th>style</th>
-      <th>brewery_id</th>
-      <th>ounces</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0.050</td>
-      <td>NaN</td>
-      <td>1436</td>
-      <td>Pub Beer</td>
-      <td>American Pale Lager</td>
-      <td>408</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>0.066</td>
-      <td>NaN</td>
-      <td>2265</td>
-      <td>Devil's Cup</td>
-      <td>American Pale Ale (APA)</td>
-      <td>177</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>0.071</td>
-      <td>NaN</td>
-      <td>2264</td>
-      <td>Rise of the Phoenix</td>
-      <td>American IPA</td>
-      <td>177</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>0.090</td>
-      <td>NaN</td>
-      <td>2263</td>
-      <td>Sinister</td>
-      <td>American Double / Imperial IPA</td>
-      <td>177</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>0.075</td>
-      <td>NaN</td>
-      <td>2262</td>
-      <td>Sex and Candy</td>
-      <td>American IPA</td>
-      <td>177</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2402</th>
-      <td>2405</td>
-      <td>0.067</td>
-      <td>45.0</td>
-      <td>928</td>
-      <td>Belgorado</td>
-      <td>Belgian IPA</td>
-      <td>424</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>2403</th>
-      <td>2406</td>
-      <td>0.052</td>
-      <td>NaN</td>
-      <td>807</td>
-      <td>Rail Yard Ale</td>
-      <td>American Amber / Red Ale</td>
-      <td>424</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>2404</th>
-      <td>2407</td>
-      <td>0.055</td>
-      <td>NaN</td>
-      <td>620</td>
-      <td>B3K Black Lager</td>
-      <td>Schwarzbier</td>
-      <td>424</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>2405</th>
-      <td>2408</td>
-      <td>0.055</td>
-      <td>40.0</td>
-      <td>145</td>
-      <td>Silverback Pale Ale</td>
-      <td>American Pale Ale (APA)</td>
-      <td>424</td>
-      <td>12.0</td>
-    </tr>
-    <tr>
-      <th>2406</th>
-      <td>2409</td>
-      <td>0.052</td>
-      <td>NaN</td>
-      <td>84</td>
-      <td>Rail Yard Ale (2009)</td>
-      <td>American Amber / Red Ale</td>
-      <td>424</td>
-      <td>12.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>2407 rows × 8 columns</p>
-</div></div></div>
 </div>
 <p>Inspect the table above. The first column is a numbering scheme for the beers. The other columns contain the following data:</p>
 <ul class="simple">
@@ -773,32 +560,12 @@ frames in <code class="docutils literal notranslate"><span class="pre">pandas</s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
-</pre></div>
-</div>
-</div>
 </div>
 <p>Of course, you can index and slice a data series like you know how to do
 with strings, lists and arrays. Here, you display the first ten elements of the <code class="docutils literal notranslate"><span class="pre">abv</span></code> series:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beers</span><span class="p">[</span><span class="s1">&#39;abv&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.050
-1    0.066
-2    0.071
-3    0.090
-4    0.075
-5    0.077
-6    0.045
-7    0.065
-8    0.055
-9    0.086
-Name: abv, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -818,11 +585,6 @@ Name: abv, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2407
-</pre></div>
-</div>
-</div>
 </div>
 <p>Another advantage of <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is that it has the ability to handle missing data. The  data-frame method <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> returns a new data frame with only the good values of the original: all the null values are thrown out. This is super useful!</p>
 <div class="cell docutils container">
@@ -836,11 +598,6 @@ Name: abv, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">abv_clean</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2348
 </pre></div>
 </div>
 </div>
@@ -863,20 +620,10 @@ the case of the <code class="docutils literal notranslate"><span class="pre">abv
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.05  0.066 0.071 ... 0.055 0.055 0.052]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">abv</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
 </pre></div>
 </div>
 </div>
@@ -892,11 +639,6 @@ an array, check how many values you lost.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2407
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -905,11 +647,6 @@ an array, check how many values you lost.</p>
 <span class="n">ibu</span> <span class="o">=</span> <span class="n">ibu_clean</span><span class="o">.</span><span class="n">values</span>
 
 <span class="nb">len</span><span class="p">(</span><span class="n">ibu</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1405
 </pre></div>
 </div>
 </div>
@@ -955,12 +692,6 @@ You can obtain them for your <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The minimum value for abv is:  0.001
-The maximum value for abv is:  0.128
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>ibu</strong></p>
 <div class="cell docutils container">
@@ -978,12 +709,6 @@ The maximum value for abv is:  0.128
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The minimum value for ibu is:  4.0
-The maximum value for ibu is:  138.0
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="mean-value">
@@ -991,9 +716,7 @@ The maximum value for ibu is:  138.0
 <p>The <strong>mean</strong> value is one of the main measures to describe the central
 tendency of the data: an indication of where’s the “center” of the data.
 If you have a sample of <span class="math notranslate nohighlight">\(N\)</span> values, <span class="math notranslate nohighlight">\(x_i\)</span>, the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, is calculated by:</p>
-<p>\begin{equation*}
-\bar{x} = \frac{1}{N}\sum_{i} x_i
-\end{equation*}</p>
+<p><span class="math notranslate nohighlight">\(\bar{x} = \frac{1}{N}\sum_{i} x_i\)</span></p>
 <p>In words, that is the sum of the data values divided by the number of values, <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <p>You’ve already learned how to write a function to compute the mean in
 <a class="reference external" href="http://go.gwu.edu/engcomp1lesson5">Module 1 Lesson 5</a>, but you also
@@ -1016,11 +739,6 @@ get the mean of the <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean value for abv is 0.059773424190800666 and for ibu 42.71316725978647
-</pre></div>
-</div>
-</div>
 </div>
 <p>Ugh! That doesn’t look very good, does it? Here’s where Python’s string
 formatting gets fancy. You can print fewer decimal digits, so the
@@ -1029,11 +747,6 @@ digits, specify it this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The mean value for abv is </span><span class="si">{:.4f}</span><span class="s1"> and for ibu </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">abv_mean</span><span class="p">,</span> <span class="n">ibu_mean</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean value for abv is 0.0598 and for ibu 42.7132
 </pre></div>
 </div>
 </div>
@@ -1065,13 +778,9 @@ negative, you’ll just get zero! It doesn’t work.</p>
 suggest using absolute values. But this is just mathematically
 inconvenient. Another way to get rid of negative values is to take the
 squares. And that’s how you get to the expression for the <em>variance</em>: it is the average of the squares of the deviations from the mean. For a set of <span class="math notranslate nohighlight">\(N\)</span> values,</p>
-<p>\begin{equation*}
-\text{var} = \frac{1}{N}\sum_{i} (x_i - \bar{x})^2
-\end{equation*}</p>
+<p><span class="math notranslate nohighlight">\(\text{var} = \frac{1}{N}\sum_{i} (x_i - \bar{x})^2\)</span></p>
 <p>The variance itself is hard to interpret. The problem with it is that the units are strange (they are the square of the original units). The <strong>standard deviation</strong>, the square root of the variance, is more meaningful because it has the same units as the original variable. Often, the symbol <span class="math notranslate nohighlight">\(\sigma\)</span> is used for it:</p>
-<p>\begin{equation*}
-\sigma = \sqrt{\text{var}} = \sqrt{\frac{1}{N}\sum_{i} (x_i - \bar{x})^2}
-\end{equation*}</p>
+<p><span class="math notranslate nohighlight">\(\sigma = \sqrt{\text{var}} = \sqrt{\frac{1}{N}\sum_{i} (x_i - \bar{x})^2}\)</span></p>
 </div>
 <div class="section" id="sample-vs-population">
 <h3>Sample vs. population<a class="headerlink" href="#sample-vs-population" title="Permalink to this headline">¶</a></h3>
@@ -1081,9 +790,7 @@ population, the formulas have to be adjusted: instead of dividing by <span class
 you divide by <span class="math notranslate nohighlight">\(N-1\)</span>. This is important, especially when you work with
 real data since usually you have samples of populations.</p>
 <p>The <strong>standard deviation</strong> of a sample is denoted by <span class="math notranslate nohighlight">\(s\)</span>, and the formula is:</p>
-<p>\begin{equation*}<br />
-s = \sqrt{\frac{1}{N-1}\sum_{i} (x_i - \bar{x})^2}
-\end{equation*}</p>
+<p><span class="math notranslate nohighlight">\(s = \sqrt{\frac{1}{N-1}\sum_{i} (x_i - \bar{x})^2}\)</span></p>
 <p>Why? This gets a little technical, but the reason is that if you have a
 <em>sample</em> of the population, you don’t know the <em>real</em> value of the mean,
 and <span class="math notranslate nohighlight">\(\bar{x}\)</span> is actually an <em>estimate</em> of the mean. That’s why you’ll
@@ -1205,11 +912,6 @@ decimal digits, you can display your descriptive statistics in a pleasant, human
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The standard deviation for abv is 0.0135 and for ibu 25.9541
-</pre></div>
-</div>
-</div>
 </div>
 <p>These numbers tell us that the <code class="docutils literal notranslate"><span class="pre">abv</span></code> values are quite concentrated
 around the mean value, while the <code class="docutils literal notranslate"><span class="pre">ibu</span></code> values are quite spread out from
@@ -1249,15 +951,6 @@ You’ll show you here an example using the <code class="docutils literal notran
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pyplot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">abv</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  1.,   0.,  38., 699., 857., 486., 159., 104.,   1.,   3.]),
- array([0.001 , 0.0137, 0.0264, 0.0391, 0.0518, 0.0645, 0.0772, 0.0899,
-        0.1026, 0.1153, 0.128 ]),
- &lt;BarContainer object of 10 artists&gt;)
-</pre></div>
-</div>
-<img alt="../_images/01_Cheers_Stats_Beers_63_1.png" src="../_images/01_Cheers_Stats_Beers_63_1.png" />
 </div>
 </div>
 <p>Now, you have a line plot, but if you see this plot without any
@@ -1314,9 +1007,6 @@ does a nice job presenting readable plots. Set the style using:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/01_Cheers_Stats_Beers_67_0.png" src="../_images/01_Cheers_Stats_Beers_67_0.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1331,9 +1021,6 @@ does a nice job presenting readable plots. Set the style using:</p>
 <span class="n">pyplot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/01_Cheers_Stats_Beers_68_0.png" src="../_images/01_Cheers_Stats_Beers_68_0.png" />
 </div>
 </div>
 <p>In the previous two plots set the colors in two ways:</p>
@@ -1365,9 +1052,6 @@ one of</p>
 <span class="n">pyplot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/01_Cheers_Stats_Beers_71_0.png" src="../_images/01_Cheers_Stats_Beers_71_0.png" />
 </div>
 </div>
 <div class="section" id="comparing-with-a-normal-distribution">
@@ -1424,16 +1108,6 @@ how the following piece of code works.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ibu 1sigma
-0.6811387900355872
-ibu 2sigma
-0.9565836298932386
-ibu 3sigma
-0.9971530249110322
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1443,16 +1117,6 @@ ibu 3sigma
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">abv_clean</span><span class="o">&lt;</span><span class="n">abv_mean</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">abv_std</span><span class="p">,</span><span class="n">abv_clean</span><span class="o">&gt;</span><span class="n">abv_mean</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">abv_std</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">abv_clean</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;abv 3sigma&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">abv_clean</span><span class="o">&lt;</span><span class="n">abv_mean</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="n">abv_std</span><span class="p">,</span><span class="n">abv_clean</span><span class="o">&gt;</span><span class="n">abv_mean</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">abv_std</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">abv_clean</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>abv 1sigma
-0.7406303236797274
-abv 2sigma
-0.9433560477001701
-abv 3sigma
-0.9978705281090289
 </pre></div>
 </div>
 </div>
@@ -1516,13 +1180,6 @@ you need to follow a specific syntax. In your example this would be:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The percentage of coverage at 1 std of the abv_mean is : 74.06 %
-The percentage of coverage at 2 std of the abv_mean is : 94.34 %
-The percentage of coverage at 3 std of the abv_mean is : 99.79 %
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>ibu</strong></p>
 <div class="cell docutils container">
@@ -1537,13 +1194,6 @@ The percentage of coverage at 3 std of the abv_mean is : 99.79 %
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The percentage of coverage at 1 std of the ibu_mean is : </span><span class="si">{:.2f}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ibu_std1_per</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The percentage of coverage at 2 std of the ibu_mean is : </span><span class="si">{:.2f}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ibu_std2_per</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The percentage of coverage at 3 std of the ibu_mean is : </span><span class="si">{:.2f}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ibu_std3_per</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The percentage of coverage at 1 std of the ibu_mean is : 68.11 %
-The percentage of coverage at 2 std of the ibu_mean is : 95.66 %
-The percentage of coverage at 3 std of the ibu_mean is : 99.72 %
 </pre></div>
 </div>
 </div>
@@ -1590,22 +1240,24 @@ recommended three lectures:</p>
 </div>
 <div class="section" id="problems">
 <h1>Problems<a class="headerlink" href="#problems" title="Permalink to this headline">¶</a></h1>
-<ol>
+<ol class="simple">
 <li><p>Gordon Moore created an empirical prediction that the rate of
 semiconductors on a computer chip would double every two years. This
 prediction was known as Moore’s law. Gordon Moore had originally only
 expected this empirical relation to hold from 1965 - 1975
 [<a class="reference external" href="https://en.wikipedia.org/wiki/Moore%27s_law">1</a>,<a class="reference external" href="https://spectrum.ieee.org/computing/hardware/gordon-moore-the-man-whose-name-means-progress">2</a>],
 but semiconductor manufacturers were able to keep up with Moore’s law
-until 2015.</p>
+until 2015.</p></li>
+</ol>
 <p>In the folder “../data” is a comma separated value (CSV) file,
 “transistor_data.csv” <a class="reference external" href="https://en.wikipedia.org/wiki/Transistor_count#Microprocessors">taken from wikipedia
 01/2020</a>.</p>
 <p>a. Use the <code class="docutils literal notranslate"><span class="pre">!head</span> <span class="pre">../data/transistor_data.csv</span></code> command to look at
 the top of the csv. What are the headings for the columns?</p>
-<p>b. Load the csv into a pandas dataframe. How many</p>
-</li>
-</ol>
+<p>b. Load the csv into a pandas dataframe. How many missing values
+(<code class="docutils literal notranslate"><span class="pre">NaN</span></code>) are
+in the column with the number of transistors? What fraction are
+missing?</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1655,11 +1307,9 @@ the top of the csv. What are the headings for the columns?</p>
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>
