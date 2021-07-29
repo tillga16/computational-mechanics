@@ -203,6 +203,33 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_04/README.html">
+   Computational Mechanics 4 - Linear Algebra
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_04/01_Linear-Algebra.html">
+     Linear Algebra Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_04/02_Gauss_elimination.html">
+     Gauss Elimination
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_04/03_Linear-regression-algebra.html">
+     Linear Regression Algebra
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -435,10 +462,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.57285253, 0.58621879, 0.66429552, 0.95953748, 0.99807602,
-       0.10748823, 0.50590404, 0.49449272, 0.19674626, 0.61073284,
-       0.71492157, 0.99789792, 0.80380805, 0.54419686, 0.17066975,
-       0.76593812, 0.36320653, 0.80804262, 0.00518464, 0.65800776])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.78820663, 0.94065779, 0.88016699, 0.22005048, 0.30729055,
+       0.78520543, 0.48659143, 0.7962274 , 0.93039851, 0.60029442,
+       0.78383625, 0.2599471 , 0.26801642, 0.92284658, 0.40905316,
+       0.73378953, 0.84514936, 0.85522463, 0.47895733, 0.49228151])
 </pre></div>
 </div>
 </div>
@@ -471,9 +498,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 1., 5., 5., 5.]),
- array([0.00518464, 0.20376292, 0.40234119, 0.60091947, 0.79949775,
-        0.99807602]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 4., 1., 5., 6.]),
+ array([0.22005048, 0.36417194, 0.5082934 , 0.65241487, 0.79653633,
+        0.94065779]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -534,8 +561,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.68079121, 0.88585064, 0.2634046 , 0.86199256, 0.92893847,
-       0.75327187, 0.15419552, 0.07809503, 0.58219245, 0.85642388])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.13528383, 0.42179598, 0.73335476, 0.61972449, 0.78737383,
+       0.54757464, 0.67160339, 0.12666178, 0.38726435, 0.61372397])
 </pre></div>
 </div>
 </div>
@@ -580,8 +607,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.142800
-standard deviation is 0.026476
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.117200
+standard deviation is 0.052369
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -609,8 +636,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.142480
-standard deviation is 0.049185
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.141640
+standard deviation is 0.052621
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -633,8 +660,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.150320
-standard deviation is 0.011757
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.143560
+standard deviation is 0.021395
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -785,7 +812,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5bdef3e610&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f02dd9796d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />
