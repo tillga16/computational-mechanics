@@ -230,6 +230,23 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../how-to/README.html">
+   Quick How-to documents
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/polyfit.html">
+     Creating a quadratic fit on random data
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -462,10 +479,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.78820663, 0.94065779, 0.88016699, 0.22005048, 0.30729055,
-       0.78520543, 0.48659143, 0.7962274 , 0.93039851, 0.60029442,
-       0.78383625, 0.2599471 , 0.26801642, 0.92284658, 0.40905316,
-       0.73378953, 0.84514936, 0.85522463, 0.47895733, 0.49228151])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.12512148, 0.88924699, 0.9875991 , 0.84244655, 0.24908809,
+       0.17831195, 0.88774528, 0.56048789, 0.26542774, 0.38352363,
+       0.56530722, 0.81785856, 0.1524355 , 0.87043354, 0.73538015,
+       0.55470128, 0.21271959, 0.0833766 , 0.45957175, 0.48510817])
 </pre></div>
 </div>
 </div>
@@ -498,9 +515,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 4., 1., 5., 6.]),
- array([0.22005048, 0.36417194, 0.5082934 , 0.65241487, 0.79653633,
-        0.94065779]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([6., 2., 5., 1., 6.]),
+ array([0.0833766, 0.2642211, 0.4450656, 0.6259101, 0.8067546, 0.9875991]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -561,8 +577,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.13528383, 0.42179598, 0.73335476, 0.61972449, 0.78737383,
-       0.54757464, 0.67160339, 0.12666178, 0.38726435, 0.61372397])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.09040997, 0.75585829, 0.58697478, 0.99987754, 0.30251477,
+       0.73213361, 0.61558642, 0.25303371, 0.72132434, 0.12165438])
 </pre></div>
 </div>
 </div>
@@ -607,8 +623,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.117200
-standard deviation is 0.052369
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.132800
+standard deviation is 0.027759
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -636,8 +652,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.141640
-standard deviation is 0.052621
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.139000
+standard deviation is 0.053964
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -660,8 +676,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.143560
-standard deviation is 0.021395
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.149160
+standard deviation is 0.019121
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -812,7 +828,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f02dd9796d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd9427eb3a0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />

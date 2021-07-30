@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Computational Mechanics 01 - Getting Started &#8212; Computational Mechanics</title>
+    <title>Creating a quadratic fit on random data &#8212; Computational Mechanics</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="01 - Interacting with Python" href="01_Interacting_with_Python.html" />
-    <link rel="prev" title="Syllabus - Computational Mechanics" href="../syllabus.html" />
+    <link rel="prev" title="Quick How-to documents" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,28 +96,28 @@
    Syllabus - Computational Mechanics
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../module_01/README.html">
    Computational Mechanics 01 - Getting Started
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01_Interacting_with_Python.html">
+    <a class="reference internal" href="../module_01/01_Interacting_with_Python.html">
      01 - Interacting with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02_Working_with_Python.html">
+    <a class="reference internal" href="../module_01/02_Working_with_Python.html">
      02 - Working with Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03_Numerical_error.html">
+    <a class="reference internal" href="../module_01/03_Numerical_error.html">
      03 - Numerical Error
     </a>
    </li>
@@ -230,18 +229,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/README.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="README.html">
    Quick How-to documents
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/polyfit.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Creating a quadratic fit on random data
     </a>
    </li>
@@ -286,9 +285,12 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/how-to/polyfit.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/module_01/README.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/how-to/polyfit.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -308,7 +310,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cooperrc/computational-mechanics/issues/new?title=Issue%20on%20page%20%2Fmodule_01/README.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cooperrc/computational-mechanics/issues/new?title=Issue%20on%20page%20%2Fhow-to/polyfit.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -324,31 +326,34 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cooperrc/computational-mechanics/master?urlpath=tree/how-to/polyfit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://compmech.uconn.edu/hub/user-redirect/git-pull?repo=https://github.com/cooperrc/computational-mechanics&urlpath=tree/computational-mechanics/how-to/polyfit.md&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#working-with-python-and-numerical-methods">
-   Working with Python and Numerical Methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computational-mechanics-project-01-heat-transfer-in-forensic-science">
-   <span class="xref myst">
-    Computational Mechanics Project #01 - Heat Transfer in Forensic Science
-   </span>
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -357,64 +362,55 @@
         
               <div>
                 
-  <div class="section" id="computational-mechanics-01-getting-started">
-<h1>Computational Mechanics 01 - Getting Started<a class="headerlink" href="#computational-mechanics-01-getting-started" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="working-with-python-and-numerical-methods">
-<h2>Working with Python and Numerical Methods<a class="headerlink" href="#working-with-python-and-numerical-methods" title="Permalink to this headline">¶</a></h2>
-<p>Welcome to Computational Mechanics Module #1 - Getting Started!</p>
-<p>There are three modules and one final project. The modules will get us started on our exploration of computational
-mechanics using Python, listed below each module are the learning objectives.</p>
-<ol class="simple">
-<li><p><span class="xref myst">01_Interacting_with_Python</span></p></li>
-</ol>
-<ul class="simple">
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. The concept of <em>function</em>.</p></li>
-<li><p>Using Python as a calculator.</p></li>
-<li><p>Concepts of variable, type, assignment.</p></li>
-<li><p>Special variables: <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
-<li><p>Supported operations, logical operations.</p></li>
-<li><p>Reading error messages.</p></li>
-</ul>
-<ol class="simple">
-<li><p><span class="xref myst">02_Working_with_Python</span></p></li>
-</ol>
-<ul class="simple">
-<li><p>Good coding habits and file naming</p></li>
-<li><p>How to define a function and return outputs</p></li>
-<li><p>How to import libraries</p></li>
-<li><p>Multidimensional arrays using NumPy</p></li>
-<li><p>Accessing values and slicing in NumPy arrays</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">%%time</span></code> magic to time cell execution.</p></li>
-<li><p>Performance comparison: lists vs NumPy arrays</p></li>
-<li><p>Basic plotting with <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>.</p></li>
-</ul>
-<ol class="simple">
-<li><p><span class="xref myst">03-Numerical_error</span></p></li>
-</ol>
-<ul class="simple">
-<li><p>Numerical integration with the Euler approximation</p></li>
-<li><p>The source of truncation errors</p></li>
-<li><p>The source of roundoff errors</p></li>
-<li><p>How to time a numerical solution or a function</p></li>
-<li><p>How to compare solutions</p></li>
-<li><p>The definition of absolute error and relative error</p></li>
-<li><p>How a numerical solution converges</p></li>
-</ul>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
+</pre></div>
 </div>
-<div class="section" id="computational-mechanics-project-01-heat-transfer-in-forensic-science">
-<h2><span class="xref myst">Computational Mechanics Project #01 - Heat Transfer in Forensic Science</span><a class="headerlink" href="#computational-mechanics-project-01-heat-transfer-in-forensic-science" title="Permalink to this headline">¶</a></h2>
-<p>We can use our current skillset for a macabre application. We can predict the
-time of death based upon the current temperature and change in temperature of a
-corpse.</p>
-<p>Forensic scientists use Newton’s law of cooling to determine the time elapsed
-since the loss of life,</p>
-<p><span class="math notranslate nohighlight">\(\frac{dT}{dt} = -K(T-T_a)\)</span>,</p>
-<p>where <span class="math notranslate nohighlight">\(T\)</span> is the current temperature, <span class="math notranslate nohighlight">\(T_a\)</span> is the ambient temperature, <span class="math notranslate nohighlight">\(t\)</span> is
-the elapsed time in hours, and <span class="math notranslate nohighlight">\(K\)</span> is an empirical constant.</p>
-<p>Suppose the temperature of the corpse is 85<span class="math notranslate nohighlight">\(^o\)</span>F at 11:00 am. Then, 2 hours
-later the temperature is 74<span class="math notranslate nohighlight">\(^{o}\)</span>F.</p>
-<p>Assume ambient temperature is a constant 65<span class="math notranslate nohighlight">\(^{o}\)</span>F.</p>
-<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="creating-a-quadratic-fit-on-random-data">
+<h1>Creating a quadratic fit on random data<a class="headerlink" href="#creating-a-quadratic-fit-on-random-data" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, you will</p>
+<ul class="simple">
+<li><p>build a variable of fabricated falling heights, <code class="docutils literal notranslate"><span class="pre">y</span></code> = <span class="math notranslate nohighlight">\(\frac{g}{2}t^2 + error\)</span></p></li>
+<li><p>find the best-fit quadratic function with <code class="docutils literal notranslate"><span class="pre">np.polyfit</span></code></p></li>
+<li><p>plot the data and fit using <code class="docutils literal notranslate"><span class="pre">poly1d</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">9.81</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffade0a2610&gt;]
+</pre></div>
+</div>
+<img alt="../_images/polyfit_2_1.png" src="../_images/polyfit_2_1.png" />
+</div>
+</div>
+<p>Above, the fabricated falling data is shown for 5 seconds. The error is introduced as uniformly random numbers from -2 - 2 as <code class="docutils literal notranslate"><span class="pre">(rng.random(len(x)</span> <span class="pre">-</span> <span class="pre">0.5)*4</span></code>.</p>
+<p>Next, you build the polynomial fit with <code class="docutils literal notranslate"><span class="pre">np.polyfit</span></code>. Finally, plug the polynomial constants into the <code class="docutils literal notranslate"><span class="pre">np.poly1d</span></code> function to created a function for <span class="math notranslate nohighlight">\(y_{fit}(x)\)</span> = <code class="docutils literal notranslate"><span class="pre">pp(x)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">pp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;quadratic fit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polyfit_4_0.png" src="../_images/polyfit_4_0.png" />
 </div>
 </div>
 </div>
@@ -432,7 +428,7 @@ later the temperature is 74<span class="math notranslate nohighlight">\(^{o}\)</
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./module_01"
+            path: "./how-to"
         },
         predefinedOutput: true
     }
@@ -444,8 +440,7 @@ later the temperature is 74<span class="math notranslate nohighlight">\(^{o}\)</
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../syllabus.html" title="previous page">Syllabus - Computational Mechanics</a>
-    <a class='right-next' id="next-link" href="01_Interacting_with_Python.html" title="next page">01 - Interacting with Python</a>
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">Quick How-to documents</a>
 
         </div>
         
