@@ -465,19 +465,6 @@ problem.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1886</span><span class="o">/</span><span class="mf">2556861507.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="polynomials">
 <h2>Polynomials<a class="headerlink" href="#polynomials" title="Permalink to this headline">¶</a></h2>
@@ -538,6 +525,12 @@ before
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03_Linear-regression-algebra_3_1.png" src="../_images/03_Linear-regression-algebra_3_1.png" />
+</div>
 </div>
 <p>A general polynomial decription of our function, <span class="math notranslate nohighlight">\(f(\mathbf{x}),~and~\mathbf{y}\)</span> is that you have <span class="math notranslate nohighlight">\(m+1\)</span> unknown coefficients, where <span class="math notranslate nohighlight">\(m\)</span> is the degree of the polynomial, and <span class="math notranslate nohighlight">\(n\)</span> independent equations. In the example framed below, you are choosing a second-order polnomial fit.</p>
 <p><span class="math notranslate nohighlight">\(\mathbf{y}=\mathbf{x}^0 a_0+\mathbf{x}^1 a_1+\mathbf{x}^2 a_2+\mathbf{e}\)</span></p>
@@ -580,6 +573,20 @@ before
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">block</span><span class="p">([[</span><span class="n">x</span><span class="o">**</span><span class="mi">0</span><span class="p">],[</span><span class="n">x</span><span class="p">],[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
 
 <span class="n">Z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  1.,   0.,   0.],
+       [  1.,   2.,   4.],
+       [  1.,   4.,  16.],
+       [  1.,   6.,  36.],
+       [  1.,   8.,  64.],
+       [  1.,  10., 100.],
+       [  1.,  12., 144.],
+       [  1.,  14., 196.],
+       [  1.,  16., 256.],
+       [  1.,  18., 324.]])
 </pre></div>
 </div>
 </div>
@@ -644,6 +651,11 @@ before
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([22.46690909, -1.36268939,  0.2763447 ])
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -655,6 +667,9 @@ before
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_8_0.png" src="../_images/03_Linear-regression-algebra_8_0.png" />
 </div>
 </div>
 </div>
@@ -686,6 +701,12 @@ before
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the coefficient of determination for this fit is 0.9111905603853597
+the correlation coefficient this fit is 0.9545630206462848
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="discussion">
 <h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
@@ -713,6 +734,20 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z (nm),F (nN)
+0,0
+-0.011669,0.9
+-0.0058346,0.45
+0.3075,-1.35
+0.29583,-0.45
+0.5725,1.35
+0.57833,0.9
+0.5607,2.26
+0.85666,1.8
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -734,6 +769,15 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Youngs modulus from fit = 192 GPa
+Youngs modulus reported = 210 GPa
+----------------
+the coefficient of determination for this fit is 0.967
+the correlation coefficient this fit is 0.983
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -745,6 +789,9 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_19_0.png" src="../_images/03_Linear-regression-algebra_19_0.png" />
 </div>
 </div>
 <p>Since, you have lots of data you can use as large of a polynomial fit as you want too, so let’s also fit higher order polynomials and see if you can get a better function for force-vs-deflection, <span class="math notranslate nohighlight">\(F(\delta)\)</span>. First, you will separate the data into <strong>training</strong> and <strong>testing</strong> datasets [5].</p>
@@ -801,6 +848,26 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---- n=5 -------
+the coefficient of determination for this fit is 0.981
+the correlation coefficient this fit is 0.990
+---- n=10 -------
+the coefficient of determination for this fit is 0.982
+the correlation coefficient this fit is 0.991
+---- n=15 -------
+the coefficient of determination for this fit is 0.983
+the correlation coefficient this fit is 0.992
+---- n=20 -------
+the coefficient of determination for this fit is 0.983
+the correlation coefficient this fit is 0.992
+---- n=25 -------
+the coefficient of determination for this fit is 0.984
+the correlation coefficient this fit is 0.992
+</pre></div>
+</div>
+<img alt="../_images/03_Linear-regression-algebra_22_1.png" src="../_images/03_Linear-regression-algebra_22_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -819,6 +886,9 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;deflection (nm)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_23_0.png" src="../_images/03_Linear-regression-algebra_23_0.png" />
 </div>
 </div>
 </div>
@@ -851,6 +921,9 @@ a single layer of <span class="math notranslate nohighlight">\(MoS_2\)</span>, 0
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">900</span><span class="p">));</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_25_0.png" src="../_images/03_Linear-regression-algebra_25_0.png" />
 </div>
 </div>
 <p>The extrapolated results are much less promising than the <strong>training</strong> and <strong>testing</strong> data predictions. It would be very odd for the force to start to decrease at 70 nm or 58 nm of deflection. All three polynomials seem to capture the testing and training data, but extrapolation should be done with the lower order polynomials.</p>
@@ -886,6 +959,9 @@ Let’s take some voltage-vs-time data that you know has two frequency component
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_29_0.png" src="../_images/03_Linear-regression-algebra_29_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -902,6 +978,9 @@ Let’s take some voltage-vs-time data that you know has two frequency component
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Amplitudes of sin(t) and sin(3t) signals</span><span class="se">\n</span><span class="s1"> </span><span class="si">{:.3f}</span><span class="s1"> V and </span><span class="si">{:.3f}</span><span class="s1"> V&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">amps</span><span class="p">));</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_31_0.png" src="../_images/03_Linear-regression-algebra_31_0.png" />
 </div>
 </div>
 </div>
@@ -929,6 +1008,26 @@ Let’s take some voltage-vs-time data that you know has two frequency component
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is every 10th row of Z
+---------------------------
+[[1880    1    0]
+ [1890    1    0]
+ [1900    1    0]
+ [1910    1    0]
+ [1920    1    0]
+ [1930    1    0]
+ [1940    1    0]
+ [1950    1    0]
+ [1960    1    0]
+ [1970    1    0]
+ [1980    1   10]
+ [1990    1   20]
+ [2000    1   30]
+ [2010    1   40]]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -941,6 +1040,9 @@ Let’s take some voltage-vs-time data that you know has two frequency component
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear-regression-algebra_34_0.png" src="../_images/03_Linear-regression-algebra_34_0.png" />
 </div>
 </div>
 </div>

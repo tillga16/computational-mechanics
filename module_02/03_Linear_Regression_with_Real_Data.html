@@ -515,17 +515,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1723</span><span class="o">/</span><span class="mf">1662815981.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>To load our data from the file, you’ll use the function <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html"><code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code></a>, which lets us immediately save the data into NumPy arrays. (We encourage you to read the documentation for details on how the function works.) Here, you’ll save the data into the arrays <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">temp_anomaly</span></code>.</p>
 <div class="cell docutils container">
@@ -547,6 +536,89 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1880</td>
+      <td>-0.47</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1881</td>
+      <td>-0.45</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1882</td>
+      <td>-0.41</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1883</td>
+      <td>-0.60</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1884</td>
+      <td>-0.60</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>2012</td>
+      <td>0.92</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>2013</td>
+      <td>1.01</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>2014</td>
+      <td>1.02</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>2015</td>
+      <td>1.35</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>2016</td>
+      <td>1.45</td>
+    </tr>
+  </tbody>
+</table>
+<p>137 rows × 2 columns</p>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="step-2-plot-the-data">
@@ -575,6 +647,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_14_0.png" src="../_images/03_Linear_Regression_with_Real_Data_14_0.png" />
 </div>
 </div>
 </div>
@@ -742,6 +817,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean_x= 1948.0 mean_y= 0.05262773722627735
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now that you have mean values, you can compute our coefficients by following equations (12). You first calculate <span class="math notranslate nohighlight">\(a_1\)</span> and then use that value to calculate <span class="math notranslate nohighlight">\(a_0\)</span>.</p>
 <p>Our coefficients are:</p>
@@ -769,6 +849,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01037028394347266
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -780,6 +865,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a_0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-20.148685384658464
 </pre></div>
 </div>
 </div>
@@ -828,6 +918,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.01037028394347266, -20.148685384658464)
+</pre></div>
+</div>
+</div>
 </div>
 <p>We now have the coefficients of a linear function that best fits our data. With them, you can compute the predicted values of temperature anomaly, according to our fit. Check again the equations above: the values you are going to compute are <span class="math notranslate nohighlight">\(f(x_i)\)</span>.</p>
 <p>Let’s call <code class="docutils literal notranslate"><span class="pre">reg</span></code> the array obtined from evaluating <span class="math notranslate nohighlight">\(f(x_i)\)</span> for all years.</p>
@@ -851,6 +946,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_33_0.png" src="../_images/03_Linear_Regression_with_Real_Data_33_0.png" />
 </div>
 </div>
 </div>
@@ -876,6 +974,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01037028394347266
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -883,10 +986,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-20.14868538465846
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f_linear</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+0.01037 x - 20.15
 </pre></div>
 </div>
 </div>
@@ -920,6 +1034,9 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_43_0.png" src="../_images/03_Linear_Regression_with_Real_Data_43_0.png" />
+</div>
 </div>
 </div>
 <div class="section" id="split-regression">
@@ -933,6 +1050,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([90]),)
+</pre></div>
+</div>
+</div>
 </div>
 <p>To split the data, you use the powerful instrument of <em>slicing</em> with the colon notation. Remember that a colon between two indices indicates a range of values from a <code class="docutils literal notranslate"><span class="pre">start</span></code> to an <code class="docutils literal notranslate"><span class="pre">end</span></code>. The rule is that <code class="docutils literal notranslate"><span class="pre">[start:end]</span></code> includes the element at index <code class="docutils literal notranslate"><span class="pre">start</span></code> but excludes the one at index <code class="docutils literal notranslate"><span class="pre">end</span></code>. For example, to grab the first 3 years in our <code class="docutils literal notranslate"><span class="pre">year</span></code> array, you do:</p>
 <div class="cell docutils container">
@@ -940,6 +1062,14 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">temp_anomaly</span> <span class="o">=</span> <span class="n">y</span>
 <span class="n">year</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1880
+1    1881
+2    1882
+Name: Year, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -973,6 +1103,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_51_0.png" src="../_images/03_Linear_Regression_with_Real_Data_51_0.png" />
 </div>
 </div>
 </div>
@@ -1031,6 +1164,12 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4158e82940&gt;]
+</pre></div>
+</div>
+<img alt="../_images/03_Linear_Regression_with_Real_Data_56_1.png" src="../_images/03_Linear_Regression_with_Real_Data_56_1.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1066,6 +1205,9 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_57_0.png" src="../_images/03_Linear_Regression_with_Real_Data_57_0.png" />
 </div>
 </div>
 <ol class="simple">
@@ -1103,6 +1245,9 @@ Color the data according to the “Designer”.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;# of transistors&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03_Linear_Regression_with_Real_Data_59_0.png" src="../_images/03_Linear_Regression_with_Real_Data_59_0.png" />
 </div>
 </div>
 </div>
