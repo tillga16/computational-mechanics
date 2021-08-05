@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -228,6 +230,11 @@
      Linear Regression Algebra
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/04_Linear_Algebra-project.html">
+     CompMech04-Linear Algebra Project
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -243,6 +250,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../how-to/polyfit.html">
      Creating a quadratic fit on random data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/extra-FEA_material.html">
+     Extra Material: Direct stiffness method for Finite Element analysis (FEA)
     </a>
    </li>
   </ul>
@@ -980,7 +992,7 @@ you can do more computations, like add or multiply them. For example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1720/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1697/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
   x_array / y_array
 </pre></div>
 </div>
@@ -1342,8 +1354,8 @@ with no numbers repeated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[59, 92, 71, 77, 78, 7, 16, 35, 96, 4]
-[89, 10, 37, 60, 32, 27, 19, 11, 83, 46]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[33, 73, 11, 76, 68, 35, 14, 3, 60, 31]
+[68, 61, 58, 54, 22, 21, 43, 16, 41, 42]
 </pre></div>
 </div>
 </div>
@@ -1363,8 +1375,8 @@ takes to execute all the code in that cell.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 26 µs, sys: 5 µs, total: 31 µs
-Wall time: 33.6 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 19 µs, sys: 4 µs, total: 23 µs
+Wall time: 26.2 µs
 </pre></div>
 </div>
 </div>
@@ -1376,7 +1388,7 @@ Wall time: 33.6 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[148, 102, 108, 137, 110, 34, 35, 46, 179, 50]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[101, 134, 69, 130, 90, 56, 57, 19, 101, 73]
 </pre></div>
 </div>
 </div>
@@ -1410,8 +1422,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[49 28 72 72  7 94 73 12  1  5]
-[99 53 12 13 18 83 29 47 41 18]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54  1 58 99 82 74 70 84 45 97]
+[60 52 66 80 42 84 94 37 88 22]
 </pre></div>
 </div>
 </div>
@@ -1425,8 +1437,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13 µs, sys: 0 ns, total: 13 µs
-Wall time: 16.2 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8 µs, sys: 1 µs, total: 9 µs
+Wall time: 12.4 µs
 </pre></div>
 </div>
 </div>
@@ -1510,7 +1522,7 @@ in the x-axis, you need to import the module <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb96ec2d1c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4239b6eca0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_Working_with_Python_104_1.png" src="../_images/02_Working_with_Python_104_1.png" />

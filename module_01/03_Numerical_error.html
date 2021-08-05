@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -228,6 +230,11 @@
      Linear Regression Algebra
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/04_Linear_Algebra-project.html">
+     CompMech04-Linear Algebra Project
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -243,6 +250,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../how-to/polyfit.html">
      Creating a quadratic fit on random data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/extra-FEA_material.html">
+     Extra Material: Direct stiffness method for Finite Element analysis (FEA)
     </a>
    </li>
   </ul>
@@ -968,7 +980,9 @@ will get a different result depending upon how we do the addition.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>summation 1+eps/2 over  1000  minus 1 = 1.1102230246251565e-13
-500.0 *eps= 1.1102230246251565e-13
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500.0 *eps= 1.1102230246251565e-13
 </pre></div>
 </div>
 </div>
@@ -1086,8 +1100,8 @@ Here, consider the speed from 0 to 2 seconds, so <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 521 µs, sys: 67 µs, total: 588 µs
-Wall time: 466 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 261 µs, sys: 37 µs, total: 298 µs
+Wall time: 221 µs
 </pre></div>
 </div>
 </div>
@@ -1119,7 +1133,7 @@ Wall time: 466 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f8feff2ab20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9fa9c9a1c0&gt;
 </pre></div>
 </div>
 <img alt="../_images/03_Numerical_error_44_1.png" src="../_images/03_Numerical_error_44_1.png" />

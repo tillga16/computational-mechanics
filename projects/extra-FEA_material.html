@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extra Material: Direct stiffness methof for Finite Element analysis (FEA) &#8212; Computational Mechanics</title>
+    <title>Extra Material: Direct stiffness method for Finite Element analysis (FEA) &#8212; Computational Mechanics</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -53,6 +55,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Creating a quadratic fit on random data" href="../how-to/polyfit.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -89,7 +92,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../syllabus.html">
    Syllabus - Computational Mechanics
@@ -226,21 +229,31 @@
      Linear Regression Algebra
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04_Linear_Algebra-project.html">
+     CompMech04-Linear Algebra Project
+    </a>
+   </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../how-to/README.html">
    Quick How-to documents
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="../how-to/polyfit.html">
      Creating a quadratic fit on random data
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Extra Material: Direct stiffness method for Finite Element analysis (FEA)
     </a>
    </li>
   </ul>
@@ -358,44 +371,37 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Extra Material: Direct stiffness methof for Finite Element analysis (FEA)
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#combining-multiple-elements">
    Combining multiple elements
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#project-matrix-creation">
    Project Matrix creation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#node-and-element-arrays">
-     Node and element arrays
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assemble-the-stiffness-matrix">
-     Assemble the stiffness matrix
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#node-and-element-arrays">
+   Node and element arrays
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assemble-the-stiffness-matrix">
+   Assemble the stiffness matrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#save-the-inputs-for-the-project">
    Save the inputs for the project
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solution-for-our-fea-problem">
    Solution for our FEA problem
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#postprocess-fea-results">
    Postprocess FEA results
   </a>
@@ -411,8 +417,8 @@
         
               <div>
                 
-  <div class="section" id="extra-material-direct-stiffness-methof-for-finite-element-analysis-fea">
-<h1>Extra Material: Direct stiffness methof for Finite Element analysis (FEA)<a class="headerlink" href="#extra-material-direct-stiffness-methof-for-finite-element-analysis-fea" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="extra-material-direct-stiffness-method-for-finite-element-analysis-fea">
+<h1>Extra Material: Direct stiffness method for Finite Element analysis (FEA)<a class="headerlink" href="#extra-material-direct-stiffness-method-for-finite-element-analysis-fea" title="Permalink to this headline">¶</a></h1>
 <p>The direct stiffness approach looks at the stiffness of each individual element and adds them to the overall stiffness of the FEA structure. Starting with a single element, show below we have the following relation between forces applied and deformation</p>
 <p><img alt="Single link element with forces applied to both ends" src="../_images/link_elem.png" /></p>
 <p><span class="math notranslate nohighlight">\(\mathbf{F}_{el} = \mathbf{K}_{el}\mathbf{u}\)</span></p>
@@ -501,12 +507,11 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;forces and deformation of single Al-bar\nscale factor = 10&#39;)
 </pre></div>
 </div>
-<img alt="../_images/extra-FEA_material_7_1.png" src="../_images/extra-FEA_material_7_1.png" />
-</div>
+<img alt="../_images/extra-FEA_material_6_1.png" src="../_images/extra-FEA_material_6_1.png" />
 </div>
 </div>
 <div class="section" id="combining-multiple-elements">
-<h1>Combining multiple elements<a class="headerlink" href="#combining-multiple-elements" title="Permalink to this headline">¶</a></h1>
+<h2>Combining multiple elements<a class="headerlink" href="#combining-multiple-elements" title="Permalink to this headline">¶</a></h2>
 <p>This method can be extended to multiple, connected bars. We just have to do some extra book-keeping. Let’s consider the 3-bar element that we used in <span class="xref myst">02_Gauss_elimination</span>.</p>
 <p><img alt="Triangular truss" src="../_images/truss.png" /></p>
 <p>We have 3 elements and 3 nodes, so there are 6 degrees of freedom, with 3 constraints. Let’s use 1-m aluminum bars with <span class="math notranslate nohighlight">\(A=1~mm^2\)</span>, but set <span class="math notranslate nohighlight">\(\alpha=\beta=60^{o}\)</span>.</p>
@@ -647,7 +652,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.529210992451759
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.529210992451761
 </pre></div>
 </div>
 </div>
@@ -675,12 +680,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/extra-FEA_material_15_0.png" src="../_images/extra-FEA_material_15_0.png" />
+<img alt="../_images/extra-FEA_material_14_0.png" src="../_images/extra-FEA_material_14_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="project-matrix-creation">
-<h1>Project Matrix creation<a class="headerlink" href="#project-matrix-creation" title="Permalink to this headline">¶</a></h1>
+<h2>Project Matrix creation<a class="headerlink" href="#project-matrix-creation" title="Permalink to this headline">¶</a></h2>
 <p>In the project, we have 7 joints <em>(nodes)</em> and 11 bars <em>(elements)</em>. That means we have 7 locations where <span class="math notranslate nohighlight">\(\sum\mathbf{F} = \mathbf{0}\)</span> and 11 stiffness matrices <span class="math notranslate nohighlight">\((\mathbf{K_1}...\mathbf{K_{11}})\)</span>. The result is 14 equations with 14 unknowns, but we have some constraints on the system. <span class="math notranslate nohighlight">\(u_{1x}=u_{1y}=0\)</span> and <span class="math notranslate nohighlight">\(u_{7y}=0.\)</span> Which leaves us with 11 unknowns. There are 14 applied forces <span class="math notranslate nohighlight">\((F_{ix},~F_{iy})\)</span> that make up the vector <span class="math notranslate nohighlight">\(\mathbf{F}.\)</span></p>
 <p><span class="math notranslate nohighlight">\(\mathbf{u}=\left[\begin{array}{c}
         u_{1x}\\
@@ -712,6 +717,7 @@
         u_{6y}\\
         u_{7x}\\
         0\\\end{array}\right]\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{F} = \mathbf{K_1 u}+...+\mathbf{K_{11} u}\)</span></p>
+</div>
 <div class="section" id="node-and-element-arrays">
 <h2>Node and element arrays<a class="headerlink" href="#node-and-element-arrays" title="Permalink to this headline">¶</a></h2>
 <p>In FEA, we typically store the node locations and their connections in two arrays called the node array: <code class="docutils literal notranslate"><span class="pre">nodes</span></code> and the element array: <code class="docutils literal notranslate"><span class="pre">elems</span></code>. The array <code class="docutils literal notranslate"><span class="pre">nodes</span></code> stores the node number and its x-y location. The array <code class="docutils literal notranslate"><span class="pre">elems</span></code> stores the node numbers that define each element. Our <code class="docutils literal notranslate"><span class="pre">nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">elems</span></code> are printed below.</p>
@@ -805,7 +811,7 @@ element array
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/extra-FEA_material_21_0.png" src="../_images/extra-FEA_material_21_0.png" />
+<img alt="../_images/extra-FEA_material_20_0.png" src="../_images/extra-FEA_material_20_0.png" />
 </div>
 </div>
 </div>
@@ -826,7 +832,7 @@ element array
 <span class="sd">    node1: is the 1st node number and coordinates from the nodes array</span>
 <span class="sd">    node2: is the 2nd node number and coordinates from the nodes array</span>
 <span class="sd">    outputs:</span>
-<span class="sd">    ----------</span>
+<span class="sd">    --------</span>
 <span class="sd">    Ke1 : the diagonal matrix of the element stiffness</span>
 <span class="sd">    Ke2 : the off-diagonal matrix of the element stiffness</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -865,25 +871,60 @@ element array
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pp</span><span class="o">.</span><span class="n">array_latex</span><span class="p">([</span><span class="n">K</span><span class="o">*</span><span class="mi">1000</span><span class="p">],[</span><span class="s1">&#39;[K]&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2108</span><span class="o">/</span><span class="mf">2024506704.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">pp</span><span class="o">.</span><span class="n">array_latex</span><span class="p">([</span><span class="n">K</span><span class="o">*</span><span class="mi">1000</span><span class="p">],[</span><span class="s1">&#39;[K]&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;pp&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 4.16666667  1.44337567 -0.83333333 -1.44337567 -3.33333333  0.
+   0.          0.          0.          0.          0.          0.
+   0.          0.        ]
+ [ 1.44337567  2.5        -1.44337567 -2.5         0.          0.
+   0.          0.          0.          0.          0.          0.
+   0.          0.        ]
+ [-0.83333333 -1.44337567  5.          0.         -0.83333333  1.44337567
+  -3.33333333  0.          0.          0.          0.          0.
+   0.          0.        ]
+ [-1.44337567 -2.5         0.          5.          1.44337567 -2.5
+   0.          0.          0.          0.          0.          0.
+   0.          0.        ]
+ [-3.33333333  0.         -0.83333333  1.44337567  8.33333333  0.
+  -0.83333333 -1.44337567 -3.33333333  0.          0.          0.
+   0.          0.        ]
+ [ 0.          0.          1.44337567 -2.5         0.          5.
+  -1.44337567 -2.5         0.          0.          0.          0.
+   0.          0.        ]
+ [ 0.          0.         -3.33333333  0.         -0.83333333 -1.44337567
+   8.33333333  0.         -0.83333333  1.44337567 -3.33333333  0.
+   0.          0.        ]
+ [ 0.          0.          0.          0.         -1.44337567 -2.5
+   0.          5.          1.44337567 -2.5         0.          0.
+   0.          0.        ]
+ [ 0.          0.          0.          0.         -3.33333333  0.
+  -0.83333333  1.44337567  8.33333333  0.         -0.83333333 -1.44337567
+  -3.33333333  0.        ]
+ [ 0.          0.          0.          0.          0.          0.
+   1.44337567 -2.5         0.          5.         -1.44337567 -2.5
+   0.          0.        ]
+ [ 0.          0.          0.          0.          0.          0.
+  -3.33333333  0.         -0.83333333 -1.44337567  5.          0.
+  -0.83333333  1.44337567]
+ [ 0.          0.          0.          0.          0.          0.
+   0.          0.         -1.44337567 -2.5         0.          5.
+   1.44337567 -2.5       ]
+ [ 0.          0.          0.          0.          0.          0.
+   0.          0.         -3.33333333  0.         -0.83333333  1.44337567
+   4.16666667 -1.44337567]
+ [ 0.          0.          0.          0.          0.          0.
+   0.          0.          0.          0.          1.44337567 -2.5
+  -1.44337567  2.5       ]]
 </pre></div>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="save-the-inputs-for-the-project">
-<h1>Save the inputs for the project<a class="headerlink" href="#save-the-inputs-for-the-project" title="Permalink to this headline">¶</a></h1>
+<h2>Save the inputs for the project<a class="headerlink" href="#save-the-inputs-for-the-project" title="Permalink to this headline">¶</a></h2>
 <p>Here, we save the arrays needed to work on the project as a Linear Algebra problem. We need the <code class="docutils literal notranslate"><span class="pre">nodes</span></code>, <code class="docutils literal notranslate"><span class="pre">elems</span></code>, and <code class="docutils literal notranslate"><span class="pre">K</span></code> arrays. So, we save them in the file <code class="docutils literal notranslate"><span class="pre">fea_arrays.npz</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -894,7 +935,7 @@ element array
 </div>
 </div>
 <div class="section" id="solution-for-our-fea-problem">
-<h1>Solution for our FEA problem<a class="headerlink" href="#solution-for-our-fea-problem" title="Permalink to this headline">¶</a></h1>
+<h2>Solution for our FEA problem<a class="headerlink" href="#solution-for-our-fea-problem" title="Permalink to this headline">¶</a></h2>
 <p>In FEA, you have applied forces, in <span class="math notranslate nohighlight">\(\mathbf{F}\)</span>, and displacement in <span class="math notranslate nohighlight">\(\mathbf{u}.\)</span> Typically, you have a mix of known and unknown forces and displacements. In our example, we have 14 degrees of freedom - 3 constraints for our displacements. So, we solve the problem in two steps</p>
 <ol class="simple">
 <li><p>solve for the free nodes <code class="docutils literal notranslate"><span class="pre">uf</span></code> <span class="math notranslate nohighlight">\(\rightarrow \mathbf{K}[2:13,2:13] \mathbf{u}[2:13] = \mathbf{F} [2:13]\)</span></p></li>
@@ -918,6 +959,14 @@ element array
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   0.    0.    0.    0.    0. -100.    0.    0.    0.    0.    0.]
+[ 0.00000000e+00 -5.32907052e-15  0.00000000e+00  2.84217094e-14
+  2.14661921e-14 -1.00000000e+02  0.00000000e+00 -1.42108547e-14
+  0.00000000e+00 -2.84217094e-14  2.84217094e-14]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,11 +980,58 @@ element array
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>displacements:
+----------------
+u_1x:0.00 mm
+u_1y:0.00 mm
+u_2x:1.95 mm
+u_2y:-2.12 mm
+u_3x:0.43 mm
+u_3y:-4.00 mm
+u_4x:1.08 mm
+u_4y:-5.37 mm
+u_5x:1.73 mm
+u_5y:-4.00 mm
+u_6x:0.22 mm
+u_6y:-2.12 mm
+u_7x:2.17 mm
+u_7y:0.00 mm
+
+forces:
+----------------
+F_1x:-0.00 N
+F_1y:50.00 N
+F_2x:0.00 N
+F_2y:-0.00 N
+F_3x:0.00 N
+F_3y:0.00 N
+F_4x:0.00 N
+F_4y:-100.00 N
+F_5x:0.00 N
+F_5y:-0.00 N
+F_6x:0.00 N
+F_6y:-0.00 N
+F_7x:0.00 N
+F_7y:50.00 N
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="postprocess-fea-results">
-<h1>Postprocess FEA results<a class="headerlink" href="#postprocess-fea-results" title="Permalink to this headline">¶</a></h1>
-<p>The last step in FEA (and any applied linear algebra problem), is to post-process the results. I have chosen to show the deflections of each joint and the applied forces at each node. I imported the <code class="docutils literal notranslate"><span class="pre">interact</span></code> widget to animate the deformation of the structure. What you should see is that the sum of external forces <span class="math notranslate nohighlight">\(\sum F_x=0\)</span> and <span class="math notranslate nohighlight">\(\sum F_y=0\)</span>. This is what we see, since our the sum of the reaction forces is equal to the applied force.</p>
+<h2>Postprocess FEA results<a class="headerlink" href="#postprocess-fea-results" title="Permalink to this headline">¶</a></h2>
+<p>The last step in FEA (and any applied linear algebra problem), is to
+post-process the results. I have chosen to show the deflections of each
+joint and the applied forces at each node. I imported the <code class="docutils literal notranslate"><span class="pre">interact</span></code>
+widget to animate the deformation of the structure. What you should see
+is that the sum of external forces <span class="math notranslate nohighlight">\(\sum F_x=0\)</span> and <span class="math notranslate nohighlight">\(\sum F_y=0\)</span>. This
+is what we see, since our the sum of the reaction forces is equal to the
+applied force.</p>
+<blockquote>
+<div><p><strong>Note</strong>: Run this in Jupyter to interact with the scale of
+deformation.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
@@ -957,24 +1053,20 @@ element array
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">steel</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/steel_price.csv&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="n">al</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/al_price.csv&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">steel</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">steel</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">al</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">al</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "afaf799c570444d1bd2dcb2717366f6b"}
+</script><img alt="../_images/extra-FEA_material_32_1.png" src="../_images/extra-FEA_material_32_1.png" />
 </div>
 </div>
 </div>
 </div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"718987dad32c48498207e790deef4534": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "afaf799c570444d1bd2dcb2717366f6b": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_6bb2d13d6491480db2126e21c51f2f15", "IPY_MODEL_7b3ba8232648480d9bb6b3a8189bfdcc"], "layout": "IPY_MODEL_718987dad32c48498207e790deef4534"}}, "b143c8bb2261488682a51c8c4a9ffdf5": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b8fe5a2f25384e8092314864d585ea7a": {"model_name": "SliderStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "SliderStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": "", "handle_color": null}}, "6bb2d13d6491480db2126e21c51f2f15": {"model_name": "IntSliderModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "IntSliderModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "IntSliderView", "continuous_update": true, "description": "s", "description_tooltip": null, "disabled": false, "layout": "IPY_MODEL_b143c8bb2261488682a51c8c4a9ffdf5", "max": 10, "min": 0, "orientation": "horizontal", "readout": true, "readout_format": "d", "step": 1, "style": "IPY_MODEL_b8fe5a2f25384e8092314864d585ea7a", "value": 5}}, "36d20dc745db43cfa56f9f348be86951": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7b3ba8232648480d9bb6b3a8189bfdcc": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_36d20dc745db43cfa56f9f348be86951", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
 
     <script type="text/x-thebe-config">
     {
@@ -1001,6 +1093,7 @@ element array
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="../how-to/polyfit.html" title="previous page">Creating a quadratic fit on random data</a>
 
         </div>
         
