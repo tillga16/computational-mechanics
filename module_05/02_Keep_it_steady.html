@@ -510,7 +510,9 @@
 </ol>
 <div class="section" id="temperature-in-a-fin-meant-to-remove-heat-to-enviroment">
 <h3>Temperature in a fin meant to remove heat to enviroment<a class="headerlink" href="#temperature-in-a-fin-meant-to-remove-heat-to-enviroment" title="Permalink to this headline">¶</a></h3>
-<img src="../images/thermal_fin.png" style="width: 500px;"/> 
+<!-- <img src="../images/thermal_fin.png" style="width: 500px;"/>  -->
+<p><img
+src="https://github.com/cooperrc/computational-mechanics/blob/master/images/thermal_fin.png?raw=true" style="width: 500px;"/></p>
 <p>Consider the heat fin shown above, a hot substrate is at temperature <span class="math notranslate nohighlight">\(T_{base}\)</span> and you want to remove heat with a cylindrical fin that is connected to the substrate. You know the base of the fin is the same temperature as the substrate, <span class="math notranslate nohighlight">\(T(x=0)=T_{0}=T_{base}\)</span>, but you do not know the heat flux into the fin, <span class="math notranslate nohighlight">\(\frac{dT}{dx}(0)=??\)</span>. We also do not know the temperature at the end of the fin, <span class="math notranslate nohighlight">\(T(L)=??\)</span>. So you could use your first <a class="reference external" href="https://github.uconn.edu/rcc02007/CompMech03-IVPs/blob/master/notebooks/04_Getting_to_the_root.ipynb">shooting method</a>, but you also have a new approach. We use our new knowledge of <a class="reference external" href="https://github.uconn.edu/rcc02007/CompMech04-LinearAlgebra">Linear Algebra</a> and <a class="reference internal" href="01_Revisiting_derivatives.html"><span class="doc std std-doc">finite differences</span></a> to create a linear system of equations.</p>
 <p>Here is what you do know:</p>
 <p><strong>Equations:</strong></p>
@@ -800,7 +802,7 @@ at position (m)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5613b5b2e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb2642100d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/02_Keep_it_steady_11_1.png" src="../_images/02_Keep_it_steady_11_1.png" />
