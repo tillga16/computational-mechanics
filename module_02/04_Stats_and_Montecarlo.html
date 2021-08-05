@@ -238,11 +238,43 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/README.html">
-   Quick How-to documents
+  <a class="reference internal" href="../module_05/README.html">
+   Computational Mechanics 5 - Boundary Value Problems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/01_Revisiting_derivatives.html">
+     Revisiting Derivatives
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/02_Keep_it_steady.html">
+     Keep it Steady
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/03_Good_Vibrations.html">
+     Good Vibrations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/05-BVPs_project.html">
+     Computational Mechanics Boundary Values - Project 05
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../how-to/README.html">
+   Quick How-to documents
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -491,11 +523,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7.25485539e-02, 6.71412112e-01, 7.02903213e-01, 5.67120966e-01,
-       2.37944828e-01, 9.94356868e-01, 8.50603231e-01, 9.53298479e-01,
-       7.49945740e-01, 3.52548975e-04, 3.06890265e-01, 9.56492012e-04,
-       8.22035720e-02, 6.97865551e-01, 9.50373493e-01, 8.15665727e-01,
-       2.62524121e-01, 2.89112424e-01, 5.04220313e-02, 9.83563967e-01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.84091804, 0.62841135, 0.03000295, 0.21935578, 0.25204255,
+       0.83396922, 0.49194006, 0.95291103, 0.77846277, 0.28947762,
+       0.54640322, 0.87134427, 0.16253377, 0.45454403, 0.75527247,
+       0.11748903, 0.69237915, 0.03703278, 0.74863943, 0.08048041])
 </pre></div>
 </div>
 </div>
@@ -528,9 +559,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([5., 4., 1., 4., 6.]),
- array([3.52548975e-04, 1.99153413e-01, 3.97954276e-01, 5.96755140e-01,
-        7.95556004e-01, 9.94356868e-01]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([5., 3., 3., 4., 5.]),
+ array([0.03000295, 0.21458456, 0.39916618, 0.58374779, 0.76832941,
+        0.95291103]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -591,8 +622,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.72916782, 0.68112278, 0.173499  , 0.95718043, 0.74645867,
-       0.86565002, 0.64494291, 0.66318438, 0.56313391, 0.94354898])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.73243663, 0.23369542, 0.28029521, 0.43682497, 0.92400524,
+       0.00187011, 0.57215167, 0.17346538, 0.28989527, 0.93403987])
 </pre></div>
 </div>
 </div>
@@ -637,8 +668,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.134000
-standard deviation is 0.042114
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.175200
+standard deviation is 0.046262
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -666,8 +697,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.138040
-standard deviation is 0.047647
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.146000
+standard deviation is 0.060730
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -690,8 +721,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.140000
-standard deviation is 0.012990
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.131960
+standard deviation is 0.012696
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -842,7 +873,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd1a3c84d90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f19f0fcf280&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />

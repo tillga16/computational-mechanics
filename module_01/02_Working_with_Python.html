@@ -238,11 +238,43 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/README.html">
-   Quick How-to documents
+  <a class="reference internal" href="../module_05/README.html">
+   Computational Mechanics 5 - Boundary Value Problems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/01_Revisiting_derivatives.html">
+     Revisiting Derivatives
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/02_Keep_it_steady.html">
+     Keep it Steady
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../module_05/03_Good_Vibrations.html">
+     Good Vibrations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../projects/05-BVPs_project.html">
+     Computational Mechanics Boundary Values - Project 05
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../how-to/README.html">
+   Quick How-to documents
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -992,7 +1024,7 @@ you can do more computations, like add or multiply them. For example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1697/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1705/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
   x_array / y_array
 </pre></div>
 </div>
@@ -1354,8 +1386,8 @@ with no numbers repeated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[33, 73, 11, 76, 68, 35, 14, 3, 60, 31]
-[68, 61, 58, 54, 22, 21, 43, 16, 41, 42]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[43, 8, 49, 89, 29, 10, 24, 9, 68, 79]
+[5, 22, 43, 35, 20, 87, 0, 60, 80, 96]
 </pre></div>
 </div>
 </div>
@@ -1375,8 +1407,8 @@ takes to execute all the code in that cell.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 19 µs, sys: 4 µs, total: 23 µs
-Wall time: 26.2 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 21 µs, sys: 4 µs, total: 25 µs
+Wall time: 28.1 µs
 </pre></div>
 </div>
 </div>
@@ -1388,7 +1420,7 @@ Wall time: 26.2 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[101, 134, 69, 130, 90, 56, 57, 19, 101, 73]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[48, 30, 92, 124, 49, 97, 24, 69, 148, 175]
 </pre></div>
 </div>
 </div>
@@ -1422,8 +1454,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[54  1 58 99 82 74 70 84 45 97]
-[60 52 66 80 42 84 94 37 88 22]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25 83 18 31 85 50 33 64 31 84]
+[37  1 59 15  0 53 63 69  0  3]
 </pre></div>
 </div>
 </div>
@@ -1437,8 +1469,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8 µs, sys: 1 µs, total: 9 µs
-Wall time: 12.4 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9 µs, sys: 2 µs, total: 11 µs
+Wall time: 12.9 µs
 </pre></div>
 </div>
 </div>
@@ -1522,7 +1554,7 @@ in the x-axis, you need to import the module <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4239b6eca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fccb0bae0a0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_Working_with_Python_104_1.png" src="../_images/02_Working_with_Python_104_1.png" />
