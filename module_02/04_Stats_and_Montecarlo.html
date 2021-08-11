@@ -488,6 +488,13 @@
   <a class="reference internal nav-link" href="#problems">
    Problems
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#part-b-number-of-failed-rods">
+     part b - number of failed rods
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -523,10 +530,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.73430407, 0.86377314, 0.08784354, 0.37242805, 0.57657562,
-       0.42467951, 0.94744925, 0.25574652, 0.35419129, 0.46849307,
-       0.74206334, 0.01288523, 0.63988059, 0.46657411, 0.69533082,
-       0.70686768, 0.1241062 , 0.69034613, 0.37546002, 0.95840463])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15041609, 0.06341461, 0.95553396, 0.87537256, 0.09996444,
+       0.75448727, 0.48767407, 0.10722603, 0.99940382, 0.34298968,
+       0.4637174 , 0.76607415, 0.17373155, 0.36655474, 0.3360335 ,
+       0.54272978, 0.20121203, 0.87261842, 0.40464187, 0.32889965])
 </pre></div>
 </div>
 </div>
@@ -559,9 +566,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([3., 4., 4., 6., 3.]),
- array([0.01288523, 0.20198911, 0.39109299, 0.58019687, 0.76930075,
-        0.95840463]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([6., 5., 3., 2., 4.]),
+ array([0.06341461, 0.25061245, 0.4378103 , 0.62500814, 0.81220598,
+        0.99940382]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -622,8 +629,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.71315053, 0.89323206, 0.03811329, 0.26079949, 0.13469862,
-       0.61162877, 0.3007915 , 0.60667576, 0.17302351, 0.94574782])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9991523 , 0.15066171, 0.8908491 , 0.18561587, 0.24894685,
+       0.77993361, 0.22201196, 0.14753658, 0.25001443, 0.77685858])
 </pre></div>
 </div>
 </div>
@@ -668,8 +675,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.132800
-standard deviation is 0.049535
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.140400
+standard deviation is 0.046560
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -697,8 +704,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.145120
-standard deviation is 0.055380
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.132280
+standard deviation is 0.043551
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -721,8 +728,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.140360
-standard deviation is 0.013609
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.146760
+standard deviation is 0.017193
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -873,7 +880,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7847b0bcd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe55c55df40&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />
@@ -1064,7 +1071,32 @@ samples with normally distributed dimensions r and L.</p>
 reach the critical buckling load?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">montecarlo_buckle</span><span class="p">(</span><span class="n">E</span><span class="p">,</span><span class="n">r_mean</span><span class="p">,</span><span class="n">r_std</span><span class="p">,</span><span class="n">L</span><span class="p">,</span><span class="n">N</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  1.,  13.,  44., 131., 218., 296., 179.,  87.,  25.,   6.]),
+ array([0.00635159, 0.00703431, 0.00771704, 0.00839977, 0.00908249,
+        0.00976522, 0.01044795, 0.01113067, 0.0118134 , 0.01249613,
+        0.01317885]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/04_Stats_and_Montecarlo_45_1.png" src="../_images/04_Stats_and_Montecarlo_45_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">montecarlo_buckle</span><span class="p">(</span><span class="n">r_mean</span><span class="p">,</span><span class="n">r_std</span><span class="p">,</span><span class="n">L</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">E</span> <span class="o">=</span> <span class="mf">200e9</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Generate N rods of length L with radii of r=r_mean+/-r_std</span>
 <span class="sd">    then calculate the mean and std of the buckling loads in for the</span>
 <span class="sd">    rod population holding a 1000-kg structure</span>
@@ -1080,8 +1112,153 @@ reach the critical buckling load?</p>
 <span class="sd">    mean_buckle_load: mean buckling load of N rods under 1000*9.81/N-Newton load</span>
 <span class="sd">    std_buckle_load: std dev buckling load of N rods under 1000*9.81/N-Newton load</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">r_mean</span><span class="p">,</span> <span class="n">r_std</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
     
+    <span class="n">Pcritical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># &lt;------ main equation</span>
+    
+    <span class="n">mean_buckle_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Pcritical</span><span class="p">)</span>
+    <span class="n">std_buckle_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">Pcritical</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mean_buckle_load</span><span class="p">,</span> <span class="n">std_buckle_load</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">montecarlo_buckle</span><span class="p">(</span><span class="n">r_mean</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">r_std</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4154.390202431107, 1523.3654969724491)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">montecarlo_buckle</span><span class="p">(</span><span class="n">r_mean</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">r_std</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(162.7994658964406, 65.6976638761434)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>602 µs ± 18.9 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.83 µs ± 150 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">#[2, 10, 20, 50, 100, 500, 1000, 5000, 10000]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">N_vals</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># create an zeros array to initialize `results`</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">N_vals</span><span class="p">):</span>
+    <span class="n">P_mean</span><span class="p">,</span> <span class="n">P_std</span> <span class="o">=</span> <span class="n">montecarlo_buckle</span><span class="p">(</span><span class="n">r_mean</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">r_std</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_mean</span>
+    <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_std</span>
+<span class="c1"># results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">N_vals</span><span class="p">,</span> <span class="n">results</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe55c7ae1f0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/04_Stats_and_Montecarlo_54_1.png" src="../_images/04_Stats_and_Montecarlo_54_1.png" />
+</div>
+</div>
+<div class="section" id="part-b-number-of-failed-rods">
+<h2>part b - number of failed rods<a class="headerlink" href="#part-b-number-of-failed-rods" title="Permalink to this headline">¶</a></h2>
+<p>load on each rod</p>
+<p><span class="math notranslate nohighlight">\(Load = \frac{1000~kg 9.81~m/s^2}{100 rods}\)</span></p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(P_{critical} &gt; 98.1~N\)</span>, then rod is safe</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(P_{critical} &lt; 98.1~N\)</span>, then rod is <strong>unsafe</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Load</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">*</span><span class="mf">9.81</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">Load</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>98.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">200e9</span>
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    
+    <span class="n">Pcritical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Pcritical</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;L = </span><span class="si">{}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_Stats_and_Montecarlo_57_0.png" src="../_images/04_Stats_and_Montecarlo_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>  
+    <span class="n">Pcritical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">E</span><span class="o">*</span><span class="n">r</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Pcritical</span> <span class="o">&lt;</span> <span class="mf">98.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+12
+19
+20
+19
 </pre></div>
 </div>
 </div>
@@ -1091,6 +1268,35 @@ reach the critical buckling load?</p>
 <p><strong>b.</strong> What is the effect of changing the number of samples?</p>
 <p><em>Hint: for a-b try plotting histograms of the results.</em></p>
 <p><strong>c.</strong> How would you change the mean in your generated distribution?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rng.random?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_factors</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">number_of_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="n">number_of_factors</span><span class="p">,</span> <span class="n">number_of_samples</span><span class="p">))</span><span class="o">+</span><span class="mi">10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  5.,  22.,  67., 140., 214., 235., 174.,  98.,  35.,  10.]),
+ array([60.73777245, 61.16905403, 61.6003356 , 62.03161718, 62.46289876,
+        62.89418034, 63.32546191, 63.75674349, 64.18802507, 64.61930665,
+        65.05058822]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/04_Stats_and_Montecarlo_61_1.png" src="../_images/04_Stats_and_Montecarlo_61_1.png" />
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

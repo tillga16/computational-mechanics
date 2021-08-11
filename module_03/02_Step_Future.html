@@ -733,6 +733,18 @@ v \ \frac{c}{m}v^2-g
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freefall</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">c</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.  , -9.81])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eulerstep</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Uses Euler&#39;s method to update a state to the next one. </span>
 <span class="sd">    </span>
@@ -750,6 +762,43 @@ v \ \frac{c}{m}v^2-g
     
     <span class="n">next_state</span> <span class="o">=</span> <span class="n">state</span> <span class="o">+</span> <span class="n">rhs</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
     <span class="k">return</span> <span class="n">next_state</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eulerstep</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="k">lambda</span> <span class="n">state</span><span class="p">:</span> <span class="n">freefall</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.   , -0.981])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eulerstep</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="o">-</span><span class="mf">0.981</span><span class="p">]),</span> <span class="n">freefall</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1990</span><span class="o">/</span><span class="mf">3499327497.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">eulerstep</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.</span>   <span class="p">,</span> <span class="o">-</span><span class="mf">0.981</span><span class="p">]),</span> <span class="n">freefall</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: freefall() missing 1 required positional argument: &#39;state&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">eulerstep</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freefall</span><span class="p">(</span><span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -814,11 +863,6 @@ number of time steps.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.6    , -0.00981])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,9 +885,6 @@ number of time steps.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_Step_Future_27_0.png" src="../_images/02_Step_Future_27_0.png" />
-</div>
 </div>
 <p>The two lines look very close… but let’s plot the difference to get understand the <a class="reference external" href="https://github.uconn.edu/rcc02007/CompMech01-Getting-started/blob/master/notebooks/03_Numerical_error.ipynb">error</a>.</p>
 <div class="cell docutils container">
@@ -855,9 +896,6 @@ number of time steps.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$ [m]&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_Step_Future_29_0.png" src="../_images/02_Step_Future_29_0.png" />
 </div>
 </div>
 </div>
@@ -973,9 +1011,6 @@ range of <span class="math notranslate nohighlight">\(56.0\)</span>–<span clas
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_Step_Future_41_0.png" src="../_images/02_Step_Future_41_0.png" />
-</div>
 </div>
 <p>All the lines look very close… but let’s plot the differences with the experimental data in both cases, to get an idea of the error.</p>
 <div class="cell docutils container">
@@ -989,9 +1024,6 @@ range of <span class="math notranslate nohighlight">\(56.0\)</span>–<span clas
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02_Step_Future_43_0.png" src="../_images/02_Step_Future_43_0.png" />
 </div>
 </div>
 </div>
@@ -1071,6 +1103,24 @@ v_y \ g - cv_y^2
 <p>Below is the start of a function definition, be sure to update the help file.</p>
 </li>
 </ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">projectile_drag</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">C_d</span><span class="o">=</span><span class="mf">0.47</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">0.143</span><span class="p">,</span><span class="n">R</span> <span class="o">=</span> <span class="mf">0.0661</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Computes the right-hand side of the differential equation</span>
+<span class="sd">    for the fall of a projectile lacrosee ball, with drag, in SI units.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments</span>
+<span class="sd">    ----------    </span>
+<span class="sd">    state : array of two dependent variables [y v]^T</span>
+<span class="sd">    m : mass in kilograms default set to 0.143 kg (mass of lax ball source wiki)</span>
+<span class="sd">    C_d : drag coefficient for a sphere default set to 0.47 (no units)</span>
+<span class="sd">    R : radius of ball default in meters is 0.0661/2 m (tennis ball)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    derivs: array of four derivatives [vx ax vy ay]</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">derivs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">derivs</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">projectile_drag</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">C_d</span><span class="o">=</span><span class="mf">0.47</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mf">0.143</span><span class="p">,</span><span class="n">R</span> <span class="o">=</span> <span class="mf">0.0661</span><span class="o">/</span><span class="mi">2</span><span class="p">):</span>
@@ -1085,13 +1135,27 @@ v_y \ g - cv_y^2
 <span class="sd">    R : radius of ball default in meters is 0.0661/2 m (tennis ball)</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    derivs: array of four derivatives [?? ?? ?? ??]</span>
+<span class="sd">    derivs: array of four derivatives [vx ax vy ay]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     
     <span class="n">rho</span> <span class="o">=</span> <span class="mf">1.22</span>   <span class="c1"># air density kg/m^3</span>
     <span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-
+    <span class="n">c</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">C_d</span><span class="o">/</span><span class="n">m</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+    <span class="n">derivs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">state</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">derivs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">derivs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">derivs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">c</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">derivs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span> <span class="o">-</span> <span class="n">c</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">derivs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">projectile_drag</span><span class="p">(</span><span class="n">state0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1116,6 +1180,22 @@ y(0) \ v_y(0)
 <span class="n">t3</span><span class="o">=</span><span class="n">npz</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
 <span class="n">x3</span><span class="o">=</span><span class="n">npz</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
 <span class="n">y3</span><span class="o">=</span><span class="n">npz</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.plot(t3, x3, &#39;s-&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="s1">&#39;s-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;path of ball&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t3</span>
 </pre></div>
 </div>
 </div>

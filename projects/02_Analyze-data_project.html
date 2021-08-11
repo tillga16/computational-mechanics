@@ -633,24 +633,114 @@ create a predictive model.</p>
 <p>851264 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>I only want the <code class="docutils literal notranslate"><span class="pre">symbol</span> <span class="pre">==</span> <span class="pre">GOOGL</span></code> data, so I use a Pandas call. I also want to remove the big drop in price after Mar, 2014, so I specify the date &lt; 2014-03-01.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;A&#39;, &#39;AAL&#39;, &#39;AAP&#39;, &#39;AAPL&#39;, &#39;ABBV&#39;, &#39;ABC&#39;, &#39;ABT&#39;, &#39;ACN&#39;, &#39;ADBE&#39;,
+       &#39;ADI&#39;, &#39;ADM&#39;, &#39;ADP&#39;, &#39;ADS&#39;, &#39;ADSK&#39;, &#39;AEE&#39;, &#39;AEP&#39;, &#39;AES&#39;, &#39;AET&#39;,
+       &#39;AFL&#39;, &#39;AGN&#39;, &#39;AIG&#39;, &#39;AIV&#39;, &#39;AIZ&#39;, &#39;AJG&#39;, &#39;AKAM&#39;, &#39;ALB&#39;, &#39;ALK&#39;,
+       &#39;ALL&#39;, &#39;ALLE&#39;, &#39;ALXN&#39;, &#39;AMAT&#39;, &#39;AME&#39;, &#39;AMG&#39;, &#39;AMGN&#39;, &#39;AMP&#39;, &#39;AMT&#39;,
+       &#39;AMZN&#39;, &#39;AN&#39;, &#39;ANTM&#39;, &#39;AON&#39;, &#39;APA&#39;, &#39;APC&#39;, &#39;APD&#39;, &#39;APH&#39;, &#39;ARNC&#39;,
+       &#39;ATVI&#39;, &#39;AVB&#39;, &#39;AVGO&#39;, &#39;AVY&#39;, &#39;AWK&#39;, &#39;AXP&#39;, &#39;AYI&#39;, &#39;AZO&#39;, &#39;BA&#39;,
+       &#39;BAC&#39;, &#39;BAX&#39;, &#39;BBBY&#39;, &#39;BBT&#39;, &#39;BBY&#39;, &#39;BCR&#39;, &#39;BDX&#39;, &#39;BEN&#39;, &#39;BHI&#39;,
+       &#39;BIIB&#39;, &#39;BK&#39;, &#39;BLK&#39;, &#39;BLL&#39;, &#39;BMY&#39;, &#39;BSX&#39;, &#39;BWA&#39;, &#39;BXP&#39;, &#39;C&#39;, &#39;CA&#39;,
+       &#39;CAG&#39;, &#39;CAH&#39;, &#39;CAT&#39;, &#39;CB&#39;, &#39;CBG&#39;, &#39;CBS&#39;, &#39;CCI&#39;, &#39;CCL&#39;, &#39;CELG&#39;,
+       &#39;CERN&#39;, &#39;CF&#39;, &#39;CFG&#39;, &#39;CHD&#39;, &#39;CHK&#39;, &#39;CHRW&#39;, &#39;CHTR&#39;, &#39;CI&#39;, &#39;CINF&#39;,
+       &#39;CL&#39;, &#39;CLX&#39;, &#39;CMA&#39;, &#39;CMCSA&#39;, &#39;CME&#39;, &#39;CMG&#39;, &#39;CMI&#39;, &#39;CMS&#39;, &#39;CNC&#39;,
+       &#39;CNP&#39;, &#39;COF&#39;, &#39;COG&#39;, &#39;COH&#39;, &#39;COL&#39;, &#39;COO&#39;, &#39;COP&#39;, &#39;COST&#39;, &#39;COTY&#39;,
+       &#39;CPB&#39;, &#39;CRM&#39;, &#39;CSCO&#39;, &#39;CSRA&#39;, &#39;CSX&#39;, &#39;CTAS&#39;, &#39;CTL&#39;, &#39;CTSH&#39;, &#39;CTXS&#39;,
+       &#39;CVS&#39;, &#39;CVX&#39;, &#39;CXO&#39;, &#39;D&#39;, &#39;DAL&#39;, &#39;DD&#39;, &#39;DE&#39;, &#39;DFS&#39;, &#39;DG&#39;, &#39;DGX&#39;,
+       &#39;DHI&#39;, &#39;DHR&#39;, &#39;DIS&#39;, &#39;DISCA&#39;, &#39;DISCK&#39;, &#39;DLPH&#39;, &#39;DLR&#39;, &#39;DLTR&#39;,
+       &#39;DNB&#39;, &#39;DOV&#39;, &#39;DOW&#39;, &#39;DPS&#39;, &#39;DRI&#39;, &#39;DTE&#39;, &#39;DUK&#39;, &#39;DVA&#39;, &#39;DVN&#39;,
+       &#39;EA&#39;, &#39;EBAY&#39;, &#39;ECL&#39;, &#39;ED&#39;, &#39;EFX&#39;, &#39;EIX&#39;, &#39;EL&#39;, &#39;EMN&#39;, &#39;EMR&#39;,
+       &#39;ENDP&#39;, &#39;EOG&#39;, &#39;EQIX&#39;, &#39;EQR&#39;, &#39;EQT&#39;, &#39;ES&#39;, &#39;ESRX&#39;, &#39;ESS&#39;, &#39;ETFC&#39;,
+       &#39;ETN&#39;, &#39;ETR&#39;, &#39;EVHC&#39;, &#39;EW&#39;, &#39;EXC&#39;, &#39;EXPD&#39;, &#39;EXPE&#39;, &#39;EXR&#39;, &#39;F&#39;,
+       &#39;FAST&#39;, &#39;FB&#39;, &#39;FBHS&#39;, &#39;FCX&#39;, &#39;FDX&#39;, &#39;FE&#39;, &#39;FFIV&#39;, &#39;FIS&#39;, &#39;FISV&#39;,
+       &#39;FITB&#39;, &#39;FL&#39;, &#39;FLIR&#39;, &#39;FLR&#39;, &#39;FLS&#39;, &#39;FMC&#39;, &#39;FOX&#39;, &#39;FOXA&#39;, &#39;FRT&#39;,
+       &#39;FSLR&#39;, &#39;FTI&#39;, &#39;FTR&#39;, &#39;FTV&#39;, &#39;GD&#39;, &#39;GE&#39;, &#39;GGP&#39;, &#39;GILD&#39;, &#39;GIS&#39;,
+       &#39;GLW&#39;, &#39;GM&#39;, &#39;GOOG&#39;, &#39;GOOGL&#39;, &#39;GPC&#39;, &#39;GPN&#39;, &#39;GPS&#39;, &#39;GRMN&#39;, &#39;GS&#39;,
+       &#39;GT&#39;, &#39;GWW&#39;, &#39;HAL&#39;, &#39;HAR&#39;, &#39;HAS&#39;, &#39;HBAN&#39;, &#39;HBI&#39;, &#39;HCA&#39;, &#39;HCN&#39;,
+       &#39;HCP&#39;, &#39;HD&#39;, &#39;HES&#39;, &#39;HIG&#39;, &#39;HOG&#39;, &#39;HOLX&#39;, &#39;HON&#39;, &#39;HP&#39;, &#39;HPE&#39;,
+       &#39;HPQ&#39;, &#39;HRB&#39;, &#39;HRL&#39;, &#39;HRS&#39;, &#39;HSIC&#39;, &#39;HST&#39;, &#39;HSY&#39;, &#39;HUM&#39;, &#39;IBM&#39;,
+       &#39;ICE&#39;, &#39;IDXX&#39;, &#39;IFF&#39;, &#39;ILMN&#39;, &#39;INTC&#39;, &#39;INTU&#39;, &#39;IP&#39;, &#39;IPG&#39;, &#39;IR&#39;,
+       &#39;IRM&#39;, &#39;ISRG&#39;, &#39;ITW&#39;, &#39;IVZ&#39;, &#39;JBHT&#39;, &#39;JCI&#39;, &#39;JEC&#39;, &#39;JNJ&#39;, &#39;JNPR&#39;,
+       &#39;JPM&#39;, &#39;JWN&#39;, &#39;K&#39;, &#39;KEY&#39;, &#39;KHC&#39;, &#39;KIM&#39;, &#39;KLAC&#39;, &#39;KMB&#39;, &#39;KMI&#39;,
+       &#39;KMX&#39;, &#39;KO&#39;, &#39;KORS&#39;, &#39;KR&#39;, &#39;KSS&#39;, &#39;KSU&#39;, &#39;L&#39;, &#39;LB&#39;, &#39;LEG&#39;, &#39;LEN&#39;,
+       &#39;LH&#39;, &#39;LKQ&#39;, &#39;LLL&#39;, &#39;LLTC&#39;, &#39;LLY&#39;, &#39;LMT&#39;, &#39;LNC&#39;, &#39;LNT&#39;, &#39;LOW&#39;,
+       &#39;LRCX&#39;, &#39;LUK&#39;, &#39;LUV&#39;, &#39;LVLT&#39;, &#39;LYB&#39;, &#39;M&#39;, &#39;MA&#39;, &#39;MAA&#39;, &#39;MAC&#39;,
+       &#39;MAR&#39;, &#39;MAS&#39;, &#39;MAT&#39;, &#39;MCD&#39;, &#39;MCHP&#39;, &#39;MCK&#39;, &#39;MCO&#39;, &#39;MDLZ&#39;, &#39;MDT&#39;,
+       &#39;MET&#39;, &#39;MHK&#39;, &#39;MJN&#39;, &#39;MKC&#39;, &#39;MLM&#39;, &#39;MMC&#39;, &#39;MMM&#39;, &#39;MNK&#39;, &#39;MNST&#39;,
+       &#39;MO&#39;, &#39;MON&#39;, &#39;MOS&#39;, &#39;MPC&#39;, &#39;MRK&#39;, &#39;MRO&#39;, &#39;MSFT&#39;, &#39;MSI&#39;, &#39;MTB&#39;,
+       &#39;MTD&#39;, &#39;MU&#39;, &#39;MUR&#39;, &#39;MYL&#39;, &#39;NAVI&#39;, &#39;NBL&#39;, &#39;NDAQ&#39;, &#39;NEE&#39;, &#39;NEM&#39;,
+       &#39;NFLX&#39;, &#39;NFX&#39;, &#39;NI&#39;, &#39;NKE&#39;, &#39;NLSN&#39;, &#39;NOC&#39;, &#39;NOV&#39;, &#39;NRG&#39;, &#39;NSC&#39;,
+       &#39;NTAP&#39;, &#39;NTRS&#39;, &#39;NUE&#39;, &#39;NVDA&#39;, &#39;NWL&#39;, &#39;NWS&#39;, &#39;NWSA&#39;, &#39;O&#39;, &#39;OKE&#39;,
+       &#39;OMC&#39;, &#39;ORCL&#39;, &#39;ORLY&#39;, &#39;OXY&#39;, &#39;PAYX&#39;, &#39;PBCT&#39;, &#39;PBI&#39;, &#39;PCAR&#39;, &#39;PCG&#39;,
+       &#39;PCLN&#39;, &#39;PDCO&#39;, &#39;PEG&#39;, &#39;PEP&#39;, &#39;PFE&#39;, &#39;PFG&#39;, &#39;PG&#39;, &#39;PGR&#39;, &#39;PH&#39;,
+       &#39;PHM&#39;, &#39;PKI&#39;, &#39;PLD&#39;, &#39;PM&#39;, &#39;PNC&#39;, &#39;PNR&#39;, &#39;PNW&#39;, &#39;PPG&#39;, &#39;PPL&#39;,
+       &#39;PRGO&#39;, &#39;PRU&#39;, &#39;PSA&#39;, &#39;PSX&#39;, &#39;PVH&#39;, &#39;PWR&#39;, &#39;PX&#39;, &#39;PXD&#39;, &#39;PYPL&#39;,
+       &#39;QCOM&#39;, &#39;QRVO&#39;, &#39;R&#39;, &#39;RAI&#39;, &#39;RCL&#39;, &#39;REGN&#39;, &#39;RF&#39;, &#39;RHI&#39;, &#39;RHT&#39;,
+       &#39;RIG&#39;, &#39;RL&#39;, &#39;ROK&#39;, &#39;ROP&#39;, &#39;ROST&#39;, &#39;RRC&#39;, &#39;RSG&#39;, &#39;RTN&#39;, &#39;SBUX&#39;,
+       &#39;SCG&#39;, &#39;SCHW&#39;, &#39;SE&#39;, &#39;SEE&#39;, &#39;SHW&#39;, &#39;SIG&#39;, &#39;SJM&#39;, &#39;SLB&#39;, &#39;SLG&#39;,
+       &#39;SNA&#39;, &#39;SNI&#39;, &#39;SO&#39;, &#39;SPG&#39;, &#39;SPGI&#39;, &#39;SPLS&#39;, &#39;SRCL&#39;, &#39;SRE&#39;, &#39;STI&#39;,
+       &#39;STT&#39;, &#39;STX&#39;, &#39;STZ&#39;, &#39;SWK&#39;, &#39;SWKS&#39;, &#39;SWN&#39;, &#39;SYF&#39;, &#39;SYK&#39;, &#39;SYMC&#39;,
+       &#39;SYY&#39;, &#39;T&#39;, &#39;TAP&#39;, &#39;TDC&#39;, &#39;TDG&#39;, &#39;TEL&#39;, &#39;TGNA&#39;, &#39;TGT&#39;, &#39;TIF&#39;,
+       &#39;TJX&#39;, &#39;TMK&#39;, &#39;TMO&#39;, &#39;TRIP&#39;, &#39;TROW&#39;, &#39;TRV&#39;, &#39;TSCO&#39;, &#39;TSN&#39;, &#39;TSO&#39;,
+       &#39;TSS&#39;, &#39;TWX&#39;, &#39;TXN&#39;, &#39;TXT&#39;, &#39;UAA&#39;, &#39;UAL&#39;, &#39;UDR&#39;, &#39;UHS&#39;, &#39;ULTA&#39;,
+       &#39;UNH&#39;, &#39;UNM&#39;, &#39;UNP&#39;, &#39;UPS&#39;, &#39;URBN&#39;, &#39;URI&#39;, &#39;USB&#39;, &#39;UTX&#39;, &#39;V&#39;,
+       &#39;VAR&#39;, &#39;VFC&#39;, &#39;VIAB&#39;, &#39;VLO&#39;, &#39;VMC&#39;, &#39;VNO&#39;, &#39;VRSK&#39;, &#39;VRSN&#39;, &#39;VRTX&#39;,
+       &#39;VTR&#39;, &#39;VZ&#39;, &#39;WAT&#39;, &#39;WBA&#39;, &#39;WDC&#39;, &#39;WEC&#39;, &#39;WFC&#39;, &#39;WFM&#39;, &#39;WHR&#39;,
+       &#39;WLTW&#39;, &#39;WM&#39;, &#39;WMB&#39;, &#39;WMT&#39;, &#39;WRK&#39;, &#39;WU&#39;, &#39;WY&#39;, &#39;WYN&#39;, &#39;WYNN&#39;,
+       &#39;XEC&#39;, &#39;XEL&#39;, &#39;XL&#39;, &#39;XLNX&#39;, &#39;XOM&#39;, &#39;XRAY&#39;, &#39;XRX&#39;, &#39;XYL&#39;, &#39;YHOO&#39;,
+       &#39;YUM&#39;, &#39;ZBH&#39;, &#39;ZION&#39;, &#39;ZTS&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>I only want theuniquembol == GOOGL` data, so I use a Pandas call. I also want to remove the big drop in price after Mar, 2014, so I specify the date &lt; 2014-03-01.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">google_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;GOOGL&#39;</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+<span class="n">apple_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AAPL&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">apple_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f612201f1c0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/02_Analyze-data_project_7_1.png" src="../_images/02_Analyze-data_project_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
 
 <span class="c1"># remove data &gt; 2014-03-01</span>
 
 <span class="n">google_data_pre_2014</span> <span class="o">=</span> <span class="n">google_data</span><span class="p">[</span> <span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">)]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> 
+         <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]))</span><span class="o">*</span>
+             <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;opening price (\$)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_5_0.png" src="../_images/02_Analyze-data_project_5_0.png" />
+<img alt="../_images/02_Analyze-data_project_8_0.png" src="../_images/02_Analyze-data_project_8_0.png" />
 </div>
 </div>
 </div>
@@ -659,15 +749,15 @@ create a predictive model.</p>
 <p>The GOOGL stock nearly doubled in price from 2010 through 2014. Day-to-day, the price fluctuates randomly. Here, I look at the fluctuations in price using <a class="reference external" href="https://numpy.org/doc/1.20/reference/generated/numpy.diff.html"><code class="docutils literal notranslate"><span class="pre">np.diff</span></code></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dprice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span> <span class="n">dprice</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dprice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span> <span class="n">dprice</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;change in opening price (\$/day)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_7_0.png" src="../_images/02_Analyze-data_project_7_0.png" />
+<img alt="../_images/02_Analyze-data_project_10_0.png" src="../_images/02_Analyze-data_project_10_0.png" />
 </div>
 </div>
 <p>Looking at the price day-to-day, it would appear to be an average change of $0/day. Next, I explore the statistical results of the change in opening price</p>
@@ -689,15 +779,19 @@ create a predictive model.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dprice</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dprice</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">price_pdf</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GOOGL changes in price over 4 years</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
          <span class="s1">&#39;avg: \$</span><span class="si">{:.2f}</span><span class="s1"> stdev: \$</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_dprice</span><span class="p">,</span> <span class="n">std_dprice</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_10_0.png" src="../_images/02_Analyze-data_project_10_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-100.0, 100.0)
+</pre></div>
+</div>
+<img alt="../_images/02_Analyze-data_project_13_1.png" src="../_images/02_Analyze-data_project_13_1.png" />
 </div>
 </div>
 <p>From this statistical result, it looks like the price changes followed a normal distribution with an average change of <span class="math notranslate nohighlight">\(\$0.57\)</span> and a standard deviation of <span class="math notranslate nohighlight">\(\$9.84\)</span>.</p>
@@ -744,7 +838,7 @@ create a predictive model.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">N_models</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">dprice_model</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">),</span> <span class="n">N_models</span><span class="p">),</span> <span class="n">loc</span> <span class="o">=</span> <span class="mf">0.568</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mf">9.838</span><span class="p">)</span>
+<span class="n">dprice_model</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">google_data</span><span class="p">),</span> <span class="n">N_models</span><span class="p">),</span> <span class="n">loc</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mf">16.93</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dprice</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NYSE data&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">price_pdf</span><span class="p">)</span>
@@ -753,12 +847,13 @@ create a predictive model.</p>
          <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;model prediction 1&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GOOGL changes in price over 4 years</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span>
          <span class="s1">&#39;avg: \$</span><span class="si">{:.2f}</span><span class="s1"> stdev: \$</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_dprice</span><span class="p">,</span> <span class="n">std_dprice</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_13_0.png" src="../_images/02_Analyze-data_project_13_0.png" />
+<img alt="../_images/02_Analyze-data_project_16_0.png" src="../_images/02_Analyze-data_project_16_0.png" />
 </div>
 </div>
 </div>
@@ -779,16 +874,16 @@ create a predictive model.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">dprice_model</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">price_model</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">price_model</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NYSE data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NYSE data&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;opening price (\$)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_15_0.png" src="../_images/02_Analyze-data_project_15_0.png" />
+<img alt="../_images/02_Analyze-data_project_18_0.png" src="../_images/02_Analyze-data_project_18_0.png" />
 </div>
 </div>
 <p>As you would expect, there are a wide variety of predictions for the price of GOOGL stocks using random numbers. Next, I try to get some insight into the average changes in the random walk model. I use the <code class="docutils literal notranslate"><span class="pre">np.mean</span></code> and <code class="docutils literal notranslate"><span class="pre">np.std</span></code> across the columns of the <code class="docutils literal notranslate"><span class="pre">price_model</span></code> prediction data, using <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code> now.</p>
@@ -816,7 +911,47 @@ create a predictive model.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Analyze-data_project_17_0.png" src="../_images/02_Analyze-data_project_17_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2216</span><span class="o">/</span><span class="mf">2119108355.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">price_model_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">price_model</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">price_model</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">);</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">google_data_pre_2014</span><span class="p">[</span><span class="s1">&#39;open&#39;</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;NYSE data&#39;</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.6/x64/lib/python3.9/site-packages/matplotlib/pyplot.py</span> in <span class="ni">plot</span><span class="nt">(scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3017</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Axes</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3018</span> <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">3019</span>     <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3020</span>         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="n">scaley</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3021</span>         <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.6/x64/lib/python3.9/site-packages/matplotlib/axes/_axes.py</span> in <span class="ni">plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1603</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1604</span><span class="s2">         kwargs = cbook.normalize_kwargs(kwargs, mlines.Line2D)</span>
+<span class="ne">-&gt; </span><span class="mi">1605</span><span class="s2">         lines = [*self._get_lines(*args, data=data, **kwargs)]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1606</span><span class="s2">         for line in lines:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1607</span><span class="s2">             self.add_line(line)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.6/x64/lib/python3.9/site-packages/matplotlib/axes/_base.py</span> in <span class="ni">__call__</span><span class="nt">(self, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span><span class="s2">                 this += args[0],</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span><span class="s2">                 args = args[1:]</span>
+<span class="ne">--&gt; </span><span class="mi">315</span><span class="s2">             yield from self._plot_args(this, kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">     def get_next_color(self):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.6/x64/lib/python3.9/site-packages/matplotlib/axes/_base.py</span> in <span class="ni">_plot_args</span><span class="nt">(self, tup, kwargs, return_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span><span class="s2">         if x.shape[0] != y.shape[0]:</span>
+<span class="ne">--&gt; </span><span class="mi">501</span><span class="s2">             raise ValueError(f&quot;x and y must have same first dimension, but &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span><span class="s2">                              f&quot;have shapes </span><span class="si">{x.shape}</span><span class="s2"> and </span><span class="si">{y.shape}</span><span class="s2">&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span><span class="s2">         if x.ndim &gt; 2 or y.ndim &gt; 2:</span>
+
+<span class="ne">ValueError</span>: x and y must have same first dimension, but have shapes (1046,) and (1762, 100)
+</pre></div>
+</div>
+<img alt="../_images/02_Analyze-data_project_20_1.png" src="../_images/02_Analyze-data_project_20_1.png" />
 </div>
 </div>
 </div>

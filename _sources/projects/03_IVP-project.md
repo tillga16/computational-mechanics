@@ -59,7 +59,7 @@ Your first objective is to integrate a numerical model that converges to
 equation (2.b), the Tsiolkovsky equation. Next, you will add drag and
 gravity and compare the results _between equations (1) and (2)_.
 Finally, you will vary the mass change rate to achieve the desired
-detonation height. 
+detonation height.
 
 +++
 
@@ -99,7 +99,7 @@ plt.style.use('fivethirtyeight')
 ```
 
 ```{code-cell} ipython3
-def simplerocket(state,dmdt=0.05, u=250):
+def simplerocket(state, dmdt=0.05, u=250):
     '''Computes the right-hand side of the differential equation
     for the acceleration of a rocket, without drag or gravity, in SI units.
     
@@ -115,16 +115,160 @@ def simplerocket(state,dmdt=0.05, u=250):
     '''
     
     dstate = np.zeros(np.shape(state))
-    # your work
+    dstate[0] = state[1]
+    dstate[1] = (u*dmdt/state[2])
+    dstate[2] = -dmdt
     return dstate
+```
+
+```{code-cell} ipython3
+def simplerocket(t, state,dmdt=0.05, u=250):
+
+    m0 = .25
+    
+    derivs = np.array([state[1], (u*dmdt)/state[2], -dmdt])
+#     print(state[2], u*dmdt/state[2])
+    return derivs
+```
+
+```{code-cell} ipython3
+from scipy.integrate import solve_ivp
 ```
 
 ```{code-cell} ipython3
 m0=0.25
 mf=0.05
 dm=0.05
-t = np.linspace(0,(m0-mf)/dm,500)
-dt=t[1]-t[0]
+for dm in [0.05, 0.1, 0.15]:
+    t = np.linspace(0,(m0-mf)/dm,500)
+    dt=t[1]-t[0]
+
+    sol = solve_ivp(lambda t, state:simplerocket(t, state, dmdt = dm), [0, t.max()], [0, 0, m0], t_eval=t)
+
+    plt.plot(sol.t, sol.y[0], label = 'dm = {}'.format(dm))
+plt.legend()
+upload_imgur.upload_figure()
+```
+
+```{code-cell} ipython3
+import sys
+sys.path.append('/home/ryan/bin')
+```
+
+```{code-cell} ipython3
+import upload_imgur
+```
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+def rk2_step(state, rhs, dt):
+    '''Update a state to the next time increment using modified Euler's method.
+    
+    Arguments
+    ---------
+    state : array of dependent variables
+    rhs   : function that computes the RHS of the DiffEq
+    dt    : float, time increment
+    
+    Returns
+    -------
+    next_state : array, updated after one time increment'''
+    
+    mid_state = state + rhs(state) * dt*0.5    
+    next_state = state + rhs(mid_state)*dt
+ 
+    return next_state
+```
+
+```{code-cell} ipython3
+def f_m(dm):
+    t = np.linspace(0,(m0-mf)/dm,500)
+    dt=t[1]-t[0]
+
+#     sol = solve_ivp(simplerocket, [0, t.max()], [0, 0, m0])
+    state = np.zeros((len(t), 3))
+    state[0, 2] = m0
+    for i in range(1, len(t)):
+        state[i] = rk2_step(state[i-1], lambda state: simplerocket(t[0], state, dmdt = dm), dt)
+    
+    return state[-1, 0] - 300
+```
+
+```{code-cell} ipython3
+dm = np.linspace(0.01, 1, 50)
+
+f_m_values = np.array([f_m(dm_i) for dm_i in dm])
+
+plt.plot(dm, f_m_values)
+```
+
+```{code-cell} ipython3
+rk2_step(state[0], lambda state: simplerocket(0, state, dmdt = 0.05), 0.01)
+```
+
+```{code-cell} ipython3
+f_m(0.05)
+```
+
+```{code-cell} ipython3
+euler_cromer(state[0], lambda state: simplerocket(t, state, dmdt = 0.05), 0.1)
+```
+
+```{code-cell} ipython3
+def incsearch(func,xmin,xmax,ns=50):
+    '''incsearch: incremental search root locator
+    xb = incsearch(func,xmin,xmax,ns):
+      finds brackets of x that contain sign changes
+      of a function on an interval
+    arguments:
+    ---------
+    func = name of function
+    xmin, xmax = endpoints of interval
+    ns = number of subintervals (default = 50)
+    returns:
+    ---------
+    xb(k,1) is the lower bound of the kth sign change
+    xb(k,2) is the upper bound of the kth sign change
+    If no brackets found, xb = [].'''
+    x = np.linspace(xmin,xmax,ns)
+    f = np.zeros(len(x))
+    for i in range(len(x)):
+        f[i] = func(x[i])
+    sign_f = np.sign(f)
+    delta_sign_f = sign_f[1:]-sign_f[0:-1]
+    i_zeros = np.nonzero(delta_sign_f!=0)
+    nb = len(i_zeros[0])
+    xb = np.block([[ x[i_zeros[0]+1]],[x[i_zeros[0]] ]] )
+
+    
+    if nb==0:
+      print('no brackets found\n')
+      print('check interval or increase ns\n')
+    else:
+      print('number of brackets:  {}\n'.format(nb))
+    return xb
+```
+
+```{code-cell} ipython3
+incsearch(f_m, 0.05, 0.5, ns = 300)
+```
+
+```{code-cell} ipython3
+m0=0.25
+mf=0.05
+dm=0.05
+for dm in [0.0997, 0.0995]:
+    t = np.linspace(0,(m0-mf)/dm,500)
+    dt=t[1]-t[0]
+
+    sol = solve_ivp(simplerocket, [0, t.max()], [0, 0, m0], t_eval=t)
+
+    plt.plot(sol.t, sol.y[0], '.', alpha = 0.5, label = 'dm = {}'.format(dm))
+    plt.plot(sol.t[-1], sol.y[0, -1], '*', markersize = 20)
+plt.legend()
 ```
 
 __2.__ You should have a converged solution for integrating `simplerocket`. Now, create a more relastic function, `rocket` that incorporates gravity and drag and returns the velocity, $v$, the acceleration, $a$, and the mass rate change $\frac{dm}{dt}$, as a function of the $state = [position,~velocity,~mass] = [y,~v,~m]$ using eqn (1). Where the mass rate change $\frac{dm}{dt}$ and the propellent speed $u$ are constants. The average velocity of gun powder propellent used in firework rockets is $u=250$ m/s [3,4]. 
@@ -236,6 +380,14 @@ def mod_secant(func,dx,x0,es=0.0001,maxit=50):
         if ea <= es:
             break
     return xr,[func(xr),ea,iter]
+```
+
+```{code-cell} ipython3
+t = np.linspace(0, 4)
+y = t**2
+
+plt.plot(t, y)
+plt.plot(t[-1], y[-1], '*', markersize = 20)
 ```
 
 ## References

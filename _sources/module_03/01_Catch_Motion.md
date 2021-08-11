@@ -145,6 +145,10 @@ coords = []
 connectId = fig.canvas.mpl_connect('button_press_event', onclick)
 ```
 
+```{code-cell} ipython3
+coords
+```
+
 Notice that in the previous code cell, you created an empty list named `coords`, and inside the `onclick()` function, you are appending to it the $(x,y)$ coordinates of each mouse click on the figure. After executing the cell above, you have a connection to the figure, via the user interface: 
 
 ## Exercise 
