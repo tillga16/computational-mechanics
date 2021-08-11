@@ -671,7 +671,7 @@ y \end{array}\right]=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  4.]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 3.]
 </pre></div>
 </div>
 <img alt="../_images/02_Gauss_elimination_5_1.png" src="../_images/02_Gauss_elimination_5_1.png" />
@@ -817,18 +817,14 @@ z \end{array}\right]=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ay</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ay</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1875</span><span class="o">/</span><span class="mf">2021403389.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">Ay</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">]],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">AP</span><span class="p">([</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[Ay]&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;AP&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10.  2.  1.  1.]
+ [ 2.  1.  1.  1.]
+ [ 1.  2. 10.  1.]]
 </pre></div>
 </div>
 </div>
@@ -843,7 +839,14 @@ z \end{array}\right]=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ay</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">=</span> <span class="n">Ay</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span><span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">Ay</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ay</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10.   2.   1.   1. ]
+ [ 0.   0.6  0.8  0.8]
+ [ 1.   2.  10.   1. ]]
 </pre></div>
 </div>
 </div>
@@ -858,7 +861,14 @@ z \end{array}\right]=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ay</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span><span class="o">=</span> <span class="n">Ay</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span><span class="o">-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">Ay</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ay</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10.   2.   1.   1. ]
+ [ 0.   0.6  0.8  0.8]
+ [ 0.   1.8  9.9  0.9]]
 </pre></div>
 </div>
 </div>
@@ -873,7 +883,14 @@ z \end{array}\right]=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ay</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span><span class="o">=</span> <span class="n">Ay</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span><span class="o">-</span><span class="mf">1.8</span><span class="o">/</span><span class="mf">0.6</span><span class="o">*</span><span class="n">Ay</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ay</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.00000000e+01  2.00000000e+00  1.00000000e+00  1.00000000e+00]
+ [ 0.00000000e+00  6.00000000e-01  8.00000000e-01  8.00000000e-01]
+ [ 0.00000000e+00  2.22044605e-16  7.50000000e+00 -1.50000000e+00]]
 </pre></div>
 </div>
 </div>
@@ -949,7 +966,16 @@ z \end{array}\right]=
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">Aug</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[x]&#39;</span><span class="p">,</span><span class="s1">&#39; [Ay]&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">,</span> <span class="n">Ay</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=  		Aug=
+-0.20		 [10.  2.  1.  1.]
+1.60		 [0.  0.6 0.8 0.8]
+-0.20		 [ 0.00000000e+00  2.22044605e-16  7.50000000e+00 -1.50000000e+00]
 </pre></div>
 </div>
 </div>
@@ -1018,14 +1044,38 @@ c_{3}\end{array}\right]=\left[\begin{array}{c}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;example 1&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[x]&#39;</span><span class="p">,</span><span class="s1">&#39; [Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">,</span> <span class="n">Ay</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">example 2&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[x]&#39;</span><span class="p">,</span><span class="s1">&#39; [Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">,</span> <span class="n">Ay</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">example 3&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
-<span class="n">AP</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">Ay</span><span class="p">],[</span><span class="s1">&#39;[x]&#39;</span><span class="p">,</span><span class="s1">&#39; [Ay]&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=  </span><span class="se">\t\t</span><span class="s1">Aug=&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="se">\t\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">,</span> <span class="n">Ay</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>example 1
+x=  		Aug=
+-0.20		 [10.  2.  1.  1.]
+1.60		 [0.  0.6 0.8 0.8]
+-0.20		 [ 0.00000000e+00  2.22044605e-16  7.50000000e+00 -1.50000000e+00]
+
+example 2
+x=  		Aug=
+-0.20		 [10.  2.  1.  1.]
+1.60		 [0.  0.6 0.8 0.8]
+-0.20		 [ 0.00000000e+00  2.22044605e-16  7.50000000e+00 -1.50000000e+00]
+
+example 3
+x=  		Aug=
+-0.20		 [10.  2.  1.  1.]
+1.60		 [0.  0.6 0.8 0.8]
+-0.20		 [ 0.00000000e+00  2.22044605e-16  7.50000000e+00 -1.50000000e+00]
 </pre></div>
 </div>
 </div>
@@ -1165,6 +1215,12 @@ y_{3}\end{array}\right]\)</span></p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 119 µs, sys: 0 ns, total: 119 µs
+Wall time: 124 µs
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1176,6 +1232,12 @@ y_{3}\end{array}\right]\)</span></p></li>
 <span class="n">c1</span><span class="p">,</span><span class="n">aug</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b1</span><span class="p">)</span>
 <span class="n">c2</span><span class="p">,</span><span class="n">aug</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b2</span><span class="p">)</span>
 <span class="n">c3</span><span class="p">,</span><span class="n">aug</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 261 µs, sys: 50 µs, total: 311 µs
+Wall time: 201 µs
 </pre></div>
 </div>
 </div>
@@ -1212,6 +1274,12 @@ y_{3}\end{array}\right]\)</span></p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 46.6 ms, sys: 0 ns, total: 46.6 ms
+Wall time: 46.3 ms
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1222,6 +1290,12 @@ y_{3}\end{array}\right]\)</span></p></li>
         <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">X1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">8</span><span class="o">*</span><span class="n">X2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]])</span>
         <span class="n">c</span><span class="p">,</span><span class="n">aug</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
         <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 87.9 ms, sys: 7.71 ms, total: 95.6 ms
+Wall time: 93.2 ms
 </pre></div>
 </div>
 </div>
@@ -1237,6 +1311,9 @@ y_{3}\end{array}\right]\)</span></p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Salt mass flow out </span><span class="se">\n</span><span class="s1">of tank 2 (mg/s)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02_Gauss_elimination_37_0.png" src="../_images/02_Gauss_elimination_37_0.png" />
 </div>
 </div>
 </div>
@@ -1400,6 +1477,13 @@ x_{3} \end{array} \right]=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.         0.66666667]
+[[ 1.e-15  3.e+00  2.e+00]
+ [ 0.e+00 -3.e+15 -2.e+15]]
+</pre></div>
+</div>
+</div>
 </div>
 <p>According to our <code class="docutils literal notranslate"><span class="pre">GaussNaive</span></code> solution, <span class="math notranslate nohighlight">\(x_1=0\)</span> and <span class="math notranslate nohighlight">\(x_2=2/3\)</span>, but plugging these values into our original equation you get the following result:</p>
 <p>a. <span class="math notranslate nohighlight">\(\left[ \begin{array}{cccc}
@@ -1417,6 +1501,11 @@ x_{3} \end{array} \right]=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Aa</span><span class="nd">@np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.        , 0.66666667])
 </pre></div>
 </div>
 </div>
@@ -1443,6 +1532,12 @@ x_{2} \end{array} \right]=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>solution= [0.33333333 0.66666667]
+confirm b=Ax -&gt; [1. 2.]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now consider the (b) equations. You should notice the <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> in the first diagonal position will be a problem. Really you can the first row with any other row to get a solution.</p>
 <p>b.  <span class="math notranslate nohighlight">\(\left[ \begin{array}{cccc}
@@ -1465,6 +1560,22 @@ x_{3} \end{array} \right]=
 <span class="n">x_b</span><span class="p">,</span> <span class="n">aug_b</span> <span class="o">=</span> <span class="n">GaussNaive</span><span class="p">(</span><span class="n">Ab</span><span class="p">,</span><span class="n">bb</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x_b</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">aug_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nan nan nan]
+[[  0.   2.   3.   8.]
+ [ nan -inf -inf -inf]
+ [ nan  nan  nan  nan]]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2082/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
+  factor = Aug[i,k]/Aug[k,k]
+/tmp/ipykernel_2082/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
+  Aug[i,:] = Aug[i,:] - factor*Aug[k,:]
+/tmp/ipykernel_2082/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
+  factor = Aug[i,k]/Aug[k,k]
 </pre></div>
 </div>
 </div>
@@ -1500,11 +1611,32 @@ x_{3} \end{array} \right]=
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P=
+ [[0. 0. 1.]
+ [1. 0. 0.]
+ [0. 1. 0.]]
+L=
+ [[ 1.          0.          0.        ]
+ [ 0.5         1.          0.        ]
+ [ 0.         -0.33333333  1.        ]]
+U=
+ [[ 4.          6.          7.        ]
+ [ 0.         -6.          2.5       ]
+ [ 0.          0.          3.83333333]]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># linear algebra solution with built-in numpy solver</span>
 <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">Ab</span><span class="p">,</span><span class="n">bb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.42391304,  0.02173913,  2.65217391])
 </pre></div>
 </div>
 </div>
@@ -1514,6 +1646,11 @@ x_{3} \end{array} \right]=
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># our unmodified solveLU function (with forward and backward substitution)</span>
 <span class="c1"># note: output vector b is replaced with P.T@b (transpose(P)*b)</span>
 <span class="n">solveLU</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">U</span><span class="p">,</span><span class="n">P</span><span class="o">.</span><span class="n">T</span><span class="nd">@bb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-5.42391304,  0.02173913,  2.65217391])
 </pre></div>
 </div>
 </div>
