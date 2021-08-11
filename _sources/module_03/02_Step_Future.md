@@ -88,7 +88,7 @@ _Note: the direction of positive acceleration was changed to up, so that a posit
 
 ### Step through time
 
-In the code cell below, you define acceleration as a function of velocity and add two parameters `c` and `m` to define drag coefficient and mass of the object.
+In the code cell below, you define acceleration as a function of velocity and add two parameters `c` and `m` to define drag coefficient and mass of the object.  
 
 ```{code-cell} ipython3
 def a_freefall(v,c=0.25,m=60):
@@ -148,7 +148,7 @@ computed variables. Note that you use the Matplotlib
 [`subplot()`](https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html?highlight=matplotlib%20pyplot%20subplot#matplotlib.pyplot.subplot)
 function to get the two plots in one figure. The argument to `subplot()`
 is a set of three digits, corresponding to the number of rows, number of
-columns, and plot number in a matrix of sub-plots.
+columns, and plot number in a matrix of sub-plots. 
 
 ```{code-cell} ipython3
 # plot velocity and position over time
@@ -234,7 +234,7 @@ v \\ \frac{c}{m}v^2-g
 \end{bmatrix}.
 \end{equation}
 
-Equation (9) above represents the _state_ of the system, at any given instant in time. A code design for the numerical solution that generalizes to other changing systems (or _dynamical systems_) is to write one function that computes the right-hand side of the differential equation (the derivatives of the state variables), and another function that takes a state and applies the numerical method for each time increment. The solution is then computed in one `for` statement that calls these functions.
+Equation (9) above represents the _state_ of the system, at any given instant in time. A code design for the numerical solution that generalizes to other changing systems (or _dynamical systems_) is to write one function that computes the right-hand side of the differential equation (the derivatives of the state variables), and another function that takes a state and applies the numerical method for each time increment. The solution is then computed in one `for` statement that calls these functions. 
 
 +++
 
@@ -261,10 +261,6 @@ def freefall(state,c=0,m=60):
 ```
 
 ```{code-cell} ipython3
-freefall(np.array([0, 0]), c=1)
-```
-
-```{code-cell} ipython3
 def eulerstep(state, rhs, dt):
     '''Uses Euler's method to update a state to the next one. 
     
@@ -282,19 +278,6 @@ def eulerstep(state, rhs, dt):
     
     next_state = state + rhs(state) * dt
     return next_state
-```
-
-```{code-cell} ipython3
-eulerstep(np.array([0, 0]), lambda state: freefall(state, c = 1), 0.1)
-```
-
-```{code-cell} ipython3
-eulerstep(np.array([ 0.   , -0.981]), freefall(c = 1), 0.1)
-```
-
-```{code-cell} ipython3
-for i in range(1, len(t)):
-    state[i] = eulerstep(state[i-1], freefall(c = 1), dt)
 ```
 
 ## Numerical solution vs. experiment
@@ -354,7 +337,7 @@ for i in range(N-1):
     num_sol[i+1] = eulerstep(num_sol[i], freefall, dt)
 ```
 
-Did it work? Exciting! Let's plot in the same figure both the numerical solution and the experimental data.
+Did it work? Exciting! Let's plot in the same figure both the numerical solution and the experimental data. 
 
 ```{code-cell} ipython3
 fig = plt.figure(figsize=(6,4))
@@ -574,7 +557,7 @@ v_y \\ g - cv_y^2
 \end{bmatrix}, 
 \end{equation}
 
-where $c= \frac{1}{2} \pi R^2 \rho C_d$.
+where $c= \frac{1}{2} \pi R^2 \rho C_d$. 
 
 +++
 
@@ -582,26 +565,9 @@ where $c= \frac{1}{2} \pi R^2 \rho C_d$.
 
     $\mathbf{\dot{y}} = projectile\_drag(\mathbf{y})$
     
-    Below is the start of a function definition, be sure to update the help file.
+    Below is the start of a function definition, be sure to update the help file. 
     
-```python
-def projectile_drag(state,C_d=0.47,m=0.143,R = 0.0661/2):
-    '''Computes the right-hand side of the differential equation
-    for the fall of a projectile lacrosee ball, with drag, in SI units.
-    
-    Arguments
-    ----------    
-    state : array of two dependent variables [y v]^T
-    m : mass in kilograms default set to 0.143 kg (mass of lax ball source wiki)
-    C_d : drag coefficient for a sphere default set to 0.47 (no units)
-    R : radius of ball default in meters is 0.0661/2 m (tennis ball)
-    Returns
-    -------
-    derivs: array of four derivatives [vx ax vy ay]
-    '''
-    derivs = np.zeros(4)
-    return derivs
-```
+
 
 ```{code-cell} ipython3
 def projectile_drag(state,C_d=0.47,m=0.143,R = 0.0661/2):
@@ -616,24 +582,17 @@ def projectile_drag(state,C_d=0.47,m=0.143,R = 0.0661/2):
     R : radius of ball default in meters is 0.0661/2 m (tennis ball)
     Returns
     -------
-    derivs: array of four derivatives [vx ax vy ay]
+    derivs: array of four derivatives [?? ?? ?? ??]
     '''
     
     rho = 1.22   # air density kg/m^3
     pi = np.pi
-    c = rho*pi*R**2/2*C_d/m
-    g = 9.81
-    derivs = np.zeros(state.shape)
-    derivs[0] = state[1]
-    derivs[2] = state[3]
-    derivs[1] = -c*state[1]**2
-    derivs[3] = g - c*state[3]**2
+
     return derivs
 ```
 
 ```{code-cell} ipython3
-state0 = np.array([0, 5, 0, 5])
-projectile_drag(state0)
+
 ```
 
 3. Integrate your `projectile_drag` function using the Euler integration method. Use initial conditions from the saved data in lesson  [01_Catch_Motion](01_Catch_Motion.ipynb), there is a numpy `npz` file in the data folder if you want to check your results from lesson 1. The initial conditions in the provided npz file are
@@ -656,16 +615,6 @@ npz = np.load('../data/projectile_coords.npz')
 t3=npz['t']
 x3=npz['x']
 y3=npz['y']
-```
-
-```{code-cell} ipython3
-# plt.plot(t3, x3, 's-')
-plt.plot(x3, y3, 's-')
-plt.title('path of ball')
-```
-
-```{code-cell} ipython3
-t3
 ```
 
 ```{code-cell} ipython3
