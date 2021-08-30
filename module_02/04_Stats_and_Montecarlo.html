@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,15 +44,15 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Project #02 - NYSE random walk predictor" href="../projects/02_Analyze-data_project.html" />
@@ -84,7 +84,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -402,7 +402,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -523,10 +523,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.44812934, 0.43805473, 0.8373009 , 0.94512091, 0.94048815,
-       0.24228603, 0.45617514, 0.8519436 , 0.56423288, 0.52779327,
-       0.70304004, 0.59415865, 0.36323479, 0.42296818, 0.85532856,
-       0.28805092, 0.0344821 , 0.01458608, 0.41587523, 0.9068276 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9984733 , 0.0164382 , 0.86475546, 0.45993357, 0.66636888,
+       0.04453019, 0.46491988, 0.35928557, 0.92211827, 0.30479038,
+       0.5471329 , 0.13560173, 0.48960962, 0.53635286, 0.70941456,
+       0.11071484, 0.21334848, 0.35589035, 0.78277379, 0.80614878])
 </pre></div>
 </div>
 </div>
@@ -559,9 +559,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([2., 3., 7., 2., 6.]),
- array([0.01458608, 0.20069304, 0.38680001, 0.57290697, 0.75901394,
-        0.94512091]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 4., 5., 3., 4.]),
+ array([0.0164382 , 0.21284522, 0.40925224, 0.60565926, 0.80206628,
+        0.9984733 ]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -622,8 +622,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.39572712, 0.33267878, 0.61787445, 0.454264  , 0.45531731,
-       0.70381557, 0.5402382 , 0.63556772, 0.66119294, 0.36159794])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.2376838 , 0.15347173, 0.55220722, 0.64088773, 0.22499706,
+       0.01551209, 0.45457469, 0.48459509, 0.57920857, 0.1963083 ])
 </pre></div>
 </div>
 </div>
@@ -668,8 +668,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.160000
-standard deviation is 0.050438
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.152400
+standard deviation is 0.047039
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -697,8 +697,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.145440
-standard deviation is 0.051442
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.146080
+standard deviation is 0.053314
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -721,8 +721,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.147120
-standard deviation is 0.012980
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.137560
+standard deviation is 0.018181
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -873,7 +873,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcc63890280&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fcee099f820&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />
@@ -1116,12 +1116,32 @@ reach the critical buckling load?</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="03_Linear_Regression_with_Real_Data.html" title="previous page">03 - Linear regression with real data</a>
-    <a class='right-next' id="next-link" href="../projects/02_Analyze-data_project.html" title="next page">Project #02 - NYSE random walk predictor</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="03_Linear_Regression_with_Real_Data.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">03 - Linear regression with real data</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../projects/02_Analyze-data_project.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Project #02 - NYSE random walk predictor</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

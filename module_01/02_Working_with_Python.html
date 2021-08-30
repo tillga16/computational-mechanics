@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,15 +44,15 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="03 - Numerical Error" href="03_Numerical_error.html" />
@@ -84,7 +84,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -402,7 +402,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -1024,7 +1024,7 @@ you can do more computations, like add or multiply them. For example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4951/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2094/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
   x_array / y_array
 </pre></div>
 </div>
@@ -1386,8 +1386,8 @@ with no numbers repeated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[55, 36, 0, 41, 90, 6, 21, 98, 85, 44]
-[2, 83, 66, 36, 22, 31, 75, 41, 27, 33]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 57, 70, 66, 33, 90, 39, 62, 71, 0]
+[1, 80, 54, 5, 0, 47, 98, 2, 52, 51]
 </pre></div>
 </div>
 </div>
@@ -1407,8 +1407,8 @@ takes to execute all the code in that cell.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 27 µs, sys: 4 µs, total: 31 µs
-Wall time: 34.8 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 31 µs, sys: 4 µs, total: 35 µs
+Wall time: 39.1 µs
 </pre></div>
 </div>
 </div>
@@ -1420,7 +1420,7 @@ Wall time: 34.8 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[57, 119, 66, 77, 112, 37, 96, 139, 112, 77]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11, 137, 124, 71, 33, 137, 137, 64, 123, 51]
 </pre></div>
 </div>
 </div>
@@ -1454,8 +1454,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[50 55 31 23  0  0  7 51 24 60]
-[91 19 40 57 57 12 70 22 44 29]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0 92 13 62 36 81 16 10 58 25]
+[33  4  2 55  1 78 56 52 75 86]
 </pre></div>
 </div>
 </div>
@@ -1469,8 +1469,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13 µs, sys: 0 ns, total: 13 µs
-Wall time: 15 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14 µs, sys: 0 ns, total: 14 µs
+Wall time: 17.4 µs
 </pre></div>
 </div>
 </div>
@@ -1554,7 +1554,7 @@ in the x-axis, you need to import the module <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc426050190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f17e783bd90&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_Working_with_Python_104_1.png" src="../_images/02_Working_with_Python_104_1.png" />
@@ -1675,12 +1675,32 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01_Interacting_with_Python.html" title="previous page">01 - Interacting with Python</a>
-    <a class='right-next' id="next-link" href="03_Numerical_error.html" title="next page">03 - Numerical Error</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="01_Interacting_with_Python.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">01 - Interacting with Python</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="03_Numerical_error.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">03 - Numerical Error</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -44,15 +44,15 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linear Regression Algebra" href="03_Linear-regression-algebra.html" />
@@ -84,7 +84,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -402,7 +402,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -1216,8 +1216,8 @@ y_{3}\end{array}\right]\)</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 197 µs, sys: 40 µs, total: 237 µs
-Wall time: 184 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 851 µs, total: 851 µs
+Wall time: 663 µs
 </pre></div>
 </div>
 </div>
@@ -1236,8 +1236,8 @@ Wall time: 184 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 230 µs, sys: 0 ns, total: 230 µs
-Wall time: 235 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 367 µs, sys: 81 µs, total: 448 µs
+Wall time: 326 µs
 </pre></div>
 </div>
 </div>
@@ -1275,8 +1275,8 @@ Wall time: 235 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 60.2 ms, sys: 0 ns, total: 60.2 ms
-Wall time: 59.3 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 60.8 ms, sys: 26 µs, total: 60.8 ms
+Wall time: 60.1 ms
 </pre></div>
 </div>
 </div>
@@ -1294,8 +1294,8 @@ Wall time: 59.3 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 144 ms, sys: 4.63 ms, total: 149 ms
-Wall time: 145 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 140 ms, sys: 4.51 ms, total: 144 ms
+Wall time: 140 ms
 </pre></div>
 </div>
 </div>
@@ -1570,11 +1570,11 @@ x_{3} \end{array} \right]=
  [ nan  nan  nan  nan]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_5179/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2323/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
-/tmp/ipykernel_5179/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
+/tmp/ipykernel_2323/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
   Aug[i,:] = Aug[i,:] - factor*Aug[k,:]
-/tmp/ipykernel_5179/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
+/tmp/ipykernel_2323/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
 </pre></div>
 </div>
@@ -1779,12 +1779,32 @@ F\cos\theta \\
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="01_Linear-Algebra.html" title="previous page">Linear Algebra Introduction</a>
-    <a class='right-next' id="next-link" href="03_Linear-regression-algebra.html" title="next page">Linear Regression Algebra</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="01_Linear-Algebra.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Linear Algebra Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="03_Linear-regression-algebra.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Linear Regression Algebra</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
