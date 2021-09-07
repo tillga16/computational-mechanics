@@ -4,10 +4,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.11.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -246,7 +246,21 @@ Use Python (as a calculator) to solve the following two problems:
 2. Suppose the cover price of a book is $\$ 24.95$, but bookstores get a $40\%$ discount. Shipping costs $\$3$ for the first copy and $75$ cents for each additional copy. What is the total wholesale cost for $60$ copies? Compare your answer with the solution up to 2 decimal numbers.
 
 ```{code-cell} ipython3
+def sphere_radius(diameter):
+    radius = diameter / 2
+    volume = (4/3) * (3.14159) * (radius ** 3)
+    print (volume)
+    
+sphere_radius(6.65)
+```
 
+```{code-cell} ipython3
+def wholesale_cost(copies):
+    cover_price = 0.60 * 24.95 * copies
+    shipping_cost = 3 + 0.75 * (copies - 1)
+    print (cover_price + shipping_cost)
+    
+wholesale_cost(60)
 ```
 
 To reveal the answers, highlight the following line of text using the mouse:
@@ -299,7 +313,7 @@ y = 4.5
 Print the values of the variables `x` and `y`.
 
 ```{code-cell} ipython3
-
+print("x =", x, "and y =", y)
 ```
 
 Let's do some arithmetic operations with our new variables:
@@ -414,7 +428,7 @@ type(sum_xy)
 type(diff_xy)
 ```
 
-## Reflection point
+### Reflection point
 When you created `sum_xy` and `diff_xy` two new variables were created
 that depended upon previously created variables `x` and `y`.  How else
 can you accomplish this? Could you make a function? Could you combine
@@ -527,6 +541,22 @@ And the negation of the second operand results in …
 not b > c
 ```
 
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+
+```
+
 What if you negate the second operand in the `and` operation above?
 
 ##### Note: 
@@ -567,7 +597,7 @@ Throughout this course module, you will be drawing from the following references
 3. _Think Python: How to Think Like a Computer Scientist_ (2012). Allen Downey. Green Tea Press.  [PDF available](http://greenteapress.com/thinkpython/thinkpython.pdf)
 
 
-# Problems
+# Module 01 - 01 Problems
 
 1. Calculate some properties of a rectangular box that is 12.5"$\times$11"$\times$14" and weighs 31 lbs
 
@@ -578,7 +608,19 @@ Throughout this course module, you will be drawing from the following references
     c. What is the result of the following logical operation, `volume>1000` (in inches^3)
 
 ```{code-cell} ipython3
+box_dim1 = 12.5
+box_dim2 = 11
+box_dim3 = 14
+box_weight = 31
 
+box_volume = box_dim1 * box_dim2 * box_dim3
+print('(1.a) The volume of the box is: {:0.2f} in^3'.format(box_volume), '\n')
+      
+box_density = box_weight / box_volume
+print('(1.b) The average density of the box is: {:0.4f} lb/in^3'.format(box_density), '\n')
+
+check = box_volume > 1000
+print('(1.c) Is the volume of the box larger than 1000 in^3? \n \t', check)
 ```
 
 2. Use the variables given below, `str1` and `str2`, and check the following 
@@ -594,6 +636,15 @@ Throughout this course module, you will be drawing from the following references
 ```{code-cell} ipython3
 str1 = 'Python'
 str2 = 'python'
+
+print('(2.a) The result of str1<str2 is:', str1 < str2, '\n')
+
+print('(2.b) The result of str1==str2 is:', str1 == str2, '\n')
+
+print('(2.c) The result of str1>str2 is:', str1 > str2, '\n')
+
+str1 = str1.lower()
+print('(2.d) Now... the result of str1==str2 is:', str1 == str2)
 ```
 
 3. The following code has an error, fix the error so that the correct result is returned:
@@ -611,7 +662,14 @@ else:
 ```
 
 ```{code-cell} ipython3
+x="1"
+x=int(x) #correction made here by changing the variable type from string to integer
+y=20
 
+if x<y and y==20:
+    print('y is 20 and x is less than y')
+else:
+    print('x is not less than y')
 ```
 
 4. Create a script that takes the clock hour in 24 hours and prints the clock hour with am or pm. 
@@ -619,13 +677,12 @@ else:
     Hint: Use an if-else statement with `print` commands
 
 ```{code-cell} ipython3
-time = 22
-if time > 12:
-    print(time - 12, 'PM')
-elif time < 12:
-    print(time, 'AM')
-```
-
-```{code-cell} ipython3
-
+def time12hr(time24hr): 
+    if time24hr > 12:
+        print(time24hr - 12, 'PM')
+    elif time24hr < 12:
+        print(time24hr, 'AM')
+    
+time12hr(22)
+time12hr(10)
 ```
