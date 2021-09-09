@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.3
+    jupytext_version: 1.11.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -43,7 +43,7 @@ Its important to comment your code
 
 - what the is the function supposed to do, 
 
-- etc. 
+- etc.
 
 ```{code-cell} ipython3
 def code(i):
@@ -128,7 +128,7 @@ def factorial_function(input_value):
 ```
 
 ```{code-cell} ipython3
-factorial_function(4)
+print(factorial_function(4))
 ```
 
 Defining the function with descriptive variable names and inputs helps to make the function much more useable. 
@@ -156,8 +156,6 @@ The next 4 lines define a help documentation that can be accessed with in a coup
 2. `factorial_function?`
 
 3. `help(factorial_function)`
-
-
 
 ```{code-cell} ipython3
 factorial_function?
@@ -261,7 +259,7 @@ in addition to this. Some of them above.
 
 Play with `np.ones()` and `np.zeros()`: they create arrays full of ones
 and zeros, respectively. You pass as an argument the number of array
-elements we want. 
+elements we want.
 
 ```{code-cell} ipython3
 np.ones(5)
@@ -302,7 +300,7 @@ np.arange(2, 6, 0.5)
 
 `np.linspace(start, stop, num)`
 
-`stop` is included by default (it can be removed, read the docs), and `num` by default is 50. 
+`stop` is included by default (it can be removed, read the docs), and `num` by default is 50.
 
 ```{code-cell} ipython3
 np.linspace(2.0, 3.0)
@@ -445,7 +443,7 @@ two-dimensional (matrices). Two of these 2D sub-arrays, in this
 case; each one has 3 rows and 4 columns. Study this sketch carefully,
 while comparing with how the array `a_3D` is printed out above. 
 
-<img src="../images/3d_array_sketch.png" style="width: 400px;"/> 
+<img src="../images/3d_array_sketch.png" style="width: 400px;"/>
 
 +++
 
@@ -476,7 +474,10 @@ From the X array:
 1. Grab the 2nd element in the 1st column.
 2. Grab the 2nd element in the 2nd column.
 
-+++
+```{code-cell} ipython3
+X[1,0]
+X[1,1]
+```
 
 Play with slicing on this array:
 
@@ -504,7 +505,7 @@ From the X array:
 
 +++
 
-Let's practice with a 3D array. 
+Let's practice with a 3D array.
 
 ```{code-cell} ipython3
 a_3D
@@ -522,7 +523,7 @@ The line above is telling NumPy that you want:
 * second `':'`: from the second dimension, grab all the elements (all the rows).
 * `'0'`       : from the third dimension, grab the first element (first column).
 
-If you want the first 2 elements of the first column of both matrices: 
+If you want the first 2 elements of the first column of both matrices:
 
 ```{code-cell} ipython3
 a_3D[:, 0:2, 0]
@@ -541,9 +542,23 @@ From the array named `a_3D`:
 1. Grab the two middle elements (17, 18) from the second matrix.
 2. Grab the last row from both matrices.
 3. Grab the elements of the 1st matrix that exclude the first row and the first column. 
-4. Grab the elements of the 2nd matrix that exclude the last row and the last column. 
+4. Grab the elements of the 2nd matrix that exclude the last row and the last column.
 
-+++
+```{code-cell} ipython3
+a_3D[1,1,1:3]
+```
+
+```{code-cell} ipython3
+a_3D[:,2,:]
+```
+
+```{code-cell} ipython3
+a_3D[0,1:3,1:4]
+```
+
+```{code-cell} ipython3
+a_3D[1,0:2,0:3]
+```
 
 ## NumPy == Fast and Clean! 
 
@@ -575,8 +590,8 @@ import random
 ```
 
 ```{code-cell} ipython3
-lst_1 = random.sample(range(100), 100)
-lst_2 = random.sample(range(100), 100)
+lst_1 = random.sample(range(10000), 10000)
+lst_2 = random.sample(range(10000), 10000)
 ```
 
 ```{code-cell} ipython3
@@ -590,12 +605,12 @@ element-wise sum into a new list you call `result_lst`.
 
 For timing, you can use the IPython "magic" `%%time`. Writing at the
 beginning of the code cell the command `%%time` will give us the time it
-takes to execute all the code in that cell. 
+takes to execute all the code in that cell.
 
 ```{code-cell} ipython3
 %%time
 res_lst = []
-for i in range(100):
+for i in range(10000):
     res_lst.append(lst_1[i] + lst_2[i])
 ```
 
@@ -616,8 +631,8 @@ that the arrays and the lists are of the same length and type
 (integers).
 
 ```{code-cell} ipython3
-arr_1 = np.random.randint(0, 100, size=100)
-arr_2 = np.random.randint(0, 100, size=100)
+arr_1 = np.random.randint(0, 100, size=10000)
+arr_2 = np.random.randint(0, 100, size=10000)
 ```
 
 ```{code-cell} ipython3
@@ -642,7 +657,7 @@ Notice that in the case of arrays, the code not only is more readable (just one 
 ##### Exercise
 
 1. Try the comparison between lists and arrays, using bigger arrays; for example, of size 10,000. 
-2. Repeat the analysis, but now computing the operation that raises each element of an array/list to the power two. Use arrays of 10,000 elements. 
+2. Repeat the analysis, but now computing the operation that raises each element of an array/list to the power two. Use arrays of 10,000 elements.
 
 +++
 
@@ -650,7 +665,7 @@ Notice that in the case of arrays, the code not only is more readable (just one 
 
 You will love the Python library **Matplotlib**! You'll learn here about its module `pyplot`, which makes line plots. 
 
-We need some data to plot. Let's define a NumPy array, compute derived data using its square, cube and square root (element-wise), and plot these values with the original array in the x-axis. 
+We need some data to plot. Let's define a NumPy array, compute derived data using its square, cube and square root (element-wise), and plot these values with the original array in the x-axis.
 
 ```{code-cell} ipython3
 xarray = np.linspace(0, 2, 41)
@@ -668,7 +683,6 @@ pow_half = np.sqrt(xarray)
 To plot the resulting arrays as a function of the orginal one (`xarray`)
 in the x-axis, you need to import the module `pyplot` from **Matplotlib**.
 
-
 ```{code-cell} ipython3
 import matplotlib.pyplot as plt
 ```
@@ -682,7 +696,7 @@ plt.rcParams.update({'font.size': 22})
 plt.rcParams['lines.linewidth'] = 3
 ```
 
-The line `%matplotlib inline` is an instruction to get the output of plotting commands displayed "inline" inside the notebook. Other options for how to deal with plot output are available, but not of interest to you right now. 
+The line `%matplotlib inline` is an instruction to get the output of plotting commands displayed "inline" inside the notebook. Other options for how to deal with plot output are available, but not of interest to you right now.
 
 +++
 
@@ -725,9 +739,22 @@ If you are curious, you can explore all the beautiful plots you can make by brow
 
 ##### Exercise:
 
-Pick two different operations to apply to the `xarray` and plot them the resulting data in the same plot. 
+Pick two different operations to apply to the `xarray` and plot them the resulting data in the same plot.
 
-+++
+```{code-cell} ipython3
+xarray = np.linspace(0,1,41)
+```
+
+```{code-cell} ipython3
+x2 = xarray * 2
+pow_half = np.sqrt(xarray)
+```
+
+```{code-cell} ipython3
+plt.plot(xarray, x2, color='red', linestyle='-', label='$2x')
+plt.plot(xarray, pow_half, color='green', linestyle='-', label='$x^2')
+plt.legend(loc='best'); 
+```
 
 ## What you've learned
 
@@ -762,10 +789,19 @@ Pick two different operations to apply to the `xarray` and plot them the resulti
     
     b. Use your function to plot sin(x) and cos(x) for x=$0..2\pi$
 
-
-
 ```{code-cell} ipython3
+def sincos(x):
+    '''Function sincos(x) returns two arrays, sinx and cosx of the input array, x'''
+    sinx = np.sin(x)
+    cosx = np.cos(x)
+    return sinx, cosx
 
+xarray = np.linspace(0, 2 * np.pi, 65)
+sina, cosa = sincos(xarray)
+
+plt.plot(xarray, sina, color='blue', label='$sin(x)$')
+plt.plot(xarray, cosa, color='green', label='$cos(x)$')
+plt.legend(loc='best'); 
 ```
 
 2. Use a for-loop to create a variable called `A_99`, where every element is the product
@@ -776,8 +812,6 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.
     b. Calculate the mean of `A_99`
 
     c. Calculate the standard deviation of `A_99`
-    
-
 
 ```{code-cell} ipython3
 
@@ -810,6 +844,7 @@ def linInterp(x,p1,p2):
     
     return p1[2]+slope*(x - p1[1])
 ```
+
 ```{code-cell} ipython3
 
 ```
