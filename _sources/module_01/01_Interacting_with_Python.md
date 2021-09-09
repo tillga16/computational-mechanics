@@ -678,11 +678,17 @@ else:
 
 ```{code-cell} ipython3
 def time12hr(time24hr): 
-    if time24hr > 12:
+    if time24hr > 24:
+        print('Error: Please input a valid 24-hour time')
+    if time24hr == 24 or time24hr == 0:
+        print('12 AM')
+    if time24hr > 12 and time24hr < 24:
         print(time24hr - 12, 'PM')
-    elif time24hr < 12:
+    elif time24hr < 12 and time24hr > 0:
         print(time24hr, 'AM')
     
-time12hr(22)
 time12hr(10)
+time12hr(22)
+time12hr(24)
+time12hr(500)
 ```
