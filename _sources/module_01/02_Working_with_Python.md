@@ -779,7 +779,9 @@ plt.legend(loc='best');
 
 2. ["The world of Jupyter"—a tutorial](https://github.com/barbagroup/jupyter-tutorial). Lorena A. Barba - 2016
 
-+++
+```{code-cell} ipython3
+
+```
 
 # Problems
 
@@ -791,7 +793,18 @@ plt.legend(loc='best');
 
 ```{code-cell} ipython3
 def sincos(x):
-    '''Function sincos(x) returns two arrays, sinx and cosx of the input array, x'''
+    '''Function sincos(x) returns two arrays, sinx and cosx of the input array, x
+    
+    Arguments
+    -----------
+    input array
+    
+    Outputs
+    -----------
+    sinx of the input array, x
+    cosx of the input array, x '''
+    
+    
     sinx = np.sin(x)
     cosx = np.cos(x)
     return sinx, cosx
@@ -801,7 +814,7 @@ sina, cosa = sincos(xarray)
 
 plt.plot(xarray, sina, color='blue', label='$sin(x)$')
 plt.plot(xarray, cosa, color='green', label='$cos(x)$')
-plt.legend(loc='best'); 
+plt.legend(loc='best', fontsize = 'x-small'); 
 ```
 
 2. Use a for-loop to create a variable called `A_99`, where every element is the product
@@ -814,7 +827,33 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.
     c. Calculate the standard deviation of `A_99`
 
 ```{code-cell} ipython3
+%%time
+import math as m
+A_99 = []
+total_sum = 0
+for i in range(10):
+    A_99.append([])
+    for j in range(10):
+        A_99[i].append(i * j)
+        total_sum+=i*j
 
+rows = len(A_99)
+columns = len(A_99[0])
+total_count = rows * columns
+mean_array = total_sum / total_count
+
+
+x=0
+for i in range(10):
+    for j in range(10):
+        x += (A_99[i][j] - mean_array)**2
+std = m.sqrt(x)/m.sqrt(total_count)
+
+print('(2.a)')
+for row in A_99:
+    print(row)
+print('(2.b) the mean of A_99 is {}'.format(mean_array))
+print('(2.c) the standard deviation of A_99 is {}'.format(std))
 ```
 
 3. Use the two arrays, X and Y, given below to create A_99 using numpy array math rather than a for-loop. 
@@ -828,7 +867,24 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.
     d. create a filled contour plot of X, Y, A_99 [contourf plot documentation](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.contourf.html)
 
 ```{code-cell} ipython3
+%%time
+import numpy as np
+import matplotlib.pyplot as plt
+X,Y = np.meshgrid(np.arange(0,10),np.arange(0,10))
+A_99 = np.array((X * Y))
 
+mean = np.mean(A_99)
+std = np.std(A_99)
+print('(3.a)')
+print(A_99)
+print('(3.b) the mean of A_99 is {}'.format(mean))
+print('(3.c) the standard deviation of A_99 is {}'.format(std))
+```
+
+```{code-cell} ipython3
+print('(3.d)')
+plt.colorbar(plt.contourf(X,Y,A_99))
+plt.title('Contour Plot');
 ```
 
 4. The following linear interpolation function has an error. It is supposed to return y(x) given the the two points $p_1=[x_1,~y_1]$ and $p_2=[x_2,~y_2]$. Currently, it just returns and error.
@@ -846,5 +902,34 @@ def linInterp(x,p1,p2):
 ```
 
 ```{code-cell} ipython3
+import numpy as np
+def linInterp(x,a1,a2):
+    '''linear interplation function
+    returns equation in point slope form given the two endpoints 
+    a1 = [x1,y1]
+    and
+    a2 = [x2,y2]
+    upon input of an x-value, this interpolation function will evaluate f(x) at that point'''
+    
+    p1 = np.array([a1[0],a1[1]])
+    p2 = np.array([a2[0],a2[1]])
+    slope = (p2[1]-p1[1])/(p2[0]-p1[0])
+    
+    if slope > 0:
+        print('y(x) = {} + {:.4f}*(x - {})'.format(p1[1], slope, p1[0]))
+    elif slope < 0:
+        print('y(x) = {} - {:.4f}*(x - {})'.format(p1[1], abs(slope), p1[0]))
+    else:
+        print('y(x) = {} - {:.4f}*(x - {})'.format(p1[1]))
+    
 
+    y_x = p1[1] + slope * (x - p1[0])
+    print('y({}) = {:.2f}'.format(x, y_x))
+    
+
+print('Example 1:')
+linInterp(2,[8,4],[5,7])
+
+print('Example 2:')
+linInterp(1,[4,8],[-1,6])
 ```
