@@ -4,10 +4,10 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.12
-    jupytext_version: 1.6.0
+    format_version: 0.13
+    jupytext_version: 1.11.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -69,7 +69,13 @@ import matplotlib.pyplot as plt
 Calculate the terminal velocity for the given parameters, g=9.81 m/s$^2$, c=0.25 kg/m, m=60 kg.
 
 ```{code-cell} ipython3
+c=0.25 
+m=60
+g=9.81 
 
+v_terminal=np.sqrt(m*g/c)
+
+print(v_terminal)
 ```
 
 ```{code-cell} ipython3
@@ -95,7 +101,7 @@ def v_analytical(t,m,g,c):
     
     v_terminal=np.sqrt(m*g/c)
     v= v_terminal*np.tanh(g*t/v_terminal)
-    return v
+    return v  
 ```
 
 Inside the curly brackets—the placeholders for the values you want to
@@ -239,7 +245,21 @@ If you increase the number of time steps from 0 to 12 seconds what happens to v_
 What happens when you decrease the number of time steps?
 
 ```{code-cell} ipython3
+t=np.linspace(0,12,20)
+dt = t[1]-t[0]
+v_numerical=np.zeros(len(t));
+for i in range(1,len(t)):
+    v_numerical[i]=v_numerical[i-1]+((g-c/m*v_numerical[i-1]**2))*dt;
 
+v_numerical
+```
+
+```{code-cell} ipython3
+plt.plot(t,v_analytical(t,m,g,c),'-',label='analytical')
+plt.plot(t,v_numerical,'o-',label='numerical')
+plt.legend()
+plt.xlabel('time (s)')
+plt.ylabel('velocity (m/s)')
 ```
 
 ## Errors in Numerical Modeling
@@ -415,7 +435,12 @@ print(N/2,'*eps=',(s2-1))
 
 2. What is machine epsilon for a 32-bit floating point number?
 
-+++
+```{code-cell} ipython3
+print(1 + 2*eps)
+
+eps32=np.finfo('float32').eps
+print(1+ 2*eps32)
+```
 
 ## Freefall Model (revisited)
 
@@ -516,7 +541,7 @@ First, solve for `n=2` steps, so t=[0,2]. We can time the solution to get a sens
 
 ```{code-cell} ipython3
 %%time
-n=5
+n=100
 
 v_analytical,v_numerical,t=freefall(n);
 ```
@@ -624,6 +649,9 @@ The world population has been increasing dramatically, let's make a prediction b
 
 a. Calculate the average population growth, $\frac{\Delta p}{\Delta t}$, from 1900-1950, 1950-2000, and 2000-2020
 
+print('average growth of 1900 - 2020')
+print(np.mean((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1])))
+
 b. Determine the average growth rates. $k_g$, from 1900-1950, 1950-2000, and 2000-2020
 
 c. Use a growth rate of $k_g=0.013$ [1/years] and compare the analytical solution (use initial condition p(1900) = 1578000000) to the Euler integration for time steps of 20 years from 1900 to 2020 (Hint: use method (1)- plot the two solutions together with the given data) 
@@ -639,16 +667,88 @@ print('years=',year)
 print('population =', pop)
 ```
 
+```{code-cell} ipython3
+print('(1.a) average population growth 1900-1950, 1950-2000, 2000-2020')
+print((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1]))
+```
 
 ```{code-cell} ipython3
-print('average population changes 1900-1950, 1950-2000, 2000-2020')
-print((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1]))
-print('average growth of 1900 - 2020')
-print(np.mean((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1])))
+print('(1.b) average growth rate 1900-1950, 1950-2000, 2000-2020')
+print(((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1]))/(pop[0:-1]))
+```
+
+```{code-cell} ipython3
+t = np.linspace(1900,2020,7) 
+dt = t[1] - t[0]
+
+pop = np.zeros(len(t))
+pop[0] = 1578000000
+k = 0.013
+
+for i in range(len(t)):
+    pop[i] = pop[0] * m.exp(k * (t[i]-1900))
+
+pop_num = np.zeros(len(t))
+pop_num[0] = 1578000000
+k = 0.013
+
+for i in range(len(t)-1):
+    pop_num[i+1] = k*pop_num[i]*dt + pop_num[i]
+
+plt.plot(t,pop_num, 'o', color = 'green', label = 'Numerical, Taylor\'s series')
+plt.plot(t, pop, label = 'Analytical, $P_t = P_0 e^{k_g t}$')
+plt.title('World Population Model 1900-2020')
+plt.ylabel('Population (in Billions)')
+plt.legend(loc = 'best', fontsize = 'large');
+```
+
+```{code-cell} ipython3
+def pop_analytical(pop_0, k, t):
+    dt = t[1] - t[0]
+    pop = np.zeros(len(t))
+    pop[0] = pop_0
+    for i in range(len(t)):
+        pop[i] = pop[0] * m.exp(k * (t[i]-1900))
+    return pop   
+
+def pop_numerical(pop_0, k, t):
+    dt = t[1] - t[0]
+    pop_num = np.zeros(len(t))
+    pop_num[0] = pop_0
+    for i in range(len(t)-1):
+        pop_num[i+1] = k*pop_num[i]*dt + pop_num[i]
+    return pop_num
+    
+    
+t7 = np.linspace(1900,2020,7) 
+# var = pop_analytical(1578000000, 0.013, t) 
+# print(var)
+
+plt.plot(t7,pop_numerical(1578000000, 0.013, t7), 'o', color = 'green', label = 'Numerical, Taylor\'s series')
+plt.plot(t7, pop_analytical(1578000000, 0.013, t7), label = 'Analytical, $P_t = P_0 e^{k_g t}$')
+plt.title('World Population Model 1900-2020 (N=7)')
+plt.ylabel('Population (in Billions)')
+plt.legend(loc = 'best', fontsize = 'large')
+plt.show();
+
+t21 = np.linspace(1900,2020,21) 
+plt.plot(t21,pop_numerical(1578000000, 0.013, t21), 'o', color = 'green', label = 'Numerical, Taylor\'s series')
+plt.plot(t21, pop_analytical(1578000000, 0.013, t21), label = 'Analytical, $P_t = P_0 e^{k_g t}$')
+plt.title('World Population Model 1900-2020 (N=21)')
+plt.ylabel('Population (in Billions)')
+plt.legend(loc = 'best', fontsize = 'large')
+plt.show();
+```
+
+```{code-cell} ipython3
+#plt.plot(t,pop_numerical(1578000000, 0.013, np.linspace(1900,2020,7), 'o', color = 'green', label = 'Numerical, Taylor\'s series')
+#plt.plot(t, pop_analytical(1578000000, 0.013, np.linspace(1900,2020,7), label = 'Analytical, $P_t = P_0 e^{k_g t}$')
+#plt.title('World Population Model 1900-2020')
+#plt.ylabel('Population (in Billions)')
+#plt.legend(loc = 'best', fontsize = 'large');
 ```
 
 __d.__ As the number of time steps increases, the Euler approximation approaches the analytical solution, not the measured data. The best-case scenario is that the Euler solution is the same as the analytical solution.
-
 
 +++
 
