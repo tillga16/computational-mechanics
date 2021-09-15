@@ -295,6 +295,20 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/for-loops.html">
+     How to use a
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       for
+      </span>
+     </code>
+     loop?
+     <em>
+      in Python
+     </em>
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../projects/extra-FEA_material.html">
      Extra Material: Direct stiffness method for Finite Element analysis (FEA)
     </a>
@@ -1034,7 +1048,7 @@ you can do more computations, like add or multiply them. For example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1777/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1658/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
   x_array / y_array
 </pre></div>
 </div>
@@ -1460,8 +1474,8 @@ with no numbers repeated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6194, 7126, 5543, 9939, 7124, 9388, 5456, 965, 9891, 1670]
-[7254, 3746, 6811, 7782, 9538, 9525, 2744, 1690, 6139, 5159]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2163, 7803, 4240, 8792, 331, 6694, 5131, 7664, 8234, 5413]
+[6506, 6607, 7508, 7768, 7793, 8043, 5183, 2262, 9912, 5815]
 </pre></div>
 </div>
 </div>
@@ -1481,8 +1495,8 @@ takes to execute all the code in that cell.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.69 ms, sys: 102 µs, total: 4.79 ms
-Wall time: 4.79 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.03 ms, sys: 385 µs, total: 2.41 ms
+Wall time: 2.42 ms
 </pre></div>
 </div>
 </div>
@@ -1494,7 +1508,7 @@ Wall time: 4.79 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[13448, 10872, 12354, 17721, 16662, 18913, 8200, 2655, 16030, 6829]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8669, 14410, 11748, 16560, 8124, 14737, 10314, 9926, 18146, 11228]
 </pre></div>
 </div>
 </div>
@@ -1528,8 +1542,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34 29 69 93 53 62 44  7 55 21]
-[94 41 25 33  0 42 24 63 95 81]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[52 54 35  4 58 95  6  9 40 11]
+[ 1 23 85 63  7 90 66 40 18 28]
 </pre></div>
 </div>
 </div>
@@ -1543,8 +1557,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 220 µs, sys: 39 µs, total: 259 µs
-Wall time: 161 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 146 µs, sys: 28 µs, total: 174 µs
+Wall time: 108 µs
 </pre></div>
 </div>
 </div>
@@ -1628,7 +1642,7 @@ in the x-axis, you need to import the module <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f9cc8382fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb04e3262e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_Working_with_Python_109_1.png" src="../_images/02_Working_with_Python_109_1.png" />
@@ -1807,8 +1821,8 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.</p>
 [0, 9, 18, 27, 36, 45, 54, 63, 72, 81]
 (2.b) the mean of A_99 is 20.25
 (2.c) the standard deviation of A_99 is 20.05461293568141
-CPU times: user 3.06 ms, sys: 0 ns, total: 3.06 ms
-Wall time: 1.54 ms
+CPU times: user 2.16 ms, sys: 443 µs, total: 2.6 ms
+Wall time: 1.43 ms
 </pre></div>
 </div>
 </div>
@@ -1852,8 +1866,8 @@ Wall time: 1.54 ms
  [ 0  9 18 27 36 45 54 63 72 81]]
 (3.b) the mean of A_99 is 20.25
 (3.c) the standard deviation of A_99 is 20.054612935681405
-CPU times: user 1.98 ms, sys: 436 µs, total: 2.42 ms
-Wall time: 1.21 ms
+CPU times: user 636 µs, sys: 131 µs, total: 767 µs
+Wall time: 659 µs
 </pre></div>
 </div>
 </div>
