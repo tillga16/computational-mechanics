@@ -678,6 +678,7 @@ print(((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1]))/(pop[0:-1]))
 ```
 
 ```{code-cell} ipython3
+import math as m
 t = np.linspace(1900,2020,7) 
 dt = t[1] - t[0]
 
@@ -782,5 +783,28 @@ def exptaylor(x,n):
 ```
 
 ```{code-cell} ipython3
+exp1 = np.exp(1)
+exptay1 = exptaylor(1,2)
+rel_error = (exptay1 - exp1)/exp1
+print('(2.a) Using the exponential funcion, e^(1) = {}; Using the Taylor approximation, e^(1) = {}'.format(exp1, exptay1))
+print('the relative error between the analytical solution and Taylor approximation for e^x at x = 1 is', rel_error)
+```
 
+```{code-cell} ipython3
+import time as time
+begin1 = time.time()
+print(exptaylor(1,2))
+done1 = time.time()
+runtime1 = done1 - begin1
+print('time = {:.8f}'.format(runtime1))
+
+begin2 = time.time()
+print(exptaylor(1,10))
+done2 = time.time()
+runtime2 = done2 - begin2
+print('time = {:.8f}'.format(runtime2))
+```
+
+```{code-cell} ipython3
+print('hello')
 ```
