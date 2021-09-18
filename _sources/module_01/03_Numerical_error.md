@@ -679,31 +679,6 @@ print(((pop[1:] - pop[0:-1])/(year[1:] - year[0:-1]))/(pop[0:-1]))
 
 ```{code-cell} ipython3
 import math as m
-t = np.linspace(1900,2020,7) 
-dt = t[1] - t[0]
-
-pop = np.zeros(len(t))
-pop[0] = 1578000000
-k = 0.013
-
-for i in range(len(t)):
-    pop[i] = pop[0] * m.exp(k * (t[i]-1900))
-
-pop_num = np.zeros(len(t))
-pop_num[0] = 1578000000
-k = 0.013
-
-for i in range(len(t)-1):
-    pop_num[i+1] = k*pop_num[i]*dt + pop_num[i]
-
-plt.plot(t,pop_num, 'o', color = 'green', label = 'Numerical, Taylor\'s series')
-plt.plot(t, pop, label = 'Analytical, $P_t = P_0 e^{k_g t}$')
-plt.title('World Population Model 1900-2020')
-plt.ylabel('Population (in Billions)')
-plt.legend(loc = 'best', fontsize = 'large');
-```
-
-```{code-cell} ipython3
 def pop_analytical(pop_0, k, t):
     dt = t[1] - t[0]
     pop = np.zeros(len(t))
@@ -722,9 +697,6 @@ def pop_numerical(pop_0, k, t):
     
     
 t7 = np.linspace(1900,2020,7) 
-# var = pop_analytical(1578000000, 0.013, t) 
-# print(var)
-
 plt.plot(t7,pop_numerical(1578000000, 0.013, t7), 'o', color = 'green', label = 'Numerical, Taylor\'s series')
 plt.plot(t7, pop_analytical(1578000000, 0.013, t7), label = 'Analytical, $P_t = P_0 e^{k_g t}$')
 plt.title('World Population Model 1900-2020 (N=7)')
@@ -741,15 +713,7 @@ plt.legend(loc = 'best', fontsize = 'large')
 plt.show();
 ```
 
-```{code-cell} ipython3
-#plt.plot(t,pop_numerical(1578000000, 0.013, np.linspace(1900,2020,7), 'o', color = 'green', label = 'Numerical, Taylor\'s series')
-#plt.plot(t, pop_analytical(1578000000, 0.013, np.linspace(1900,2020,7), label = 'Analytical, $P_t = P_0 e^{k_g t}$')
-#plt.title('World Population Model 1900-2020')
-#plt.ylabel('Population (in Billions)')
-#plt.legend(loc = 'best', fontsize = 'large');
-```
-
-__d.__ As the number of time steps increases, the Euler approximation approaches the analytical solution, not the measured data. The best-case scenario is that the Euler solution is the same as the analytical solution.
+__d.__ As the number of time steps increases, the Euler approximation does not approach the measured data. The Euler approximation approaches the analytical solution. The best-case scenario is that the Euler solution is the same as the analytical solution. However, often times the analytical solution is still just a prediction of the events.
 
 +++
 
@@ -791,20 +755,44 @@ print('the relative error between the analytical solution and Taylor approximati
 ```
 
 ```{code-cell} ipython3
+print('(2.b)')
 import time as time
 begin1 = time.time()
-print(exptaylor(1,2))
+print('2nd order Taylor series e^1 approximation:', exptaylor(1,2))
 done1 = time.time()
 runtime1 = done1 - begin1
-print('time = {:.8f}'.format(runtime1))
+print('time = {:.8f} seconds'.format(runtime1))
 
 begin2 = time.time()
-print(exptaylor(1,10))
+print('10th order Taylor series e^1 approximation:', exptaylor(1,10))
 done2 = time.time()
 runtime2 = done2 - begin2
-print('time = {:.8f}'.format(runtime2))
+print('time = {:.8f} seconds'.format(runtime2))
+
+begin3 = time.time()
+print('1000th order Taylor series e^1 approximation:', exptaylor(1,1000))
+done3 = time.time()
+runtime3 = done3 - begin3
+print('time = {:.8f} seconds'.format(runtime3))
+print('\nEstimated 100000th order Taylor series could take on the scale of minutes to run')
 ```
 
 ```{code-cell} ipython3
-print('hello')
+n = np.arange(1, 20) 
+N = len(n)
+tay_array = np.zeros(N)
+error = np.zeros(N)    # initialize an N-valued array of relative errors dtype = np.float32
+
+for i in range(0,N):
+    j = int(n[i])
+    tay_array[i] = exptaylor(1,j)
+    error[i] = abs(tay_array[i]-np.exp(1))/np.exp(1)
+
+print('(3.c)')
+plt.plot(n, error,'o', label = 'abs of error')
+plt.title('Relative Error between Exp function and nth order Taylor\'s series')
+plt.ylabel('Relative Error')
+plt.legend(loc = 'best', fontsize = 'large')
+plt.xlim([0, 20])
+plt.xticks([1, 5, 10, 15, 20]);
 ```

@@ -1226,8 +1226,8 @@ Here, consider the speed from 0 to 2 seconds, so <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 262 µs, sys: 56 µs, total: 318 µs
-Wall time: 302 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 227 µs, sys: 61 µs, total: 288 µs
+Wall time: 278 µs
 </pre></div>
 </div>
 </div>
@@ -1259,7 +1259,7 @@ Wall time: 302 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f399b203850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd0879c9790&gt;
 </pre></div>
 </div>
 <img alt="../_images/03_Numerical_error_46_1.png" src="../_images/03_Numerical_error_46_1.png" />
@@ -1413,38 +1413,7 @@ population = [1.578000e+09 2.526000e+09 6.127000e+09 7.795482e+09]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span><span class="mi">2020</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> 
-<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
-<span class="n">pop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1578000000</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">0.013</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
-    <span class="n">pop</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="mi">1900</span><span class="p">))</span>
-
-<span class="n">pop_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
-<span class="n">pop_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1578000000</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">0.013</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">pop_num</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">pop_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">dt</span> <span class="o">+</span> <span class="n">pop_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">pop_num</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Numerical, Taylor</span><span class="se">\&#39;</span><span class="s1">s series&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Analytical, $P_t = P_0 e^{k_g t}$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Population Model 1900-2020&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population (in Billions)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03_Numerical_error_57_0.png" src="../_images/03_Numerical_error_57_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pop_analytical</span><span class="p">(</span><span class="n">pop_0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">pop_analytical</span><span class="p">(</span><span class="n">pop_0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
     <span class="n">pop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pop_0</span>
@@ -1462,9 +1431,6 @@ population = [1.578000e+09 2.526000e+09 6.127000e+09 7.795482e+09]
     
     
 <span class="n">t7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span><span class="mi">2020</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> 
-<span class="c1"># var = pop_analytical(1578000000, 0.013, t) </span>
-<span class="c1"># print(var)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t7</span><span class="p">,</span><span class="n">pop_numerical</span><span class="p">(</span><span class="mi">1578000000</span><span class="p">,</span> <span class="mf">0.013</span><span class="p">,</span> <span class="n">t7</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Numerical, Taylor</span><span class="se">\&#39;</span><span class="s1">s series&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t7</span><span class="p">,</span> <span class="n">pop_analytical</span><span class="p">(</span><span class="mi">1578000000</span><span class="p">,</span> <span class="mf">0.013</span><span class="p">,</span> <span class="n">t7</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Analytical, $P_t = P_0 e^{k_g t}$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;World Population Model 1900-2020 (N=7)&#39;</span><span class="p">)</span>
@@ -1483,22 +1449,11 @@ population = [1.578000e+09 2.526000e+09 6.127000e+09 7.795482e+09]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_Numerical_error_58_0.png" src="../_images/03_Numerical_error_58_0.png" />
-<img alt="../_images/03_Numerical_error_58_1.png" src="../_images/03_Numerical_error_58_1.png" />
+<img alt="../_images/03_Numerical_error_57_0.png" src="../_images/03_Numerical_error_57_0.png" />
+<img alt="../_images/03_Numerical_error_57_1.png" src="../_images/03_Numerical_error_57_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plt.plot(t,pop_numerical(1578000000, 0.013, np.linspace(1900,2020,7), &#39;o&#39;, color = &#39;green&#39;, label = &#39;Numerical, Taylor\&#39;s series&#39;)</span>
-<span class="c1">#plt.plot(t, pop_analytical(1578000000, 0.013, np.linspace(1900,2020,7), label = &#39;Analytical, $P_t = P_0 e^{k_g t}$&#39;)</span>
-<span class="c1">#plt.title(&#39;World Population Model 1900-2020&#39;)</span>
-<span class="c1">#plt.ylabel(&#39;Population (in Billions)&#39;)</span>
-<span class="c1">#plt.legend(loc = &#39;best&#39;, fontsize = &#39;large&#39;);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>d.</strong> As the number of time steps increases, the Euler approximation approaches the analytical solution, not the measured data. The best-case scenario is that the Euler solution is the same as the analytical solution.</p>
+<p><strong>d.</strong> As the number of time steps increases, the Euler approximation does not approach the measured data. The Euler approximation approaches the analytical solution. The best-case scenario is that the Euler solution is the same as the analytical solution. However, often times the analytical solution is still just a prediction of the events.</p>
 <ol>
 <li><p>In the freefall example you used smaller time steps to decrease the <strong>truncation error</strong> in our Euler approximation. Another way to decrease approximation error is to continue expanding the Taylor series. Consider the function f(x)</p>
 <p><span class="math notranslate nohighlight">\(f(x)=e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+...\)</span></p>
@@ -1547,40 +1502,70 @@ the relative error between the analytical solution and Taylor approximation for 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.b)&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">time</span>
 <span class="n">begin1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2nd order Taylor series e^1 approximation:&#39;</span><span class="p">,</span> <span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">done1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">runtime1</span> <span class="o">=</span> <span class="n">done1</span> <span class="o">-</span> <span class="n">begin1</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time = </span><span class="si">{:.8f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runtime1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time = </span><span class="si">{:.8f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runtime1</span><span class="p">))</span>
 
 <span class="n">begin2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;10th order Taylor series e^1 approximation:&#39;</span><span class="p">,</span> <span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">done2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">runtime2</span> <span class="o">=</span> <span class="n">done2</span> <span class="o">-</span> <span class="n">begin2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time = </span><span class="si">{:.8f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runtime2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time = </span><span class="si">{:.8f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runtime2</span><span class="p">))</span>
+
+<span class="n">begin3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1000th order Taylor series e^1 approximation:&#39;</span><span class="p">,</span> <span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">done3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">runtime3</span> <span class="o">=</span> <span class="n">done3</span> <span class="o">-</span> <span class="n">begin3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;time = </span><span class="si">{:.8f}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">runtime3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Estimated 100000th order Taylor series could take on the scale of minutes to run&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5
-time = 0.00014758
-2.7182818011463845
-time = 0.00010037
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.b)
+2nd order Taylor series e^1 approximation: 2.5
+time = 0.00140285 seconds
+10th order Taylor series e^1 approximation: 2.7182818011463845
+time = 0.00035882 seconds
+1000th order Taylor series e^1 approximation: 2.7182818284590455
+time = 0.01412106 seconds
+
+Estimated 100000th order Taylor series could take on the scale of minutes to run
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">tay_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>    <span class="c1"># initialize an N-valued array of relative errors dtype = np.float32</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">tay_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">exptaylor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+    <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">tay_array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(3.c)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;abs of error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Relative Error between Exp function and nth order Taylor</span><span class="se">\&#39;</span><span class="s1">s series&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;large&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.c)
 </pre></div>
 </div>
+<img alt="../_images/03_Numerical_error_63_1.png" src="../_images/03_Numerical_error_63_1.png" />
 </div>
 </div>
 </div>
