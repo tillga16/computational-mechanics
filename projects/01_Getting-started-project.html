@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -74,6 +74,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
       
@@ -451,9 +455,52 @@
 <ol class="simple">
 <li><p>Use Python to calculate <span class="math notranslate nohighlight">\(K\)</span> using a finite difference approximation, <span class="math notranslate nohighlight">\(\frac{dT}{dt} \approx \frac{T(t+\Delta t)-T(t)}{\Delta t}\)</span>.</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time1</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">temp1</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="n">time2</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">temp2</span> <span class="o">=</span> <span class="mi">74</span>
+<span class="n">Ta</span> <span class="o">=</span> <span class="mi">65</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp2</span> <span class="o">-</span> <span class="n">temp1</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">temp1</span><span class="o">-</span><span class="n">Ta</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">time2</span><span class="o">-</span><span class="n">time1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;k =&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k = 0.275
+</pre></div>
+</div>
+</div>
+</div>
 <ol class="simple">
 <li><p>Change your work from problem 1 to create a function that accepts the temperature at two times, ambient temperature, and the time elapsed to return <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">k_heattransfer</span><span class="p">(</span><span class="n">temp1</span><span class="p">,</span> <span class="n">temp2</span><span class="p">,</span> <span class="n">ambtemp</span><span class="p">,</span> <span class="n">dtime</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;This function outputs the empirical constant K, using the inputs temp 1 and 2, the ambient temp, and the time elapsed</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp2</span> <span class="o">-</span> <span class="n">temp1</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">temp1</span><span class="o">-</span><span class="n">ambtemp</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">dtime</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">k</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_heattransfer</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.275
+</pre></div>
+</div>
+</div>
+</div>
 <ol>
 <li><p>A first-order thermal system has the following analytical solution,</p>
 <p><span class="math notranslate nohighlight">\(T(t) =T_a+(T(0)-T_a)e^{-Kt}\)</span></p>
@@ -560,7 +607,7 @@ At what time was the corpse 98.6<span class="math notranslate nohighlight">\(^{o
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

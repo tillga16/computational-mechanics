@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -74,6 +74,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
       
@@ -1226,8 +1230,8 @@ Here, consider the speed from 0 to 2 seconds, so <code class="docutils literal n
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 227 µs, sys: 61 µs, total: 288 µs
-Wall time: 278 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 221 µs, sys: 55 µs, total: 276 µs
+Wall time: 267 µs
 </pre></div>
 </div>
 </div>
@@ -1259,7 +1263,7 @@ Wall time: 278 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd0879c9790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe2bd76fb20&gt;
 </pre></div>
 </div>
 <img alt="../_images/03_Numerical_error_46_1.png" src="../_images/03_Numerical_error_46_1.png" />
@@ -1528,11 +1532,11 @@ the relative error between the analytical solution and Taylor approximation for 
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.b)
 2nd order Taylor series e^1 approximation: 2.5
-time = 0.00140285 seconds
+time = 0.00126958 seconds
 10th order Taylor series e^1 approximation: 2.7182818011463845
-time = 0.00035882 seconds
+time = 0.00034761 seconds
 1000th order Taylor series e^1 approximation: 2.7182818284590455
-time = 0.01412106 seconds
+time = 0.01425600 seconds
 
 Estimated 100000th order Taylor series could take on the scale of minutes to run
 </pre></div>
@@ -1622,7 +1626,7 @@ Estimated 100000th order Taylor series could take on the scale of minutes to run
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

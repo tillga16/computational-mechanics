@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -74,6 +74,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
       
@@ -1048,7 +1052,7 @@ you can do more computations, like add or multiply them. For example:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2449/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1630/2664324349.py:1: RuntimeWarning: invalid value encountered in true_divide
   x_array / y_array
 </pre></div>
 </div>
@@ -1474,8 +1478,8 @@ with no numbers repeated.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7129, 9383, 4994, 3975, 6340, 1368, 2440, 8619, 2691, 5220]
-[2822, 2454, 2130, 7193, 1917, 1747, 3476, 8496, 8543, 1789]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7354, 7499, 5752, 9929, 2375, 1314, 8882, 6828, 1366, 3218]
+[4054, 3482, 3279, 9373, 36, 2605, 987, 1187, 9856, 9081]
 </pre></div>
 </div>
 </div>
@@ -1495,8 +1499,8 @@ takes to execute all the code in that cell.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.81 ms, sys: 0 ns, total: 2.81 ms
-Wall time: 2.81 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.88 ms, sys: 0 ns, total: 2.88 ms
+Wall time: 2.88 ms
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1512,7 @@ Wall time: 2.81 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9951, 11837, 7124, 11168, 8257, 3115, 5916, 17115, 11234, 7009]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[11408, 10981, 9031, 19302, 2411, 3919, 9869, 8015, 11222, 12299]
 </pre></div>
 </div>
 </div>
@@ -1542,8 +1546,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 4 76 54  3 46 57 57 59 69 76]
-[41 27 32 39 30 57 21 78 88 40]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84 52 63 80  6 91 25  8 86 51]
+[79 64 27 74 77  1 80 46 89 22]
 </pre></div>
 </div>
 </div>
@@ -1557,8 +1561,8 @@ that the arrays and the lists are of the same length and type
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 274 µs, sys: 0 ns, total: 274 µs
-Wall time: 177 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 195 µs, sys: 36 µs, total: 231 µs
+Wall time: 142 µs
 </pre></div>
 </div>
 </div>
@@ -1642,7 +1646,7 @@ in the x-axis, you need to import the module <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7ffa6ff99f70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd9b7268f70&gt;
 </pre></div>
 </div>
 <img alt="../_images/02_Working_with_Python_109_1.png" src="../_images/02_Working_with_Python_109_1.png" />
@@ -1821,8 +1825,8 @@ of the two indices from 0 to 9 e.g. A_99[3,2]=6 and A_99[4,4]=16.</p>
 [0, 9, 18, 27, 36, 45, 54, 63, 72, 81]
 (2.b) the mean of A_99 is 20.25
 (2.c) the standard deviation of A_99 is 20.05461293568141
-CPU times: user 0 ns, sys: 2.8 ms, total: 2.8 ms
-Wall time: 1.41 ms
+CPU times: user 669 µs, sys: 130 µs, total: 799 µs
+Wall time: 1.71 ms
 </pre></div>
 </div>
 </div>
@@ -1866,8 +1870,8 @@ Wall time: 1.41 ms
  [ 0  9 18 27 36 45 54 63 72 81]]
 (3.b) the mean of A_99 is 20.25
 (3.c) the standard deviation of A_99 is 20.054612935681405
-CPU times: user 771 µs, sys: 163 µs, total: 934 µs
-Wall time: 779 µs
+CPU times: user 0 ns, sys: 848 µs, total: 848 µs
+Wall time: 732 µs
 </pre></div>
 </div>
 </div>
@@ -1940,9 +1944,7 @@ Wall time: 779 µs
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example 1:
 y(x) = 4 - 1.0000*(x - 8)
 y(2) = 10.00
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example 2:
+Example 2:
 y(x) = 8 + 0.4000*(x - 4)
 y(1) = 6.80
 </pre></div>
@@ -2003,7 +2005,7 @@ y(1) = 6.80
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -74,6 +74,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../_static/comp-mech-logo.svg" class="logo" alt="logo">
       
@@ -1240,8 +1244,8 @@ y_{3}\end{array}\right]\)</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 95 µs, sys: 29 µs, total: 124 µs
-Wall time: 127 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 206 µs, sys: 54 µs, total: 260 µs
+Wall time: 219 µs
 </pre></div>
 </div>
 </div>
@@ -1260,8 +1264,8 @@ Wall time: 127 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 0 ns, sys: 754 µs, total: 754 µs
-Wall time: 549 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 502 µs, sys: 0 ns, total: 502 µs
+Wall time: 388 µs
 </pre></div>
 </div>
 </div>
@@ -1299,8 +1303,8 @@ Wall time: 549 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 45 ms, sys: 4.18 ms, total: 49.2 ms
-Wall time: 48.3 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 46.7 ms, sys: 291 µs, total: 47 ms
+Wall time: 46.6 ms
 </pre></div>
 </div>
 </div>
@@ -1318,8 +1322,8 @@ Wall time: 48.3 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 101 ms, sys: 1.05 ms, total: 102 ms
-Wall time: 96.1 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 88.1 ms, sys: 22.6 ms, total: 111 ms
+Wall time: 97.7 ms
 </pre></div>
 </div>
 </div>
@@ -1594,11 +1598,11 @@ x_{3} \end{array} \right]=
  [ nan  nan  nan  nan]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2681/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1862/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
-/tmp/ipykernel_2681/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
+/tmp/ipykernel_1862/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
   Aug[i,:] = Aug[i,:] - factor*Aug[k,:]
-/tmp/ipykernel_2681/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
+/tmp/ipykernel_1862/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
 </pre></div>
 </div>
@@ -1832,7 +1836,7 @@ F\cos\theta \\
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
