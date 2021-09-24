@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -465,12 +465,12 @@
 
 <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp2</span> <span class="o">-</span> <span class="n">temp1</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">temp1</span><span class="o">-</span><span class="n">Ta</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">time2</span><span class="o">-</span><span class="n">time1</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;k =&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(1.) Using a finite difference approximation, I found k =&#39;</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k = 0.275
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.) Using a finite difference approximation, I found k = 0.275
 </pre></div>
 </div>
 </div>
@@ -491,11 +491,15 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_heattransfer</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.) This process was incorporated into a function which yields k&#39;</span><span class="p">)</span>
+<span class="n">k_heattransfer</span><span class="p">(</span><span class="mi">85</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.) This process was incorporated into a function which yields k
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.275
 </pre></div>
 </div>
@@ -510,6 +514,92 @@
 <p>c. At what time was the corpse 98.6<span class="math notranslate nohighlight">\(^{o}\)</span>F? i.e. what was the time of death?</p>
 </li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">m</span>
+
+<span class="k">def</span> <span class="nf">BodyTemp_Analytical</span><span class="p">(</span><span class="n">Tamb</span><span class="p">,</span> <span class="n">Temp_init</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">BodyTemp_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">BodyTemp_ana</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Temp_init</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+        <span class="n">BodyTemp_ana</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tamb</span> <span class="o">+</span> <span class="p">(</span><span class="n">BodyTemp_ana</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">Tamb</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">BodyTemp_ana</span>
+
+<span class="k">def</span> <span class="nf">BodyTemp_Numerical</span><span class="p">(</span><span class="n">Tamb</span><span class="p">,</span> <span class="n">Temp_init</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">BodyTemp_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">BodyTemp_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Temp_init</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">BodyTemp_num</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">BodyTemp_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">BodyTemp_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">Tamb</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="k">return</span> <span class="n">BodyTemp_num</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(3.a)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">BodyTemp_Analytical</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="n">t1</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Analytical Solution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">BodyTemp_Numerical</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Numerical Solution (5pts)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="n">BodyTemp_Numerical</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="n">t1</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Numerical Solution (15pts)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="s1">&#39;small&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.a)
+</pre></div>
+</div>
+<img alt="../_images/01_Getting-started-project_7_1.png" src="../_images/01_Getting-started-project_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_inf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_inf</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at t = </span><span class="si">{}</span><span class="s1"> hours, the body temp is </span><span class="si">{:0.4f}</span><span class="s1"> F&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t_inf</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">BodyTemp_Analytical</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="n">t_inf</span><span class="p">)[</span><span class="n">t</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>at t = 0 hours, the body temp is 85.0000 F
+at t = 1 hours, the body temp is 80.1914 F
+at t = 2 hours, the body temp is 76.5390 F
+at t = 3 hours, the body temp is 73.7647 F
+at t = 4 hours, the body temp is 71.6574 F
+at t = 5 hours, the body temp is 70.0568 F
+at t = 10 hours, the body temp is 66.2786 F
+at t = 20 hours, the body temp is 65.0817 F
+at t = 30 hours, the body temp is 65.0052 F
+at t = 40 hours, the body temp is 65.0003 F
+at t = 50 hours, the body temp is 65.0000 F
+at t = 100 hours, the body temp is 65.0000 F
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>at t = 200 hours, the body temp is 65.0000 F
+at t = 1000 hours, the body temp is 65.0000 F
+at t = 10000 hours, the body temp is 65.0000 F
+</pre></div>
+</div>
+</div>
+</div>
+<p>(3.b) As you can see in the cell above, as the time elapsed approaches infinity, the temperature of the body approaches 65F, which is the ambient temperature. As the body cools, it comes into equilibrium with its surroundings, with the environment acting as a temperature sink.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Analytical_TOD</span><span class="p">(</span><span class="n">Tamb</span><span class="p">,</span> <span class="n">Temp_found</span><span class="p">,</span> <span class="n">Time_found</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">TOD</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mf">98.6</span><span class="o">-</span><span class="n">Tamb</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Temp_found</span><span class="o">-</span><span class="n">Tamb</span><span class="p">))</span>
+    <span class="n">TOD_min</span> <span class="o">=</span> <span class="n">TOD</span> <span class="o">*</span> <span class="mi">60</span>
+    <span class="k">return</span> <span class="n">TOD_min</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(3.b) The analytical solution with constant ambient temperature predicts&#39;</span>
+      <span class="s1">&#39; the time of death was approximately </span><span class="si">{:0.2f}</span><span class="s1"> minutes ago&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Analytical_TOD</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.b) The analytical solution with constant ambient temperature predicts the time of death was approximately 113.19 minutes ago
+</pre></div>
+</div>
+</div>
+</div>
 <ol>
 <li><p>Now that we have a working numerical model, we can look at the results if the
 ambient temperature is not constant i.e. T_a=f(t). We can use the weather to improve our estimate for time of death. Consider the following Temperature for the day in question.</p>
@@ -553,6 +643,135 @@ Compare the new nonlinear Euler approximation to the linear analytical model.
 At what time was the corpse 98.6<span class="math notranslate nohighlight">\(^{o}\)</span>F? i.e. what was the time of death?</p>
 </li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">Temp_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span><span class="mi">51</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">ambient_temp</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">&gt;=-</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=-</span><span class="mi">4</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;-</span><span class="mi">4</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=-</span><span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;-</span><span class="mi">3</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=-</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;-</span><span class="mi">2</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">t</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Temp_vals</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    
+<span class="n">t_temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ambient_temp</span><span class="p">(</span><span class="n">ti</span><span class="p">)</span> <span class="k">for</span> <span class="n">ti</span> <span class="ow">in</span> <span class="n">t_temp</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(4.a)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_temp</span><span class="p">,</span> <span class="n">ta</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.a)
+</pre></div>
+</div>
+<img alt="../_images/01_Getting-started-project_12_1.png" src="../_images/01_Getting-started-project_12_1.png" />
+</div>
+</div>
+<p>(4.a) Is there a better way to get Ta(t)??</p>
+<p>Yes, right now it is coded as a step function with a constant temperature for each hour before stepping up. A slightly more accurate representation of the temperature might be to do a linear interpolation between each point, so the temperature graph is a more continuous piecewise function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t5</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t5</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">T_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t5</span><span class="p">))</span>
+<span class="n">T_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.275</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">t5</span><span class="p">)):</span>
+    <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ambient_temp</span><span class="p">(</span><span class="n">t5</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="n">dt</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(4.b)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t5</span><span class="p">,</span><span class="n">T_num</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Variable Ambient Euler Appr.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t5</span><span class="p">,</span><span class="n">BodyTemp_Analytical</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mf">0.275</span><span class="p">,</span> <span class="n">t5</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Const. Ambient Analytical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.b)
+</pre></div>
+</div>
+<img alt="../_images/01_Getting-started-project_14_1.png" src="../_images/01_Getting-started-project_14_1.png" />
+</div>
+</div>
+<p>(4.b) I’m going to show two different methods for determining the time of death, using the variable ambient conditions and the Euler approximation. The first method will use guess and check, by changing the starting value of the time array until the temperature at time 0 is approximately 85F. The second method will reverse the time array and conduct the Euler approximation going backwards. Then we can search the array for temperatures close to 98.6F and determine the corresponding time of death.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### This method involves guess and check, changing the starting value of the time array </span>
+<span class="c1">### until the temperature at time 0 is approximately 85F</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.75</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">376</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">T_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">T_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">98.6</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.275</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ambient_temp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="n">dt</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(4.b) This approximation method with variable ambient temperature</span><span class="se">\n</span><span class="s1"> predicts&#39;</span>
+      <span class="s1">&#39; the time of death was approximately </span><span class="si">{:0.2f}</span><span class="s1"> minutes ago&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">T_num</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.b) This approximation method with variable ambient temperature
+ predicts the time of death was approximately 105.00 minutes ago
+</pre></div>
+</div>
+<img alt="../_images/01_Getting-started-project_16_1.png" src="../_images/01_Getting-started-project_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### This method reverses the time array and conducts the Euler approximation going backwards</span>
+<span class="c1">### Then we can search for the temperature close to 98.6F and determine the time of death at that point</span>
+
+<span class="n">body_found</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">T_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">T_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">85</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.275</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>
+    <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">T_num</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ambient_temp</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">*</span> <span class="n">dt</span>
+    
+<span class="k">for</span> <span class="n">Tem</span> <span class="ow">in</span> <span class="n">T_num</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">Tem</span> <span class="o">&gt;</span> <span class="mf">98.599</span> <span class="ow">and</span> <span class="n">Tem</span> <span class="o">&lt;</span> <span class="mf">98.601</span><span class="p">:</span>
+        <span class="n">TOD</span> <span class="o">=</span> <span class="n">Tem</span>
+
+<span class="n">Time_death</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T_num</span> <span class="o">==</span> <span class="n">TOD</span><span class="p">)]</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(4.b)The Euler approximation with variable ambient temperature predicts&#39;</span>
+      <span class="s1">&#39; the time of death was approximately </span><span class="si">{:0.3f}</span><span class="s1"> hours ago&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Time_death</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">T_num</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">85</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;body found </span><span class="se">\n</span><span class="s1"> (</span><span class="si">{}</span><span class="s1"> AM , </span><span class="si">{}</span><span class="s1">F)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">body_found</span><span class="p">,</span><span class="n">T_num</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Time_death</span><span class="p">,</span><span class="n">TOD</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;time of death </span><span class="se">\n</span><span class="s1"> (</span><span class="si">{:0.4}</span><span class="s1">hr , </span><span class="si">{:0.4}</span><span class="s1">F)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">Time_death</span><span class="p">),</span><span class="n">TOD</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.b)The Euler approximation with variable ambient temperature predicts the time of death was approximately -1.759 hours ago
+</pre></div>
+</div>
+<img alt="../_images/01_Getting-started-project_17_1.png" src="../_images/01_Getting-started-project_17_1.png" />
+</div>
+</div>
+<p>I think the second method likely gives the more accurate solution, since it directly calculates the time of death based on the conditions inputted, as opposed to the guess and check method.</p>
 </div>
 
     <script type="text/x-thebe-config">
