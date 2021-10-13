@@ -1148,7 +1148,9 @@ bottom whisker = 4.0 ibu
 
 abv:
 ----------------
-top whisker = 9.2% abv
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>top whisker = 9.2% abv
 bottom whisker = 2.5% abv
 </pre></div>
 </div>
@@ -1777,13 +1779,6 @@ scatter plot with <code class="docutils literal notranslate"><span class="pre">b
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/beers.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beers_filled</span> <span class="o">=</span> <span class="n">beers</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ibu</span> <span class="o">=</span> <span class="n">beers_filled</span><span class="p">[</span><span class="s1">&#39;ibu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1803,7 +1798,7 @@ scatter plot with <code class="docutils literal notranslate"><span class="pre">b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Seeing_Stats_90_0.png" src="../_images/02_Seeing_Stats_90_0.png" />
+<img alt="../_images/02_Seeing_Stats_89_0.png" src="../_images/02_Seeing_Stats_89_0.png" />
 </div>
 </div>
 <p>(1.b) In this problem, we changed the method by which we cleaned the ‘beers’ dataframe. Previously, we used .dropna() to remove rows with missing (N.A.) IBU values. In this section, we used .fillna(0), to fill the missing values with zeros, under the assumption that some beers do not report the IBU value because they are very small. In comparing the two figures, we can see the presence of new styles (99 total) that were not seen before (90 total) because all of their IBU values were missing. Additionally, it is clear that the means of many of the styles are being skewed downwards due to the presence of ‘0’ values.
@@ -1845,6 +1840,9 @@ Color the data according to the “Designer”.</p>
 <span class="n">countmean2017</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">transistors</span><span class="p">[</span><span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Date of Introduction&#39;</span><span class="p">]</span><span class="o">==</span> <span class="mi">2017</span><span class="p">][</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.a) In 2017, the average MOS transistor count was </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">countmean2017</span><span class="p">))</span>
 
+<span class="n">transistorcounts2017</span> <span class="o">=</span> <span class="n">transistors</span><span class="p">[</span><span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Date of Introduction&#39;</span><span class="p">]</span><span class="o">==</span> <span class="mi">2017</span><span class="p">][</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MOS Transistor Counts 2017&#39;</span><span class="p">]);</span>
+
 <span class="n">Q1_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">Q2_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">Q3_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
@@ -1853,27 +1851,20 @@ Color the data according to the “Designer”.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The second quartile for 2017 transistor count is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Q2_abv</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The third quartile for 2017 transistor count is </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Q3_abv</span><span class="p">))</span>
 
-<span class="n">transistorcounts2017</span> <span class="o">=</span> <span class="n">transistors</span><span class="p">[</span><span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Date of Introduction&#39;</span><span class="p">]</span><span class="o">==</span> <span class="mi">2017</span><span class="p">][</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MOS Transistor Counts 2017&#39;</span><span class="p">]);</span>
+<span class="c1"># transistorcounts2017 = transistors[transistors[&#39;Date of Introduction&#39;]== 2017][&#39;MOS transistor count&#39;]</span>
+<span class="c1"># plt.boxplot(transistorcounts2017, labels=[&#39;MOS Transistor Counts 2017&#39;]);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.a) In 2017, the average MOS transistor count was 7050000000.0
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2153</span><span class="o">/</span><span class="mf">3314595234.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.a) In 2017, the average MOS transistor count was </span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">countmean2017</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">Q1_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">Q2_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">Q3_abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">transistorcounts2017</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;transistorcounts2017&#39; is not defined
+The first quartile for 2017 transistor count is 4800000000.0
+The second quartile for 2017 transistor count is 5375000000.0
+The third quartile for 2017 transistor count is 7250000000.0
 </pre></div>
 </div>
+<img alt="../_images/02_Seeing_Stats_92_1.png" src="../_images/02_Seeing_Stats_92_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1881,11 +1872,11 @@ Color the data according to the “Designer”.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.b)&#39;</span><span class="p">)</span>
-<span class="n">designers</span> <span class="o">=</span> <span class="n">transistors_designers</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">designers</span> <span class="o">=</span> <span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">designer</span> <span class="ow">in</span> <span class="n">designers</span><span class="p">:</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">transistors_designers</span><span class="p">[</span><span class="n">transistors_designers</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">designer</span><span class="p">][</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">date</span> <span class="o">=</span> <span class="n">transistors_designers</span><span class="p">[</span><span class="n">transistors_designers</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">designer</span><span class="p">][</span><span class="s1">&#39;Date of Introduction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">transistors</span><span class="p">[</span><span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">designer</span><span class="p">][</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">transistors</span><span class="p">[</span><span class="n">transistors</span><span class="p">[</span><span class="s1">&#39;Designer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">designer</span><span class="p">][</span><span class="s1">&#39;Date of Introduction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">designer</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="o">+</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;0123456789ABCDEF&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">2.15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
@@ -1894,6 +1885,12 @@ Color the data according to the “Designer”.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Transistor Count&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.b)
+</pre></div>
+</div>
+<img alt="../_images/02_Seeing_Stats_93_1.png" src="../_images/02_Seeing_Stats_93_1.png" />
 </div>
 </div>
 </div>
