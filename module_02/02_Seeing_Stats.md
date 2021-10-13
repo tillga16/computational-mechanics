@@ -218,7 +218,7 @@ Therefore, you need to be explicit about the division by $N-1$ when calling `np.
 For example, to compute the sample variance for your `abv` variable, you do:
 
 ```{code-cell} ipython3
-
+var_abv = np.var(abv, ddof = 1)
 ```
 
 Now, you can compute the standard deviation by taking the square root of `var_abv`:
@@ -247,6 +247,13 @@ You will.
 np.std(abv,ddof=1)
 ```
 
+```{code-cell} ipython3
+var_ibu = np.var(ibu, ddof = 0)
+std_ibu = np.std(ibu, ddof = 0)
+print(var_ibu)
+print(std_ibu)
+```
+
 ### Median value
 
 So far, you've learned to characterize quantitative data using the mean, variance and standard deviation.
@@ -259,7 +266,12 @@ As you may anticipate, NumPy has a built-in function that computes the median, h
 
 Using NumPy, compute the median for your variables `abv` and `ibu`. Compare the median with the mean, and look at the histogram to locate where the values fall on the x-axis.
 
-+++
+```{code-cell} ipython3
+med_abv = np.median(abv)
+med_ibu = np.median(ibu)
+print(med_abv)
+print(med_ibu)
+```
 
 ### Box plots
 
@@ -467,6 +479,7 @@ Here's what you want to do: group beers by style, then compute the mean of `abv`
 
 ```{code-cell} ipython3
 beers_styles = beers_clean.drop(['Unnamed: 0','name','brewery_id','ounces','id'], axis=1)
+beers_styles
 ```
 
 We now have a dataframe with only the numeric features `abv` and `ibu`, and the categorical feature `style`. Let's find out how many beers you have of each style—you'd like to use this information to set the size of the style bubbles.
@@ -599,8 +612,31 @@ our dataset by removing rows that do not include the IBU measure.
     scatter plot with `beers_filled`. What differences do you notice between the plots?
 
 ```{code-cell} ipython3
-
+beers = pd.read_csv("../data/beers.csv")
 ```
+
+```{code-cell} ipython3
+beers_filled = beers.fillna(0)
+
+ibu = beers_filled['ibu'].values
+abv = beers_filled['abv'].values
+
+beers_styles = beers_filled.drop(['Unnamed: 0','name','brewery_id','ounces','id'], axis=1)
+style_counts = beers_styles['style'].value_counts()
+style_counts = style_counts.sort_index()
+style_means = beers_styles.groupby('style').mean()
+
+colors = cm.viridis(style_counts.values)
+style_means.plot.scatter(figsize=(10,10), 
+                         x='abv', y='ibu', s=style_counts*20, color = colors,
+                         title='Beer ABV vs. IBU mean values by style\n',
+                         alpha=0.3); 
+```
+
+(1.b) In this problem, we changed the method by which we cleaned the 'beers' dataframe. Previously, we used .dropna() to remove rows with missing (N.A.) IBU values. In this section, we used .fillna(0), to fill the missing values with zeros, under the assumption that some beers do not report the IBU value because they are very small. In comparing the two figures, we can see the presence of new styles (99 total) that were not seen before (90 total) because all of their IBU values were missing. Additionally, it is clear that the means of many of the styles are being skewed downwards due to the presence of '0' values.
+It is most likely that some beers just do not have ibu measurements readily available, and we should not make the assumption that these beers have ibu's equal to zero. I believe it would be more appropriate to clean the data using .dropna() and have some missing styles, rather than display data with incorrectly skewed means.
+
++++
 
 2. Gordon Moore created an empirical prediction that the rate of
 semiconductors on a computer chip would double every two years. This
@@ -624,5 +660,36 @@ until 2015.
     Color the data according to the "Designer".
 
 ```{code-cell} ipython3
+transistors_raw = pd.read_csv("../data/transistor_data.csv")
+transistors = transistors_raw.dropna()
+countmean2017 = np.mean(transistors[transistors['Date of Introduction']== 2017]['MOS transistor count'])
+print('(2.a) In 2017, the average MOS transistor count was {}\n'.format(countmean2017))
 
+Q1_abv = np.percentile(transistorcounts2017, q=25)
+Q2_abv = np.percentile(transistorcounts2017, q=50)
+Q3_abv = np.percentile(transistorcounts2017, q=75)
+
+print('The first quartile for 2017 transistor count is {}'.format(Q1_abv))
+print('The second quartile for 2017 transistor count is {}'.format(Q2_abv))
+print('The third quartile for 2017 transistor count is {}'.format(Q3_abv))
+
+transistorcounts2017 = transistors[transistors['Date of Introduction']== 2017]['MOS transistor count']
+plt.boxplot(transistorcounts2017, labels=['MOS Transistor Counts 2017']);
+```
+
+```{code-cell} ipython3
+import matplotlib.pyplot as plt
+import random
+print('(2.b)')
+designers = transistors_designers['Designer'].unique()
+
+for designer in designers:
+    count = transistors_designers[transistors_designers['Designer'] == designer]['MOS transistor count'].values
+    date = transistors_designers[transistors_designers['Designer'] == designer]['Date of Introduction'].values
+    plt.semilogy(date, count, 'o', label = designer, color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
+
+plt.legend(loc="right", bbox_to_anchor=(2.15, 0.5), ncol= 2)
+plt.title('Moore\'s Law Data')
+plt.xlabel('Date of Introduction')
+plt.ylabel('Transistor Count');
 ```
