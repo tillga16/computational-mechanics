@@ -481,8 +481,6 @@ pi_appr = 1 * N / (np.count_nonzero(np.logical_and(x_min < 0, x_max > 0)))
 print('My estimated value using Buffon\'s needle problem is:', pi_appr)
 ```
 
-__2.__ 100 steel rods are going to be used to support a 1000 kg structure. The
-=======
 __2.__ Build a random walk data set with steps between $dx = dy =
 -1/2~to~1/2~m$. If 100 particles take 10 steps, calculate the number of
 particles that move further than 0.5 m. 
