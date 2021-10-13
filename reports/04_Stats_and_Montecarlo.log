@@ -32,12 +32,17 @@ def montecarlopi(N):
     
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     x = rng.random(N);
     y = rng.random(N);
 =======
     x = rng.random(N,1);
     y = rng.random(N,1);
 >>>>>>> d7cf0d8ce41b3b43def20b580643462f78a237e5
+=======
+    x = rng.random(N);
+    y = rng.random(N);
+>>>>>>> cooperrc-master
     R=np.sqrt(x**2+y**2); # compute radius
     num_in_circle=sum(R<1);
     total_num_pts =len(R);
@@ -45,10 +50,10 @@ def montecarlopi(N):
     return our_pi
 ------------------
 
-[0;36m  File [0;32m"/tmp/ipykernel_1788/378313688.py"[0;36m, line [0;32m15[0m
+[0;36m  File [0;32m"/tmp/ipykernel_1803/1013822277.py"[0;36m, line [0;32m15[0m
 [0;31m    <<<<<<< HEAD[0m
 [0m    ^[0m
 [0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-SyntaxError: invalid syntax (378313688.py, line 15)
+SyntaxError: invalid syntax (1013822277.py, line 15)
 
