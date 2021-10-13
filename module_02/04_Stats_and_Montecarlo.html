@@ -551,10 +551,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.29081557, 0.77965223, 0.53073484, 0.15834697, 0.20600193,
-       0.89050031, 0.4468241 , 0.27337997, 0.93171289, 0.39594049,
-       0.44536465, 0.06682726, 0.90543987, 0.93136461, 0.86484844,
-       0.04631791, 0.99074171, 0.18713403, 0.7678557 , 0.96903365])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.63665867, 0.02695794, 0.94553669, 0.53697991, 0.44538114,
+       0.11212493, 0.66703458, 0.43490203, 0.68521929, 0.2128403 ,
+       0.40921281, 0.73141901, 0.08412753, 0.41508601, 0.8149558 ,
+       0.91086984, 0.6853242 , 0.62711384, 0.59699553, 0.04137259])
 </pre></div>
 </div>
 </div>
@@ -587,9 +587,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([5., 3., 3., 2., 7.]),
- array([0.04631791, 0.23520267, 0.42408743, 0.61297219, 0.80185695,
-        0.99074171]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 1., 5., 7., 3.]),
+ array([0.02695794, 0.21067369, 0.39438944, 0.57810519, 0.76182094,
+        0.94553669]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -650,8 +650,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.23641643, 0.61111599, 0.42743299, 0.18859493, 0.24662024,
-       0.41184659, 0.67656708, 0.93213405, 0.85825934, 0.19430408])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.00730506, 0.93795392, 0.47150465, 0.95536242, 0.7538528 ,
+       0.37136804, 0.85959399, 0.10274627, 0.07346167, 0.49146587])
 </pre></div>
 </div>
 </div>
@@ -687,7 +687,7 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_pi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
-    <span class="n">test_pi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">montecarlopi</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">test_pi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">montecarlopi</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean value for pi = </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.mean(test_pi))
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;standard deviation is </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.std(test_pi))
@@ -696,8 +696,8 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.168400
-standard deviation is 0.077922
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.151160
+standard deviation is 0.020400
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -725,8 +725,8 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.143360
-standard deviation is 0.046022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.137320
+standard deviation is 0.049062
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -749,8 +749,8 @@ actual pi is 3.141593
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.136560
-standard deviation is 0.016147
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.142200
+standard deviation is 0.009218
 actual pi is 3.141593
 </pre></div>
 </div>
@@ -902,7 +902,7 @@ steps each.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb47aa4bdf0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3aa0576d0&gt;]
 </pre></div>
 </div>
 <img alt="../_images/04_Stats_and_Montecarlo_29_1.png" src="../_images/04_Stats_and_Montecarlo_29_1.png" />
@@ -1075,6 +1075,26 @@ to find the number of needles that have minimum <span class="math notranslate no
 maximum <span class="math notranslate nohighlight">\(x_{end~max}&gt;0\)</span>. The ratio
 <span class="math notranslate nohighlight">\(\frac{x_{end~min}&lt;0~and~x_{end~max}&gt;0}{number~of~needles} =
 \frac{2}{\pi}\)</span> <em>for large values of <span class="math notranslate nohighlight">\(number~of~needles\)</span></em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">x_min</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+
+<span class="n">pi_appr</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">N</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x_min</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My estimated value using Buffon</span><span class="se">\&#39;</span><span class="s1">s needle problem is:&#39;</span><span class="p">,</span> <span class="n">pi_appr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My estimated value using Buffon&#39;s needle problem is: 3.1436655139893115
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>2.</strong> 100 steel rods are going to be used to support a 1000 kg structure. The
 rods will buckle when the load in any rod exceeds the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_critical_load">critical buckling
 load</a></p>
@@ -1109,8 +1129,23 @@ reach the critical buckling load?</p>
 <span class="sd">    mean_buckle_load: mean buckling load of N rods under 1000*9.81/N-Newton load</span>
 <span class="sd">    std_buckle_load: std dev buckling load of N rods under 1000*9.81/N-Newton load</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">r_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">r_mean</span><span class="p">,</span> <span class="n">r_std</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">N</span><span class="p">)</span>
     
+    <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">r_rand</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">16</span><span class="o">*</span><span class="p">(</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+    
+    <span class="n">mean_buckle_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">std_buckle_load</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mean_buckle_load</span><span class="p">,</span> <span class="n">std_buckle_load</span>
+
+<span class="n">mean_buckle_load</span><span class="p">,</span> <span class="n">std_buckle_load</span> <span class="o">=</span> <span class="n">montecarlo_buckle</span><span class="p">(</span><span class="mf">200e9</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For a rod of length L = 5 meters, &#39;</span>
+      <span class="s1">&#39;the mean buckle load is </span><span class="si">{:.2f}</span><span class="s1"> and the standard deviation of the buckle load is </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mean_buckle_load</span><span class="p">,</span> <span class="n">std_buckle_load</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a rod of length L = 5 meters, the mean buckle load is 155.91 and the standard deviation of the buckle load is 59.54
 </pre></div>
 </div>
 </div>
@@ -1120,6 +1155,46 @@ reach the critical buckling load?</p>
 <p><strong>b.</strong> What is the effect of changing the number of samples?</p>
 <p><em>Hint: for a-b try plotting histograms of the results.</em></p>
 <p><strong>c.</strong> How would you change the mean in your generated distribution?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(3.a) and (3.b)&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">normdist</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span><span class="n">effects</span><span class="p">):</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">parts</span><span class="p">,</span><span class="n">effects</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">factors</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dims</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normdist</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Low Effects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normdist</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">500</span><span class="p">),</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;High Effects&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normdist</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Low Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">normdist</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;High Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.a) and (3.b)
+</pre></div>
+</div>
+<img alt="../_images/04_Stats_and_Montecarlo_48_1.png" src="../_images/04_Stats_and_Montecarlo_48_1.png" />
+<img alt="../_images/04_Stats_and_Montecarlo_48_2.png" src="../_images/04_Stats_and_Montecarlo_48_2.png" />
+<img alt="../_images/04_Stats_and_Montecarlo_48_3.png" src="../_images/04_Stats_and_Montecarlo_48_3.png" />
+<img alt="../_images/04_Stats_and_Montecarlo_48_4.png" src="../_images/04_Stats_and_Montecarlo_48_4.png" />
+</div>
+</div>
+<p>(3.a) As the number effects increases, the total range of the distribution increases since there are more contributing factors.
+When more effects are added, the distribution gets slightly steeper, with a higher percentage of values centered closer to the mean. Regardless, with sufficient samples, the distribution maintains the bell-curve shape.</p>
+<p>(3.b) As the number of samples increases, the shape of the distribution approaches a smoother bell curve. When there are too few samples, the distribution appears choppy, signifying the lack of sufficient samples.</p>
+<p>(3.c) The model is currently set up to produce random values between 0 and 1, following a normal distribution centered around 0.5. These values are then shifted downwards -0.5, to produce a normal distribution with a mean of 0, ranging from -0.5 to 0.5. The mean could be changed by altering the size of the shift -&gt; for example, changing the shift to + 9.5 would produce a distribution with a mean around 10.</p>
 </div>
 
     <script type="text/x-thebe-config">

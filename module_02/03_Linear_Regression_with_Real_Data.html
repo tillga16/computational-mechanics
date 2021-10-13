@@ -1228,17 +1228,20 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/primary-energy-consumption-by-region.csv&#39;</span><span class="p">)</span>
-<span class="n">CAN</span> <span class="o">=</span> <span class="n">energy</span><span class="p">[</span><span class="n">energy</span><span class="p">[</span><span class="s1">&#39;Entity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Canada&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(1.a)&#39;</span><span class="p">)</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/primary-energy-consumption-by-region.csv&#39;</span><span class="p">)</span>
 <span class="n">USA</span> <span class="o">=</span> <span class="n">energy</span><span class="p">[</span><span class="n">energy</span><span class="p">[</span><span class="s1">&#39;Entity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;United States&#39;</span><span class="p">]</span>
 <span class="n">EUR</span> <span class="o">=</span> <span class="n">energy</span><span class="p">[</span><span class="n">energy</span><span class="p">[</span><span class="s1">&#39;Entity&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;Europe&#39;</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;USA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy Consumption (TW-hrs)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f7bd35d7eb0&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.a)
 </pre></div>
 </div>
 <img alt="../_images/03_Linear_Regression_with_Real_Data_56_1.png" src="../_images/03_Linear_Regression_with_Real_Data_56_1.png" />
@@ -1246,11 +1249,43 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(1.b)&#39;</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">x1</span><span class="o">=</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">yUSA</span><span class="o">=</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">yEUR</span><span class="o">=</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">a_1usa</span><span class="p">,</span> <span class="n">a_0usa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">yUSA</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">a_1eur</span><span class="p">,</span> <span class="n">a_0eur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">yEUR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">f_linear_usa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">a_1usa</span><span class="p">,</span> <span class="n">a_0usa</span><span class="p">))</span>
+<span class="n">f_linear_eur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">a_1eur</span><span class="p">,</span> <span class="n">a_0eur</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the linear regression equation for the USA energy consumption is:&#39;</span><span class="p">,</span> <span class="n">f_linear_usa</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the linear regression equation for the Europe energy consumption is:&#39;</span><span class="p">,</span> <span class="n">f_linear_eur</span><span class="p">)</span>
 
-<span class="n">isplit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1980</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;USA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;EUR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f_linear_usa</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;USA reg&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">f_linear_eur</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="s1">&#39;y--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;EUR reg&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy Consumption (TW-hrs)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.b)
+the linear regression equation for the USA energy consumption is:  
+200.4 x - 3.765e+05
+the linear regression equation for the Europe energy consumption is:  
+199.6 x - 3.76e+05
+</pre></div>
+</div>
+<img alt="../_images/03_Linear_Regression_with_Real_Data_57_1.png" src="../_images/03_Linear_Regression_with_Real_Data_57_1.png" />
+</div>
+</div>
+<p>(1.c) It appears that the trend in energy consumption becomes slightly less steep after 1980, so I believe this is a good point to split the data. The four linear regressions (two parts for both USA and Europe) are shown below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isplit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">1980</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">x1</span> <span class="p">,</span> <span class="n">yUSA1</span><span class="p">,</span> <span class="n">yEUR1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">isplit</span><span class="p">],</span> <span class="n">yUSA</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">isplit</span><span class="p">],</span> <span class="n">yEUR</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">isplit</span><span class="p">]</span>
 <span class="n">x2</span> <span class="p">,</span> <span class="n">yUSA2</span><span class="p">,</span> <span class="n">yEUR2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">isplit</span><span class="p">:],</span> <span class="n">yUSA</span><span class="p">[</span><span class="n">isplit</span><span class="p">:],</span> <span class="n">yEUR</span><span class="p">[</span><span class="n">isplit</span><span class="p">:]</span>
@@ -1261,6 +1296,14 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 <span class="n">mEUR1</span><span class="p">,</span> <span class="n">bEUR1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">yEUR1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">mEUR2</span><span class="p">,</span> <span class="n">bEUR2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">yEUR2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
+<span class="n">f_linear_usa1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">mUSA1</span><span class="p">,</span> <span class="n">bUSA1</span><span class="p">))</span>
+<span class="n">f_linear_eur1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">mEUR1</span><span class="p">,</span> <span class="n">bEUR1</span><span class="p">))</span>
+<span class="n">f_linear_usa2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">mUSA2</span><span class="p">,</span> <span class="n">bUSA2</span><span class="p">))</span>
+<span class="n">f_linear_eur2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">((</span><span class="n">mEUR2</span><span class="p">,</span> <span class="n">bEUR2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The linear regression equations for the USA are: </span><span class="si">{}</span><span class="s1"> from 1965-1980 and </span><span class="si">{}</span><span class="s1"> from 1980-2018</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f_linear_usa1</span><span class="p">,</span> <span class="n">f_linear_usa2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The linear regression equations for Europe are: </span><span class="si">{}</span><span class="s1"> from 1965-1980 and </span><span class="si">{}</span><span class="s1"> from 1980-2018&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f_linear_eur1</span><span class="p">,</span> <span class="n">f_linear_eur2</span><span class="p">))</span>
+
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span>
          <span class="n">USA</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span>
@@ -1268,10 +1311,10 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span>
          <span class="n">EUR</span><span class="p">[</span><span class="s1">&#39;Primary Energy Consumption (terawatt-hours)&#39;</span><span class="p">],</span>
          <span class="s1">&#39;-s&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Europe&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">mUSA1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="n">bUSA1</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">mUSA2</span><span class="o">*</span><span class="n">x2</span><span class="o">+</span><span class="n">bUSA2</span><span class="p">,</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">mEUR1</span><span class="o">*</span><span class="n">x1</span><span class="o">+</span><span class="n">bEUR1</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">mEUR2</span><span class="o">*</span><span class="n">x2</span><span class="o">+</span><span class="n">bEUR2</span><span class="p">,</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">f_linear_usa1</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">f_linear_usa2</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span><span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">f_linear_eur1</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">f_linear_eur2</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Energy Consumption (TW-hrs)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Regression of Energy use in USA and EUR</span><span class="se">\n</span><span class="s1">Before/After 1980&#39;</span><span class="p">)</span>
@@ -1280,9 +1323,35 @@ land temperature anomoly? Split the data and perform two linear fits.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_Linear_Regression_with_Real_Data_57_0.png" src="../_images/03_Linear_Regression_with_Real_Data_57_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The linear regression equations for the USA are:  
+478.1 x - 9.24e+05 from 1965-1980 and  
+191.8 x - 3.593e+05 from 1980-2018
+
+The linear regression equations for Europe are:  
+576.3 x - 1.12e+06 from 1965-1980 and  
+83.96 x - 1.443e+05 from 1980-2018
+</pre></div>
+</div>
+<img alt="../_images/03_Linear_Regression_with_Real_Data_59_1.png" src="../_images/03_Linear_Regression_with_Real_Data_59_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(1.d)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I predict the energy consumption in the USA in 2025 to be </span><span class="si">{:.2f}</span><span class="s1"> TW-hrs&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f_linear_usa2</span><span class="p">(</span><span class="mi">2025</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I predict the energy consumption in Europe in 2025 to be </span><span class="si">{:.2f}</span><span class="s1"> TW-hrs&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f_linear_eur2</span><span class="p">(</span><span class="mi">2025</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.d)
+I predict the energy consumption in the USA in 2025 to be 29026.76 TW-hrs
+I predict the energy consumption in Europe in 2025 to be 25680.62 TW-hrs
+</pre></div>
+</div>
+</div>
+</div>
+<p>These predictions were made using the second linear regression lines (1980-2018) for the USA and Europe</p>
 <ol class="simple">
 <li><p>You plotted Gordon Moore’s empirical prediction that the rate of semiconductors on a computer chip would double every two years in <a class="reference internal" href="02_Seeing_Stats.html"><span class="doc std std-doc">02_Seeing_Stats</span></a>. This prediction was known as Moore’s law. Gordon Moore had originally only expected this empirical relation to hold from 1965 - 1975 [<a class="reference external" href="https://en.wikipedia.org/wiki/Moore%27s_law">1</a>,<a class="reference external" href="https://spectrum.ieee.org/computing/hardware/gordon-moore-the-man-whose-name-means-progress">2</a>], but semiconductor manufacuturers were able to keep up with Moore’s law until 2015.</p></li>
 </ol>
@@ -1310,9 +1379,11 @@ Color the data according to the “Designer”.</p>
 <span class="n">yi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">TC</span><span class="p">)</span>
 <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">yi</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.a)&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">TC</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;MOS transistor count&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">xi</span><span class="p">),</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear regression&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MOS transistor count of all Designers</span><span class="se">\n</span><span class="s1">every two years </span><span class="se">\n</span><span class="s1">Transistor count was x</span><span class="si">{:.2f}</span><span class="s1"> higher&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MOS transistor count of all Designers&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year introduced&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;# of transistors&#39;</span><span class="p">);</span>
@@ -1320,9 +1391,31 @@ Color the data according to the “Designer”.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03_Linear_Regression_with_Real_Data_59_0.png" src="../_images/03_Linear_Regression_with_Real_Data_59_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.a)
+</pre></div>
+</div>
+<img alt="../_images/03_Linear_Regression_with_Real_Data_63_1.png" src="../_images/03_Linear_Regression_with_Real_Data_63_1.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(2.b) The constants A and B for our regression are as follows:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a = &#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b = &#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;every two years the transistor count was x</span><span class="si">{:.2f}</span><span class="s1"> higher&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mi">2</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.b) The constants A and B for our regression are as follows:
+a =  0.33588558721453365
+b =  -654.7141981586611
+every two years the transistor count was x1.96 higher
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the data provided, we found that every two years the transistor count was x1.96 higher, which is extremely close to the relationship Moore’s Law predicts (x2 every two years)</p>
 </div>
 
     <script type="text/x-thebe-config">
