@@ -612,10 +612,6 @@ our dataset by removing rows that do not include the IBU measure.
     scatter plot with `beers_filled`. What differences do you notice between the plots?
 
 ```{code-cell} ipython3
-beers = pd.read_csv("../data/beers.csv")
-```
-
-```{code-cell} ipython3
 beers_filled = beers.fillna(0)
 
 ibu = beers_filled['ibu'].values
@@ -665,6 +661,9 @@ transistors = transistors_raw.dropna()
 countmean2017 = np.mean(transistors[transistors['Date of Introduction']== 2017]['MOS transistor count'])
 print('(2.a) In 2017, the average MOS transistor count was {}\n'.format(countmean2017))
 
+transistorcounts2017 = transistors[transistors['Date of Introduction']== 2017]['MOS transistor count']
+plt.boxplot(transistorcounts2017, labels=['MOS Transistor Counts 2017']);
+
 Q1_abv = np.percentile(transistorcounts2017, q=25)
 Q2_abv = np.percentile(transistorcounts2017, q=50)
 Q3_abv = np.percentile(transistorcounts2017, q=75)
@@ -673,19 +672,19 @@ print('The first quartile for 2017 transistor count is {}'.format(Q1_abv))
 print('The second quartile for 2017 transistor count is {}'.format(Q2_abv))
 print('The third quartile for 2017 transistor count is {}'.format(Q3_abv))
 
-transistorcounts2017 = transistors[transistors['Date of Introduction']== 2017]['MOS transistor count']
-plt.boxplot(transistorcounts2017, labels=['MOS Transistor Counts 2017']);
+# transistorcounts2017 = transistors[transistors['Date of Introduction']== 2017]['MOS transistor count']
+# plt.boxplot(transistorcounts2017, labels=['MOS Transistor Counts 2017']);
 ```
 
 ```{code-cell} ipython3
 import matplotlib.pyplot as plt
 import random
 print('(2.b)')
-designers = transistors_designers['Designer'].unique()
+designers = transistors['Designer'].unique()
 
 for designer in designers:
-    count = transistors_designers[transistors_designers['Designer'] == designer]['MOS transistor count'].values
-    date = transistors_designers[transistors_designers['Designer'] == designer]['Date of Introduction'].values
+    count = transistors[transistors['Designer'] == designer]['MOS transistor count'].values
+    date = transistors[transistors['Designer'] == designer]['Date of Introduction'].values
     plt.semilogy(date, count, 'o', label = designer, color = "#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)]))
 
 plt.legend(loc="right", bbox_to_anchor=(2.15, 0.5), ncol= 2)
