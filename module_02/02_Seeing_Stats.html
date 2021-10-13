@@ -1082,9 +1082,7 @@ The Nth percentile is the value below which N% of the observations fall.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The first quartile for abv is 0.05
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The second quartile for abv is 0.0559999999999999
+The second quartile for abv is 0.0559999999999999
 The third quartile for abv is 0.067
 </pre></div>
 </div>
@@ -1779,7 +1777,8 @@ scatter plot with <code class="docutils literal notranslate"><span class="pre">b
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beers_filled</span> <span class="o">=</span> <span class="n">beers</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="n">beers_filled</span> <span class="o">=</span> <span class="n">beers</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ibu</span> <span class="o">=</span> <span class="n">beers_filled</span><span class="p">[</span><span class="s1">&#39;ibu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">abv</span> <span class="o">=</span> <span class="n">beers_filled</span><span class="p">[</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -1794,11 +1793,19 @@ scatter plot with <code class="docutils literal notranslate"><span class="pre">b
                          <span class="n">x</span><span class="o">=</span><span class="s1">&#39;abv&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;ibu&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">style_counts</span><span class="o">*</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span>
                          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Beer ABV vs. IBU mean values by style</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span>
                          <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> 
+<span class="o">=======</span>
+
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">d7cf0d8ce41b3b43def20b580643462f78a237e5</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Seeing_Stats_89_0.png" src="../_images/02_Seeing_Stats_89_0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1738/2152470278.py&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
 </div>
 </div>
 <p>(1.b) In this problem, we changed the method by which we cleaned the ‘beers’ dataframe. Previously, we used .dropna() to remove rows with missing (N.A.) IBU values. In this section, we used .fillna(0), to fill the missing values with zeros, under the assumption that some beers do not report the IBU value because they are very small. In comparing the two figures, we can see the presence of new styles (99 total) that were not seen before (90 total) because all of their IBU values were missing. Additionally, it is clear that the means of many of the styles are being skewed downwards due to the presence of ‘0’ values.
@@ -1856,16 +1863,6 @@ Color the data according to the “Designer”.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.a) In 2017, the average MOS transistor count was 7050000000.0
-
-The first quartile for 2017 transistor count is 4800000000.0
-The second quartile for 2017 transistor count is 5375000000.0
-The third quartile for 2017 transistor count is 7250000000.0
-</pre></div>
-</div>
-<img alt="../_images/02_Seeing_Stats_92_1.png" src="../_images/02_Seeing_Stats_92_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1885,12 +1882,6 @@ The third quartile for 2017 transistor count is 7250000000.0
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Transistor Count&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.b)
-</pre></div>
-</div>
-<img alt="../_images/02_Seeing_Stats_93_1.png" src="../_images/02_Seeing_Stats_93_1.png" />
 </div>
 </div>
 </div>

@@ -517,6 +517,11 @@
    Problems
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-the-model-is-currently-set-up-to-produce-random-values-between-0-and-1-following-a-normal-distribution-centered-around-0-5-these-values-are-then-shifted-downwards-0-5-to-produce-a-normal-distribution-with-a-mean-of-0-ranging-from-0-5-to-0-5-the-mean-could-be-changed-by-altering-the-size-of-the-shift-for-example-changing-the-shift-to-9-5-would-produce-a-distribution-with-a-mean-around-10">
+   (3.c) The model is currently set up to produce random values between 0 and 1, following a normal distribution centered around 0.5. These values are then shifted downwards -0.5, to produce a normal distribution with a mean of 0, ranging from -0.5 to 0.5. The mean could be changed by altering the size of the shift -&gt; for example, changing the shift to + 9.5 would produce a distribution with a mean around 10.
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -551,10 +556,10 @@ library</a> as such</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.42850193, 0.30041629, 0.81848967, 0.9316813 , 0.14346491,
-       0.27690619, 0.47628293, 0.0735021 , 0.92675287, 0.34684083,
-       0.47369457, 0.57075362, 0.82028308, 0.98567707, 0.23574306,
-       0.35917336, 0.1901492 , 0.25257414, 0.37029655, 0.77705019])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.20061507, 0.94630783, 0.69049825, 0.7168827 , 0.27680838,
+       0.13415712, 0.58433747, 0.55217625, 0.65638796, 0.46191656,
+       0.17129965, 0.78321133, 0.98771576, 0.89826034, 0.87167704,
+       0.30561227, 0.3973649 , 0.75013282, 0.0135657 , 0.52002081])
 </pre></div>
 </div>
 </div>
@@ -587,9 +592,9 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([5., 6., 3., 1., 5.]),
- array([0.0735021 , 0.2559371 , 0.43837209, 0.62080709, 0.80324208,
-        0.98567707]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([4., 3., 4., 5., 4.]),
+ array([0.0135657 , 0.20839572, 0.40322573, 0.59805574, 0.79288575,
+        0.98771576]),
  &lt;BarContainer object of 5 artists&gt;)
 </pre></div>
 </div>
@@ -660,13 +665,26 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 <span class="sd">    &#39;&#39;&#39;</span>
     
 
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">);</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">);</span>
+<span class="o">=======</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">d7cf0d8ce41b3b43def20b580643462f78a237e5</span>
     <span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">);</span> <span class="c1"># compute radius</span>
     <span class="n">num_in_circle</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">R</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">);</span>
     <span class="n">total_num_pts</span> <span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
     <span class="n">our_pi</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">num_in_circle</span><span class="o">/</span><span class="n">total_num_pts</span><span class="p">;</span>
     <span class="k">return</span> <span class="n">our_pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/tmp/ipykernel_1788/378313688.py&quot;</span><span class="gt">, line </span><span class="mi">15</span>
+    <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
 </pre></div>
 </div>
 </div>
@@ -680,13 +698,6 @@ The call to <code class="docutils literal notranslate"><span class="pre">rng.ran
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean value for pi = </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.mean(test_pi))
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;standard deviation is </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.std(test_pi))
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;actual pi is </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.pi)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.137440
-standard deviation is 0.023089
-actual pi is 3.141593
 </pre></div>
 </div>
 </div>
@@ -712,13 +723,6 @@ we did in <span class="xref myst">03-Numerical_error</span></p></li>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.145160
-standard deviation is 0.055809
-actual pi is 3.141593
-</pre></div>
-</div>
-</div>
 </div>
 <p>Compare the above 100 <code class="docutils literal notranslate"><span class="pre">test_pi</span></code> cases each 1000 points.</p>
 <p>to the below 10 <code class="docutils literal notranslate"><span class="pre">test_pi</span></code> cases each 10,000 points.</p>
@@ -733,13 +737,6 @@ actual pi is 3.141593
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mean value for pi = </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.mean(test_pi))
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;standard deviation is </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.std(test_pi))
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;actual pi is </span><span class="si">%f</span><span class="s1">&#39;</span><span class="o">%</span><span class="k">np</span>.pi)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean value for pi = 3.140720
-standard deviation is 0.017669
-actual pi is 3.141593
 </pre></div>
 </div>
 </div>
@@ -761,9 +758,6 @@ actual pi is 3.141593
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/04_Stats_and_Montecarlo_16_0.png" src="../_images/04_Stats_and_Montecarlo_16_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="example-2-simulate-brownian-motion-of-particles-in-a-fluid">
@@ -782,17 +776,6 @@ for more information in the physics and history of the phenomenon.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="400"
-    height="300"
-    src="https://www.youtube.com/embed/5jBVYvHeG2c"
-    frameborder="0"
-    allowfullscreen
-
-></iframe>
-</div></div>
 </div>
 <p>In this example, your goal is to predict the location of 50 particles
 if they take 100 random steps from -0.5 to 0.5 <span class="math notranslate nohighlight">\(\mu m\)</span> in the x- and
@@ -858,12 +841,6 @@ to find the final position after each step is taken.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y-position (um)&#39;)
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_26_1.png" src="../_images/04_Stats_and_Montecarlo_26_1.png" />
-</div>
 </div>
 <p>A curious result, even though we prescribed random motion, the final
 location did not end up back at the origin, where it started. <strong>What if
@@ -888,12 +865,6 @@ steps each.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_final</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">r_final</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa1befa1220&gt;]
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_28_1.png" src="../_images/04_Stats_and_Montecarlo_28_1.png" />
 </div>
 </div>
 </div>
@@ -937,12 +908,6 @@ deviation?</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Failure load is 1.88+/- 0.22 kN&#39;)
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_34_1.png" src="../_images/04_Stats_and_Montecarlo_34_1.png" />
-</div>
 </div>
 <p>Normally, the tolerance is not a maximum/minimum specification, but
 instead a normal distribution that describes the standard deviation, or
@@ -969,17 +934,12 @@ the 68% confidence interval.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Failure load is 1.88+/- 0.27 kN&#39;)
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_36_1.png" src="../_images/04_Stats_and_Montecarlo_36_1.png" />
-</div>
 </div>
 <p>In this propagation of uncertainty, the final value of failure load seems to be independent of wheher the distribution is uniformly random or normally distributed. In both cases, the failure load is <span class="math notranslate nohighlight">\(\approx 1.9 \pm 0.25\)</span> kN.</p>
 <p>The difference is much more apparent if you look at the number of occurrences that failure will occur whether the dimensions are uniformly random or normally distributed.</p>
 <p>For the uniformly random case, there are approximately 500 parts out of 10,000 that will fail at 1.9 kN.</p>
 <p>For the normally distributed case, there are approximately 1500 parts out of 10,000 that will fail at 1.9 kN.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </div>
 </div>
 <div class="section" id="where-does-a-normal-distribution-come-from">
@@ -1009,15 +969,25 @@ If the effect is 0, the dimension is exactly as specified. If the effect is -1/2
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;number of parts&#39;)
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_40_1.png" src="../_images/04_Stats_and_Montecarlo_40_1.png" />
-</div>
 </div>
 <p>Now, depending upon which random numbers were generated, you should see what looks like a normal distribution.</p>
 <p>Normal distributions come from the assumption that we have a large (or infinite) number of uncontrollable factors that can change our desired result. In our case, ideally each factor would have an effect of 0, because then it is exactly as specified, but the reality is that we can’t control most factors. As engineers, we always have to consider the uncertainty in our models and measurements.</p>
+<p>=======</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>d7cf0d8ce41b3b43def20b580643462f78a237e5</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 <div class="section" id="what-you-ve-learned">
 <h2>What you’ve learned:<a class="headerlink" href="#what-you-ve-learned" title="Permalink to this headline">¶</a></h2>
@@ -1068,6 +1038,7 @@ to find the number of needles that have minimum <span class="math notranslate no
 maximum <span class="math notranslate nohighlight">\(x_{end~max}&gt;0\)</span>. The ratio
 <span class="math notranslate nohighlight">\(\frac{x_{end~min}&lt;0~and~x_{end~max}&gt;0}{number~of~needles} =
 \frac{2}{\pi}\)</span> <em>for large values of <span class="math notranslate nohighlight">\(number~of~needles\)</span></em>.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">100000</span>
@@ -1082,15 +1053,26 @@ maximum <span class="math notranslate nohighlight">\(x_{end~max}&gt;0\)</span>. 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My estimated value using Buffon&#39;s needle problem is: 3.1560675398453526
-</pre></div>
 </div>
-</div>
-</div>
-<p><strong>2.</strong> Build a random walk data set with steps between <span class="math notranslate nohighlight">\(dx = dy =
+<p>=======</p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>d7cf0d8ce41b3b43def20b580643462f78a237e5
+<strong>2.</strong> Build a random walk data set with steps between <span class="math notranslate nohighlight">\(dx = dy =
 -1/2~to~1/2~m\)</span>. If 100 particles take 10 steps, calculate the number of
 particles that move further than 0.5 m.</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p><em>Bonus: Can you do the work without any <code class="docutils literal notranslate"><span class="pre">for</span></code>-loops? Change the size of
 <code class="docutils literal notranslate"><span class="pre">dx</span></code> and <code class="docutils literal notranslate"><span class="pre">dy</span></code> to account for multiple particles.</em></p>
 <div class="cell docutils container">
@@ -1099,6 +1081,10 @@ particles that move further than 0.5 m.</p>
 <span class="n">N_steps</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N_steps</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
 <span class="n">dy</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">N_steps</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="o">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="n">HEAD</span>
+<span class="o">=======</span>
+
+<span class="o">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="n">d7cf0d8ce41b3b43def20b580643462f78a237e5</span>
 </pre></div>
 </div>
 </div>
@@ -1152,13 +1138,9 @@ reach the critical buckling load?</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a rod of length L = 5 meters, the mean buckle load is 161.02 and the standard deviation of the buckle load is 65.16
-</pre></div>
 </div>
-</div>
-</div>
-<p><strong>4.</strong> Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<strong>4.</strong> Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2.</p>
 <p><strong>a.</strong> What is the effect of changing the number of factors?</p>
 <p><strong>b.</strong> What is the effect of changing the number of samples?</p>
 <p><em>Hint: for a-b try plotting histograms of the results.</em></p>
@@ -1189,20 +1171,28 @@ reach the critical buckling load?</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.a) and (3.b)
-</pre></div>
-</div>
-<img alt="../_images/04_Stats_and_Montecarlo_49_1.png" src="../_images/04_Stats_and_Montecarlo_49_1.png" />
-<img alt="../_images/04_Stats_and_Montecarlo_49_2.png" src="../_images/04_Stats_and_Montecarlo_49_2.png" />
-<img alt="../_images/04_Stats_and_Montecarlo_49_3.png" src="../_images/04_Stats_and_Montecarlo_49_3.png" />
-<img alt="../_images/04_Stats_and_Montecarlo_49_4.png" src="../_images/04_Stats_and_Montecarlo_49_4.png" />
-</div>
 </div>
 <p>(3.a) As the number effects increases, the total range of the distribution increases since there are more contributing factors.
 When more effects are added, the distribution gets slightly steeper, with a higher percentage of values centered closer to the mean. Regardless, with sufficient samples, the distribution maintains the bell-curve shape.</p>
 <p>(3.b) As the number of samples increases, the shape of the distribution approaches a smoother bell curve. When there are too few samples, the distribution appears choppy, signifying the lack of sufficient samples.</p>
-<p>(3.c) The model is currently set up to produce random values between 0 and 1, following a normal distribution centered around 0.5. These values are then shifted downwards -0.5, to produce a normal distribution with a mean of 0, ranging from -0.5 to 0.5. The mean could be changed by altering the size of the shift -&gt; for example, changing the shift to + 9.5 would produce a distribution with a mean around 10.</p>
+</div>
+<div class="section" id="c-the-model-is-currently-set-up-to-produce-random-values-between-0-and-1-following-a-normal-distribution-centered-around-0-5-these-values-are-then-shifted-downwards-0-5-to-produce-a-normal-distribution-with-a-mean-of-0-ranging-from-0-5-to-0-5-the-mean-could-be-changed-by-altering-the-size-of-the-shift-for-example-changing-the-shift-to-9-5-would-produce-a-distribution-with-a-mean-around-10">
+<h1>(3.c) The model is currently set up to produce random values between 0 and 1, following a normal distribution centered around 0.5. These values are then shifted downwards -0.5, to produce a normal distribution with a mean of 0, ranging from -0.5 to 0.5. The mean could be changed by altering the size of the shift -&gt; for example, changing the shift to + 9.5 would produce a distribution with a mean around 10.<a class="headerlink" href="#c-the-model-is-currently-set-up-to-produce-random-values-between-0-and-1-following-a-normal-distribution-centered-around-0-5-these-values-are-then-shifted-downwards-0-5-to-produce-a-normal-distribution-with-a-mean-of-0-ranging-from-0-5-to-0-5-the-mean-could-be-changed-by-altering-the-size-of-the-shift-for-example-changing-the-shift-to-9-5-would-produce-a-distribution-with-a-mean-around-10" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>d7cf0d8ce41b3b43def20b580643462f78a237e5</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
