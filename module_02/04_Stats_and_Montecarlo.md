@@ -131,8 +131,8 @@ def montecarlopi(N):
     '''
     
 
-    x = rng.random(N,1);
-    y = rng.random(N,1);
+    x = rng.random(N);
+    y = rng.random(N);
     R=np.sqrt(x**2+y**2); # compute radius
     num_in_circle=sum(R<1);
     total_num_pts =len(R);
@@ -380,7 +380,6 @@ For the uniformly random case, there are approximately 500 parts out of 10,000 t
 
 For the normally distributed case, there are approximately 1500 parts out of 10,000 that will fail at 1.9 kN. 
 
-<<<<<<< HEAD
 ## Where does a normal distribution come from?
 
 "Everybody believes in the exponential law of errors: the experimenters, because they think it can be proved by mathematics; and the mathematicians, because they believe it has been established by observation" [5].
@@ -413,8 +412,6 @@ Now, depending upon which random numbers were generated, you should see what loo
 
 Normal distributions come from the assumption that we have a large (or infinite) number of uncontrollable factors that can change our desired result. In our case, ideally each factor would have an effect of 0, because then it is exactly as specified, but the reality is that we can't control most factors. As engineers, we always have to consider the uncertainty in our models and measurements. 
 
-=======
->>>>>>> d7cf0d8ce41b3b43def20b580643462f78a237e5
 ## What you've learned:
 
 * How to generate "random" numbers in Python$^+$
@@ -472,7 +469,6 @@ maximum $x_{end~max}>0$. The ratio
 $\frac{x_{end~min}<0~and~x_{end~max}>0}{number~of~needles} =
 \frac{2}{\pi}$ _for large values of $number~of~needles$_.
 
-<<<<<<< HEAD
 ```{code-cell} ipython3
 N = 100000
 theta = np.random.uniform(low = 0, high = 2*np.pi, size = N)
@@ -499,11 +495,9 @@ rng = default_rng()
 N_steps = 10
 dx = rng.random(N_steps) - 0.5
 dy = rng.random(N_steps) - 0.5
-
 ```
 
 __3.__ 100 steel rods are going to be used to support a 1000 kg structure. The
->>>>>>> d7cf0d8ce41b3b43def20b580643462f78a237e5
 rods will buckle when the load in any rod exceeds the [critical buckling
 load](https://en.wikipedia.org/wiki/Euler%27s_critical_load)
 
@@ -556,8 +550,7 @@ print('For a rod of length L = 5 meters, '
       'the mean buckle load is {:.2f} and the standard deviation of the buckle load is {:.2f}'.format(mean_buckle_load, std_buckle_load))
 ```
 
-<<<<<<< HEAD
-__3.__ Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2. 
+__4.__ Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2. 
 
 __a.__ What is the effect of changing the number of factors?
 
@@ -597,5 +590,3 @@ When more effects are added, the distribution gets slightly steeper, with a high
 (3.b) As the number of samples increases, the shape of the distribution approaches a smoother bell curve. When there are too few samples, the distribution appears choppy, signifying the lack of sufficient samples.
 
 (3.c) The model is currently set up to produce random values between 0 and 1, following a normal distribution centered around 0.5. These values are then shifted downwards -0.5, to produce a normal distribution with a mean of 0, ranging from -0.5 to 0.5. The mean could be changed by altering the size of the shift -> for example, changing the shift to + 9.5 would produce a distribution with a mean around 10.
-=======
->>>>>>> d7cf0d8ce41b3b43def20b580643462f78a237e5
