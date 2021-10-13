@@ -613,6 +613,9 @@ our dataset by removing rows that do not include the IBU measure.
 
 ```{code-cell} ipython3
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cooperrc-master
 beers_filled = beers.fillna(0)
 
 ibu = beers_filled['ibu'].values
