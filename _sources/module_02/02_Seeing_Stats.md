@@ -612,10 +612,6 @@ our dataset by removing rows that do not include the IBU measure.
     scatter plot with `beers_filled`. What differences do you notice between the plots?
 
 ```{code-cell} ipython3
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cooperrc-master
 beers_filled = beers.fillna(0)
 
 ibu = beers_filled['ibu'].values
@@ -631,9 +627,6 @@ style_means.plot.scatter(figsize=(10,10),
                          x='abv', y='ibu', s=style_counts*20, color = colors,
                          title='Beer ABV vs. IBU mean values by style\n',
                          alpha=0.3); 
-=======
-
->>>>>>> d7cf0d8ce41b3b43def20b580643462f78a237e5
 ```
 
 (1.b) In this problem, we changed the method by which we cleaned the 'beers' dataframe. Previously, we used .dropna() to remove rows with missing (N.A.) IBU values. In this section, we used .fillna(0), to fill the missing values with zeros, under the assumption that some beers do not report the IBU value because they are very small. In comparing the two figures, we can see the presence of new styles (99 total) that were not seen before (90 total) because all of their IBU values were missing. Additionally, it is clear that the means of many of the styles are being skewed downwards due to the presence of '0' values.
