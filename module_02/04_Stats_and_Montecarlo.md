@@ -491,8 +491,28 @@ _Bonus: Can you do the work without any `for`-loops? Change the size of
 ```{code-cell} ipython3
 rng = default_rng()
 N_steps = 10
-dx = rng.random(N_steps) - 0.5
-dy = rng.random(N_steps) - 0.5
+
+num_particles = 100
+r_final = np.zeros((num_particles, 2))
+for i in range(0, num_particles):
+    dx = rng.random(N_steps) - 0.5
+    dy = rng.random(N_steps) - 0.5
+
+    r = np.zeros((N_steps, 2))
+
+    r[:, 0] = np.cumsum(dx)
+    r[:, 1] = np.cumsum(dy)
+    r_final[i, :] = r[-1, :]
+    
+
+    plt.plot(r[:, 0 ], r[:, 1], alpha = 0.2)
+plt.plot(r_final[:, 0], r_final[:, 1], 'o', markersize = 10)
+
+#count number of particles that moved to a final point outside a radius of 0.5m from the origin
+count = sum(np.greater(np.sqrt(r_final[:,0] ** 2 + r_final[:,1] ** 2), 0.5))
+
+
+print('The number of particles that moved to a final pont outside of a radius of 0.5m from the origin is:', count)
 ```
 
 __3.__ 100 steel rods are going to be used to support a 1000 kg structure. The
@@ -541,11 +561,37 @@ def montecarlo_buckle(E,r_mean,r_std,L,N=100):
     
     mean_buckle_load = np.mean(p)
     std_buckle_load = np.std(p)
-    return mean_buckle_load, std_buckle_load
+    return mean_buckle_load, std_buckle_load, p
 
-mean_buckle_load, std_buckle_load = montecarlo_buckle(200e9,0.01,0.001,5)
+mean_buckle_load, std_buckle_load, p_dist = montecarlo_buckle(200e9,0.01,0.001,5)
 print('For a rod of length L = 5 meters, '
-      'the mean buckle load is {:.2f} and the standard deviation of the buckle load is {:.2f}'.format(mean_buckle_load, std_buckle_load))
+      'the mean buckle load is {:.2f} N and the standard deviation of the buckle load is {:.2f} N'.format(mean_buckle_load, std_buckle_load))
+
+from scipy.stats import norm
+
+print(norm.ppf(0.975, mean_buckle_load, std_buckle_load))
+
+plt.hist(p_dist)
+plt.xlabel('Buckle Load (in N)');
+```
+
+```{code-cell} ipython3
+from scipy.stats import norm
+for i in range(5):
+mean_buckle_load, std_buckle_load, p_dist = montecarlo_buckle(200e9,0.01,0.001,5)
+print(norm.ppf(0.975, mean_buckle_load, std_buckle_load))
+```
+
+```{code-cell} ipython3
+N = np.linspace(0.5,2.5,21)
+crit_thres = np.zeros(len(N))
+
+for i in range(len(N)):
+    mean_buckle_load, std_buckle_load, p_dist = montecarlo_buckle(200e9,0.01,0.001,N[i])
+    crit_thres[i] = norm.ppf(0.975, mean_buckle_load, std_buckle_load)
+
+plt.plot(N, crit_thres, 'o')
+plt.title('97.5 percentile buckle load\nfind L at load = 9810');
 ```
 
 __4.__ Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2. 
