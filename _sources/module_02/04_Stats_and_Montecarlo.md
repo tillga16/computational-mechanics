@@ -577,13 +577,11 @@ plt.xlabel('Buckle Load (in N)');
 
 ```{code-cell} ipython3
 from scipy.stats import norm
-for i in range(5):
-mean_buckle_load, std_buckle_load, p_dist = montecarlo_buckle(200e9,0.01,0.001,5)
-print(norm.ppf(0.975, mean_buckle_load, std_buckle_load))
 ```
 
 ```{code-cell} ipython3
-N = np.linspace(0.5,2.5,21)
+#we've found that the critical length producing only 2.5% rod buckles is between 0.5 and 1, scan that range for more precise values
+N = np.linspace(0.5,1,2000)
 crit_thres = np.zeros(len(N))
 
 for i in range(len(N)):
@@ -592,7 +590,22 @@ for i in range(len(N)):
 
 plt.plot(N, crit_thres, 'o')
 plt.title('97.5 percentile buckle load\nfind L at load = 9810');
+
+for t in crit_thres:
+    if t > 9800 and t < 9820:
+        crit = t
+
+crit_length = N[np.where(crit_thres == crit)]
+print(crit, crit_length)
 ```
+
+What length, L, should the beams be so that only 2.5% will reach the critical buckling load?
+
+From this question, we need to find the length L such that 2.5% of the rods have a buckling load larger than 1000 * 9.81 = 9810 Newtons
+
+Since this is a monte carlo simulation, it varies slightly between runs, but we found that a rod length of roughly 0.91 meters is adequate enough so that only 2.5% of the rods will buckle under the given load.
+
++++
 
 __4.__ Generate your own normal distribution using uniformly random numbers between -1/2 and 1/2. 
 
