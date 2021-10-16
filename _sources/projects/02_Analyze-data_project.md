@@ -161,23 +161,22 @@ As you would expect, there are a wide variety of predictions for the price of GO
 
 ```{code-cell} ipython3
 price_model_avg = np.mean(price_model, axis = 1)
-price_model_std = np.std(price_model, axis = 1)
+# price_model_std = np.std(price_model, axis = 1)
 
-plt.plot(google_data_pre_2014['date'], price_model, alpha = 0.3);
+# plt.plot(google_data_pre_2014['date'], price_model, alpha = 0.3);
 
-plt.plot(google_data_pre_2014['date'], google_data_pre_2014['open'], c = 'k', label = 'NYSE data')
-plt.xlabel('date')
-plt.ylabel('opening price (\$)');
+# plt.plot(google_data_pre_2014['date'], google_data_pre_2014['open'], c = 'k', label = 'NYSE data')
+# plt.xlabel('date')
+# plt.ylabel('opening price (\$)');
 
-skip = 100
-plt.errorbar(google_data_pre_2014['date'][::skip], price_model_avg[::skip],
-             yerr = price_model_std[::skip], 
-             fmt = 'o',
-             c = 'r', 
-             label = 'model result', 
-            zorder = 3);
-plt.legend();
-    
+# skip = 100
+# plt.errorbar(google_data_pre_2014['date'][::skip], price_model_avg[::skip],
+#              yerr = price_model_std[::skip], 
+#              fmt = 'o',
+#              c = 'r', 
+#              label = 'model result', 
+#             zorder = 3);
+# plt.legend();
 ```
 
 ## Wrapping up
@@ -271,7 +270,7 @@ plt.ylabel('change in opening price (\$/day)');
 ```{code-cell} ipython3
 mean_dprice = np.mean(dprice)
 std_dprice = np.std(dprice)
-x = np.linspace(-40, 40)
+x = np.linspace(-10, 10)
 from scipy import stats
 price_pdf = stats.norm.pdf(x, loc = mean_dprice, scale = std_dprice)
 ```
@@ -280,7 +279,8 @@ price_pdf = stats.norm.pdf(x, loc = mean_dprice, scale = std_dprice)
 plt.hist(dprice, 50, density=True)
 plt.plot(x, price_pdf)
 plt.title('COSTCO changes in price over 7 years\n'+
-         'avg: \${:.2f} stdev: \${:.2f}'.format(mean_dprice, std_dprice));
+         'avg: \${:.2f} stdev: \${:.2f}'.format(mean_dprice, std_dprice))
+plt.xlim([-10, 10]);
 ```
 
 ```{code-cell} ipython3
@@ -292,7 +292,7 @@ plt.hist(dprice, 50, density=True, label = 'NYSE data')
 plt.plot(x, price_pdf)
 plt.hist(dprice_model[:, 0], 50, density = True, histtype = 'step',
          linewidth = 3, label = 'model prediction 1')
-plt.title('COSTCO changes in price over 4 years\n'+
+plt.title('COSTCO changes in price over 7 years\n'+
          'avg: \${:.2f} stdev: \${:.2f}'.format(mean_dprice, std_dprice))
 plt.legend();
 ```
