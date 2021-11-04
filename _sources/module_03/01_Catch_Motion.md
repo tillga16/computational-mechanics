@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.3
+    jupytext_version: 1.11.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -387,20 +387,20 @@ this video, and save the $x$ and $y$ coordinates to new arrays. Below,
 you plot the ball positions that you captured.
 
 ```{code-cell} ipython3
-x = np.array(coords)[:,0] *0.1 / gap_lines2.mean()
-y = np.array(coords)[:,1] *0.1 / gap_lines2.mean()
+x1 = np.array(coords)[:,0] *0.1 / gap_lines2.mean()
+y1 = np.array(coords)[:,1] *0.1 / gap_lines2.mean()
 ```
 
 ```{code-cell} ipython3
 # make a scatter plot of the projectile positions
 fig = plt.figure()
-plt.scatter(x,-y);
+plt.scatter(x,-y1);
 ```
 
 Finally, compute the vertical displacements, then get the vertical velocity and acceleration. And why not repeat the process for the horizontal direction of motion. The time interval is $1/60$ seconds, according to the original video description, i.e., 60 frames per second.
 
 ```{code-cell} ipython3
-delta_y = (y[1:] - y[0:-1])
+delta_y = (y1[1:] - y1[0:-1])
 ```
 
 ```{code-cell} ipython3
@@ -426,8 +426,9 @@ Use the command `np.savez(file_name, array1,array2,...)` to save your arrays for
 The x-y-coordinates occur at 1/60 s, 2/60s, ... len(y)/60s = `np.arange(0,len(y))/60`
 
 ```{code-cell} ipython3
-t = np.arange(0,len(y))/60
-np.savez('../data/projectile_coords.npz',t=t,x=x,y=-y)
+t1 = np.arange(1,len(y1))/60
+t2 = np.arange(0,len(y1))/60
+np.savez('../data/projectile_coordstest1.npz',t=t1,x=x1,y=-y1)
 ```
 
 ## Discussion
@@ -555,7 +556,65 @@ plt.plot(ay);
     d. Plot the polyfit lines for velocity and position (2 figures) with the finite difference velocity data points and positions. Which lines look like better e.g. which line fits the data?
 
 ```{code-cell} ipython3
+npz_coords = np.load('projectile_coords.npz')
+t = npz_coords['t']
+x = npz_coords['x']
+y = npz_coords['y']
+```
 
+```{code-cell} ipython3
+x1 = x1
+y1 = -y1
+```
+
+```{code-cell} ipython3
+delta_x1 = (x1[1:] - x1[:-1])
+vx1 = delta_x1 * 60
+delta_y1 = (y1[1:] - y1[:-1])
+vy1 = delta_y1 * 60
+```
+
+```{code-cell} ipython3
+xfit = np.polyfit(t1, vx1, 1)
+px = np.poly1d(xfit)
+yfit = np.polyfit(t1, vy1, 1)
+py = np.poly1d(yfit)
+```
+
+```{code-cell} ipython3
+print('the x-acceleration is:', xfit[0])
+fig = plt.figure()
+plt.scatter(t1, vx1)
+plt.plot(t1, px(t1))
+plt.ylim(0,5);
+```
+
+```{code-cell} ipython3
+print('the y-acceleration is:', yfit[0])
+fig = plt.figure()
+plt.scatter(t1, vy1)
+plt.plot(t1, py(t1));
+```
+
+```{code-cell} ipython3
+xfit2 = np.polyfit(t2, x1, 2)
+px2 = np.poly1d(xfit2)
+yfit2 = np.polyfit(t2, y1, 2)
+py2 = np.poly1d(yfit2)
+```
+
+```{code-cell} ipython3
+print('the x-acceleration is:', 2 * xfit2[0])
+fig = plt.figure()
+plt.scatter(t2, x1)
+plt.plot(t2, px2(t2));
+```
+
+```{code-cell} ipython3
+print('the y-acceleration is:', 2 * yfit2[0])
+fig = plt.figure()
+plt.scatter(t2, y1)
+plt.plot(t2, py2(t2));
 ```
 
 2. Not only can you measure acceleration of objects that you track, you can look at other physical constants like [coefficient of restitution](https://en.wikipedia.org/wiki/Coefficient_of_restitution), $e$ . 
@@ -573,5 +632,49 @@ plt.plot(ay);
      c. Calculate the $e$ for each of the three collisions
 
 ```{code-cell} ipython3
+import pandas as pd
+import numpy as np
+```
 
+```{code-cell} ipython3
+balldata = np.loadtxt('../data/fallingtennisball02.txt')
+t_ball = balldata[:, 0]
+y_ball = balldata[:, 1]
+```
+
+```{code-cell} ipython3
+fig = plt.figure()
+plt.scatter(t_ball, y_ball);
+```
+
+```{code-cell} ipython3
+delta_y_ball = (y_ball[1:] - y[:-1])
+dt_ball = t_ball[1]-t_ball[0]
+dt_ball
+
+vy_ball = delta_y_ball / dt_ball
+```
+
+```{code-cell} ipython3
+np.where( y_ball < 0 )[0]
+```
+
+```{code-cell} ipython3
+fig = plt.figure()
+plt.scatter(t_ball[1:], vy_ball);
+```
+
+```{code-cell} ipython3
+collision1 = vy_ball[550:600]
+collision2 = vy_ball[1400:1450]
+collision3 = vy_ball[2000:2100]
+```
+
+```{code-cell} ipython3
+e_col1 = -1 * (np.max(collision1)/np.min(collision1))
+print(e_col1)
+e_col2 = -1 * (np.max(collision2)/np.min(collision2))
+print(e_col2)
+e_col3 = -1 * (np.max(collision3)/np.min(collision3))
+print(e_col3)
 ```

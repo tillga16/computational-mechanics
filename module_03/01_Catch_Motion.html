@@ -615,7 +615,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1888</span><span class="o">/</span><span class="mf">2183123930.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1819</span><span class="o">/</span><span class="mf">2183123930.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">imageio</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1015,8 +1015,8 @@ this video, and save the <span class="math notranslate nohighlight">\(x\)</span>
 you plot the ball positions that you captured.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span><span class="mf">0.1</span> <span class="o">/</span> <span class="n">gap_lines2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span><span class="mf">0.1</span> <span class="o">/</span> <span class="n">gap_lines2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span><span class="mf">0.1</span> <span class="o">/</span> <span class="n">gap_lines2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coords</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span><span class="mf">0.1</span> <span class="o">/</span> <span class="n">gap_lines2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1025,7 +1025,7 @@ you plot the ball positions that you captured.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a scatter plot of the projectile positions</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="o">-</span><span class="n">y1</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1033,7 +1033,7 @@ you plot the ball positions that you captured.</p>
 <p>Finally, compute the vertical displacements, then get the vertical velocity and acceleration. And why not repeat the process for the horizontal direction of motion. The time interval is <span class="math notranslate nohighlight">\(1/60\)</span> seconds, according to the original video description, i.e., 60 frames per second.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_y</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_y</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y1</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1066,8 +1066,9 @@ save your variables <code class="docutils literal notranslate"><span class="pre"
 <p>The x-y-coordinates occur at 1/60 s, 2/60s, … len(y)/60s = <code class="docutils literal notranslate"><span class="pre">np.arange(0,len(y))/60</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">/</span><span class="mi">60</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;../data/projectile_coords.npz&#39;</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=-</span><span class="n">y</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y1</span><span class="p">))</span><span class="o">/</span><span class="mi">60</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y1</span><span class="p">))</span><span class="o">/</span><span class="mi">60</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;../data/projectile_coordstest1.npz&#39;</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">t1</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="o">=-</span><span class="n">y1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1208,6 +1209,95 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 </div>
 </li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npz_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;projectile_coords.npz&#39;</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="n">y1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_x1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">x1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">vx1</span> <span class="o">=</span> <span class="n">delta_x1</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="n">delta_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">y1</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">vy1</span> <span class="o">=</span> <span class="n">delta_y1</span> <span class="o">*</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vx1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">px</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">xfit</span><span class="p">)</span>
+<span class="n">yfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vy1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">py</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">yfit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the x-acceleration is:&#39;</span><span class="p">,</span> <span class="n">xfit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vx1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">px</span><span class="p">(</span><span class="n">t1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the y-acceleration is:&#39;</span><span class="p">,</span> <span class="n">yfit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vy1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">py</span><span class="p">(</span><span class="n">t1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xfit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">px2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">xfit2</span><span class="p">)</span>
+<span class="n">yfit2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">py2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">yfit2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the x-acceleration is:&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">xfit2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">px2</span><span class="p">(</span><span class="n">t2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the y-acceleration is:&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">yfit2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">py2</span><span class="p">(</span><span class="n">t2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
 <ol>
 <li><p>Not only can you measure acceleration of objects that you track, you can look at other physical constants like <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_restitution">coefficient of restitution</a>, <span class="math notranslate nohighlight">\(e\)</span> .</p>
 <p>During a collision with the ground, the coefficient of restitution is</p>
@@ -1218,6 +1308,78 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <p>c. Calculate the <span class="math notranslate nohighlight">\(e\)</span> for each of the three collisions</p>
 </li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">balldata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../data/fallingtennisball02.txt&#39;</span><span class="p">)</span>
+<span class="n">t_ball</span> <span class="o">=</span> <span class="n">balldata</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y_ball</span> <span class="o">=</span> <span class="n">balldata</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">,</span> <span class="n">y_ball</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_y_ball</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">dt_ball</span> <span class="o">=</span> <span class="n">t_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_ball</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dt_ball</span>
+
+<span class="n">vy_ball</span> <span class="o">=</span> <span class="n">delta_y_ball</span> <span class="o">/</span> <span class="n">dt_ball</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">y_ball</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">vy_ball</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collision1</span> <span class="o">=</span> <span class="n">vy_ball</span><span class="p">[</span><span class="mi">550</span><span class="p">:</span><span class="mi">600</span><span class="p">]</span>
+<span class="n">collision2</span> <span class="o">=</span> <span class="n">vy_ball</span><span class="p">[</span><span class="mi">1400</span><span class="p">:</span><span class="mi">1450</span><span class="p">]</span>
+<span class="n">collision3</span> <span class="o">=</span> <span class="n">vy_ball</span><span class="p">[</span><span class="mi">2000</span><span class="p">:</span><span class="mi">2100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e_col1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">collision1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">collision1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e_col1</span><span class="p">)</span>
+<span class="n">e_col2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">collision2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">collision2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e_col2</span><span class="p">)</span>
+<span class="n">e_col3</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">collision3</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">collision3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e_col3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
