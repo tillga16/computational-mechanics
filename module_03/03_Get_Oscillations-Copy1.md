@@ -861,7 +861,8 @@ for i in range(N-1):
 ```
 
 ```{code-cell} ipython3
-x_smd2 = np.exp(-0.2*t)*(0.2*np.sin(2*t)+2*np.cos(2*t))
+#x_smd2 = np.exp(-0.2*t)*(0.2*np.sin(2*t)+2*np.cos(2*t))
+x_smd2 = np.exp(-0.2*t)*(0.201008*np.sin(1.98997*t)+2*np.cos(1.98997*t))
 ```
 
 ```{code-cell} ipython3
@@ -878,7 +879,8 @@ plt.legend();
 ```
 
 ```{code-cell} ipython3
-x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T))
+#x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T))
+x_smd_an = np.exp(-0.2*T)*(0.201008*np.sin(1.98997*T)+2*np.cos(1.98997*T))
 x_smd_an
 ```
 
@@ -899,11 +901,18 @@ smd_heun[-1,0]
 ```
 
 ```{code-cell} ipython3
-dt_values = np.array([period/40, period/100, period/200,
-                      period/400,period/1000,period/2000, 
-                      period/2500, period/2800, period/3000, 
-                      period/3500, period/3800, period/4000, 
-                      period/5000, period/6000, period/7000, period/8000, period/16000, period/32000, period/64000])
+values1 = np.linspace(20,200,4)
+values2 = np.linspace(400, 4000, 10)
+values3 = np.linspace(8000, 32000, 4)
+values = np.concatenate((values1, values2, values3), axis=None)
+dt_values = period/values
+```
+
+```{code-cell} ipython3
+## dt_values = np.array([period/40, period/100, period/200,
+    #                  period/400,period/1000,period/2000,period/3000, 
+  #                    period/4000, period/5000, period/6000, period/7000, period/8000,
+    #                  period/16000, period/32000, period/64000])
 T = 3*period
 
 smd_euler_time = np.empty_like(dt_values, dtype=np.ndarray)
@@ -950,7 +959,7 @@ for j, dt in enumerate(dt_values):
 ```{code-cell} ipython3
 def smd_error(num_sol, T):
     
-    x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T)) # analytical solution at final time
+    x_smd_an = np.exp(-0.2*T)*(0.201008*np.sin(1.98997*T)+2*np.cos(1.98997*T)) # analytical solution at final time
     
     error =  np.abs(num_sol[-1,0] - x_smd_an)
     
@@ -993,6 +1002,16 @@ plt.xlabel('$\Delta t$')
 plt.ylabel('Error')
 plt.title('Convergence of various methods (dotted line: slope 2)\n')
 plt.legend();
+```
+
+One question we were asked to analyze is, "How many time steps does each method need to converge to the same results?". Our least precise analytical solver, the standard Euler method, did not produce an error of much less than 1*10^-3, even 
+
+```{code-cell} ipython3
+
+```
+
+```{code-cell} ipython3
+
 ```
 
 ```{code-cell} ipython3

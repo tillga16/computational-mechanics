@@ -428,7 +428,7 @@ The x-y-coordinates occur at 1/60 s, 2/60s, ... len(y)/60s = `np.arange(0,len(y)
 ```{code-cell} ipython3
 t1 = np.arange(1,len(y1))/60
 t2 = np.arange(0,len(y1))/60
-np.savez('../data/projectile_coordstest1.npz',t=t1,x=x1,y=-y1)
+np.savez('../data/projectile_coords.npz',t=t1,x=x1,y=-y1)
 ```
 
 ## Discussion
@@ -556,10 +556,10 @@ plt.plot(ay);
     d. Plot the polyfit lines for velocity and position (2 figures) with the finite difference velocity data points and positions. Which lines look like better e.g. which line fits the data?
 
 ```{code-cell} ipython3
-npz_coords = np.load('projectile_coords.npz')
-t = npz_coords['t']
-x = npz_coords['x']
-y = npz_coords['y']
+npz_coords = np.load('../data/projectile_coords.npz')
+t1 = npz_coords['t']
+x1 = npz_coords['x']
+y1 = npz_coords['y']
 ```
 
 ```{code-cell} ipython3
@@ -586,14 +586,18 @@ print('the x-acceleration is:', xfit[0])
 fig = plt.figure()
 plt.scatter(t1, vx1)
 plt.plot(t1, px(t1))
-plt.ylim(0,5);
+plt.ylim(0,5)
+plt.xlabel('time (s)')
+plt.ylabel('x velocity (m/s)');
 ```
 
 ```{code-cell} ipython3
 print('the y-acceleration is:', yfit[0])
 fig = plt.figure()
 plt.scatter(t1, vy1)
-plt.plot(t1, py(t1));
+plt.plot(t1, py(t1))
+plt.xlabel('time (s)')
+plt.ylabel('y velocity (m/s)');
 ```
 
 ```{code-cell} ipython3
@@ -607,15 +611,23 @@ py2 = np.poly1d(yfit2)
 print('the x-acceleration is:', 2 * xfit2[0])
 fig = plt.figure()
 plt.scatter(t2, x1)
-plt.plot(t2, px2(t2));
+plt.plot(t2, px2(t2))
+plt.xlabel('time (s)')
+plt.ylabel('x position (m)');
 ```
 
 ```{code-cell} ipython3
 print('the y-acceleration is:', 2 * yfit2[0])
 fig = plt.figure()
 plt.scatter(t2, y1)
-plt.plot(t2, py2(t2));
+plt.plot(t2, py2(t2))
+plt.xlabel('time (s)')
+plt.ylabel('y position (m)');
 ```
+
+The second order polynomial fit functions appear to fit the data better, especially for the y-position. This makes sense from a physics perspective, since the equation of motion for a falling body in the y-direction is a second order polynomial.
+
++++
 
 2. Not only can you measure acceleration of objects that you track, you can look at other physical constants like [coefficient of restitution](https://en.wikipedia.org/wiki/Coefficient_of_restitution), $e$ . 
 
@@ -644,11 +656,13 @@ y_ball = balldata[:, 1]
 
 ```{code-cell} ipython3
 fig = plt.figure()
-plt.scatter(t_ball, y_ball);
+plt.scatter(t_ball, y_ball)
+plt.xlabel('time (s)')
+plt.ylabel('y position (m)');
 ```
 
 ```{code-cell} ipython3
-delta_y_ball = (y_ball[1:] - y[:-1])
+delta_y_ball = (y_ball[1:] - y_ball[:-1])
 dt_ball = t_ball[1]-t_ball[0]
 dt_ball
 
@@ -661,7 +675,9 @@ np.where( y_ball < 0 )[0]
 
 ```{code-cell} ipython3
 fig = plt.figure()
-plt.scatter(t_ball[1:], vy_ball);
+plt.scatter(t_ball[1:], vy_ball)
+plt.xlabel('time (s)')
+plt.ylabel('y velocity (m/s)');
 ```
 
 ```{code-cell} ipython3
@@ -678,3 +694,5 @@ print(e_col2)
 e_col3 = -1 * (np.max(collision3)/np.min(collision3))
 print(e_col3)
 ```
+
+The coefficients of restitution for the first, second, and third collision are 0.752798, 0.753741, and 0.754253 respectively.

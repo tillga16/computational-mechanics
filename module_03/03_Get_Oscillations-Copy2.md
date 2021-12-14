@@ -878,32 +878,14 @@ plt.legend();
 ```
 
 ```{code-cell} ipython3
-x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T))
-x_smd_an
+values1 = np.linspace(20,200,4)
+values2 = np.linspace(400, 4000, 10)
+values3 = np.linspace(8000, 32000, 4)
+values = np.concatenate((values1, values2, values3), axis=None)
+dt_values = period/values
 ```
 
 ```{code-cell} ipython3
-smd_euler[-1,0] - x_smd_an
-```
-
-```{code-cell} ipython3
-smd_eulercromer[-1,0]  - x_smd_an
-```
-
-```{code-cell} ipython3
-smd_rk2[-1,0]
-```
-
-```{code-cell} ipython3
-smd_heun[-1,0]
-```
-
-```{code-cell} ipython3
-dt_values = np.array([period/40, period/100, period/200,
-                      period/400,period/1000,period/2000, 
-                      period/2500, period/2800, period/3000, 
-                      period/3500, period/3800, period/4000, 
-                      period/5000, period/6000, period/7000, period/8000, period/16000, period/32000, period/64000])
 T = 3*period
 
 smd_euler_time = np.empty_like(dt_values, dtype=np.ndarray)
@@ -957,6 +939,8 @@ def smd_error(num_sol, T):
     return error
 ```
 
+The analytical solution seen above was found using Wolfram Mathmatica differential equation solver
+
 ```{code-cell} ipython3
 error_smd_euler = np.empty_like(dt_values)
 error_smd_eulercromer = np.empty_like(dt_values)
@@ -991,9 +975,27 @@ plt.grid(True)
 plt.axis('equal')
 plt.xlabel('$\Delta t$')
 plt.ylabel('Error')
-plt.title('Convergence of various methods (dotted line: slope 2)\n')
+plt.title('Convergence of various methods')
 plt.legend();
 ```
+
+One question we were asked to analyze was, "How many time steps does each method need to converge to the same results?". Our least precise numerical solver, the standard Euler method, did not achieve an error much less than 1x10^-3, even when using the smallest time steps. So, we will select 1x10^-3 as our value, and analyze how many time steps each method requires to converge to this value. 
+
+The standard Euler method converges to an error of approximately 1x10^-3 when using a dt of period/16000, which over 3 periods corresponds to a total of 48000 time steps.
+
+The Euler-Cromer method converges to an error of approximately 1x10^-3 when using a dt of period/200, which over 3 periods corresponds to a total of 600 time steps.
+
+The RK2 and Heun methods both converge to an error of approximately 1x10^-3 when using a dt of period/140, which over 3 periods corresponds to a total of 420 time steps. 
+
+In general I believe the main point to take away from this exercise is that the RK2 and Heun methods converge to a reasonable error with relatively few time steps required. The Euler-Cromer method lags behind this and take a slightly smaller time step to reach the same error convergence. However, the standard Euler method takes an extremely smaller time step to reach the same error convergence as the other methods.
+
++++
+
+The smallest time step we used was period/32000, which is extremely small and took Jupyter almost 20 seconds to run. When using a time step this small, we observed that the standard Euler method converged to an error of 5.62366095e-04, the Euler-cromer method converged to an error of 5.46487304e-06, the RK2 method converged to an error of 2.94496682e-06, and the Heun method converged to an error of 2.94493885e-06.
+
++++
+
+Below is a quick plot of the solutions of the various numerical methods when using a very small time step. The plot is zoomed in very tightly to the end of the solution, which shows the error (mainly the difference between the standard Euler method and the other numerical methods).
 
 ```{code-cell} ipython3
 period = 2*np.pi/w
@@ -1025,11 +1027,6 @@ for i in range(N-1):
     smd_eulercromer[i+1] = euler_cromer(smd_eulercromer[i], smd, dt)
     smd_rk2[i+1] = rk2_step(smd_rk2[i], smd, dt)
     smd_heun[i+1] = heun_step(smd_heun[i], smd, dt)
-```
-
-```{code-cell} ipython3
-#x_smd2 = np.exp(-0.2*t)*(0.2*np.sin(2*t)+2*np.cos(2*t))
-x_smd2 = np.exp(-0.2*t)*(0.201008*np.sin(1.98997*t)+2*np.cos(1.98997*t))
 ```
 
 ```{code-cell} ipython3
