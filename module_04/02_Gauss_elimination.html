@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gauss Elimination &#8212; Computational Mechanics</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -58,7 +58,10 @@
     <link rel="next" title="Linear Regression Algebra" href="03_Linear-regression-algebra.html" />
     <link rel="prev" title="Linear Algebra Introduction" href="01_Linear-Algebra.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -1244,8 +1247,8 @@ y_{3}\end{array}\right]\)</span></p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 482 µs, sys: 100 µs, total: 582 µs
-Wall time: 478 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 357 µs, sys: 71 µs, total: 428 µs
+Wall time: 344 µs
 </pre></div>
 </div>
 </div>
@@ -1264,8 +1267,8 @@ Wall time: 478 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 543 µs, sys: 0 ns, total: 543 µs
-Wall time: 416 µs
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 325 µs, sys: 64 µs, total: 389 µs
+Wall time: 261 µs
 </pre></div>
 </div>
 </div>
@@ -1303,8 +1306,8 @@ Wall time: 416 µs
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 48.6 ms, sys: 116 µs, total: 48.7 ms
-Wall time: 48.5 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 47.3 ms, sys: 0 ns, total: 47.3 ms
+Wall time: 47 ms
 </pre></div>
 </div>
 </div>
@@ -1322,8 +1325,8 @@ Wall time: 48.5 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 93.4 ms, sys: 0 ns, total: 93.4 ms
-Wall time: 91.8 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 91.2 ms, sys: 4.53 ms, total: 95.7 ms
+Wall time: 93.2 ms
 </pre></div>
 </div>
 </div>
@@ -1341,7 +1344,11 @@ Wall time: 91.8 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02_Gauss_elimination_37_0.png" src="../_images/02_Gauss_elimination_37_0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1990/484586688.py:5: MatplotlibDeprecationWarning: Auto-removal of grids by pcolor() and pcolormesh() is deprecated since 3.5 and will be removed two minor releases later; please call grid(False) first.
+  cbar=plt.colorbar()
+</pre></div>
+</div>
+<img alt="../_images/02_Gauss_elimination_37_1.png" src="../_images/02_Gauss_elimination_37_1.png" />
 </div>
 </div>
 </div>
@@ -1598,11 +1605,11 @@ x_{3} \end{array} \right]=
  [ nan  nan  nan  nan]]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1922/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1990/1119853754.py:24: RuntimeWarning: divide by zero encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
-/tmp/ipykernel_1922/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
+/tmp/ipykernel_1990/1119853754.py:25: RuntimeWarning: invalid value encountered in multiply
   Aug[i,:] = Aug[i,:] - factor*Aug[k,:]
-/tmp/ipykernel_1922/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
+/tmp/ipykernel_1990/1119853754.py:24: RuntimeWarning: invalid value encountered in double_scalars
   factor = Aug[i,k]/Aug[k,k]
 </pre></div>
 </div>
@@ -1807,31 +1814,22 @@ F\cos\theta \\
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="01_Linear-Algebra.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Linear Algebra Introduction</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01_Linear-Algebra.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Linear Algebra Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03_Linear-regression-algebra.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Regression Algebra</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="03_Linear-regression-algebra.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Linear Regression Algebra</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1852,8 +1850,7 @@ F\cos\theta \\
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

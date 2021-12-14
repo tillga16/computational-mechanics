@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catch things in motion &#8212; Computational Mechanics</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -58,7 +58,10 @@
     <link rel="next" title="Step to the future" href="02_Step_Future.html" />
     <link rel="prev" title="Computational Mechanics 03- Initial Value Problems" href="README.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -615,7 +618,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1819</span><span class="o">/</span><span class="mf">2183123930.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1808</span><span class="o">/</span><span class="mf">2183123930.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">imageio</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1068,7 +1071,7 @@ save your variables <code class="docutils literal notranslate"><span class="pre"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y1</span><span class="p">))</span><span class="o">/</span><span class="mi">60</span>
 <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">y1</span><span class="p">))</span><span class="o">/</span><span class="mi">60</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;../data/projectile_coordstest1.npz&#39;</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">t1</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="o">=-</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s1">&#39;../data/projectile_coords.npz&#39;</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="n">t1</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span><span class="n">y</span><span class="o">=-</span><span class="n">y1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1211,10 +1214,10 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npz_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;projectile_coords.npz&#39;</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npz_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;../data/projectile_coords.npz&#39;</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">npz_coords</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1256,9 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vx1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">px</span><span class="p">(</span><span class="n">t1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x velocity (m/s)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1263,7 +1268,9 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the y-acceleration is:&#39;</span><span class="p">,</span> <span class="n">yfit</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">vy1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">py</span><span class="p">(</span><span class="n">t1</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">py</span><span class="p">(</span><span class="n">t1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y velocity (m/s)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1283,7 +1290,9 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the x-acceleration is:&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">xfit2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">px2</span><span class="p">(</span><span class="n">t2</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">px2</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x position (m)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1293,11 +1302,14 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the y-acceleration is:&#39;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">yfit2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">py2</span><span class="p">(</span><span class="n">t2</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">py2</span><span class="p">(</span><span class="n">t2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y position (m)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>The second order polynomial fit functions appear to fit the data better, especially for the y-position. This makes sense from a physics perspective, since the equation of motion for a falling body in the y-direction is a second order polynomial.</p>
 <ol>
 <li><p>Not only can you measure acceleration of objects that you track, you can look at other physical constants like <a class="reference external" href="https://en.wikipedia.org/wiki/Coefficient_of_restitution">coefficient of restitution</a>, <span class="math notranslate nohighlight">\(e\)</span> .</p>
 <p>During a collision with the ground, the coefficient of restitution is</p>
@@ -1328,14 +1340,16 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">,</span> <span class="n">y_ball</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">,</span> <span class="n">y_ball</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y position (m)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_y_ball</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_y_ball</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">y_ball</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">dt_ball</span> <span class="o">=</span> <span class="n">t_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_ball</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">dt_ball</span>
 
@@ -1354,7 +1368,9 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">vy_ball</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t_ball</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">vy_ball</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y velocity (m/s)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1380,6 +1396,7 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
 </div>
 </div>
 </div>
+<p>The coefficients of restitution for the first, second, and third collision are 0.752798, 0.753741, and 0.754253 respectively.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1405,31 +1422,22 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="README.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Computational Mechanics 03- Initial Value Problems</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="README.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Computational Mechanics 03- Initial Value Problems</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02_Step_Future.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Step to the future</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="02_Step_Future.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Step to the future</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1450,8 +1458,7 @@ d. Plot the polyfit lines for velocity and position (2 figures) with the finite 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

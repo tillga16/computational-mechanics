@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Roots of Nonlinear functions &#8212; Computational Mechanics</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -58,7 +58,10 @@
     <link rel="next" title="Initial Value Problems - Project" href="../projects/03_IVP-project.html" />
     <link rel="prev" title="Get with the oscillations" href="03_Get_Oscillations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -813,6 +816,29 @@ Lower bound on mass = 142.42 kg
 <p>Plot x-vs-cos(x)</p>
 <p>and</p>
 <p>plot the values of <code class="docutils literal notranslate"><span class="pre">xb</span></code> and <code class="docutils literal notranslate"><span class="pre">np.cos(xb)</span></code> as <span class="math notranslate nohighlight">\(\circ\)</span>-markers (<code class="docutils literal notranslate"><span class="pre">'o'</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mn</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">mx</span><span class="o">=</span><span class="mi">8</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mn</span><span class="p">,</span><span class="n">mx</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">xb</span> <span class="o">=</span> <span class="n">incsearch</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">mn</span><span class="p">,</span><span class="n">mx</span><span class="p">,</span><span class="n">ns</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xb</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xb</span><span class="p">),</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\cos(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Upper bounds=</span><span class="si">{:.2f}</span><span class="s1">,</span><span class="si">{:.2f}</span><span class="s1">,</span><span class="si">{:.2f}</span><span class="se">\n</span><span class="s1">Lower bounds=</span><span class="si">{:.2f}</span><span class="s1">,</span><span class="si">{:.2f}</span><span class="s1">,</span><span class="si">{:.2f}</span><span class="s1">,&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">xb</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span><span class="o">*</span><span class="n">xb</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of brackets:  3
+</pre></div>
+</div>
+<img alt="../_images/04_Getting_to_the_root_13_1.png" src="../_images/04_Getting_to_the_root_13_1.png" />
+</div>
+</div>
 </div>
 <div class="section" id="bisection-method">
 <h2>Bisection method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">¶</a></h2>
@@ -845,6 +871,21 @@ Lower bound on mass = 142.42 kg
 <div class="section" id="id1">
 <h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Divide the region 125-200 kg into two, and repeat the above step. Is the solution in the upper (163-200 kg)? or lower (125-163 kg) region? What are the values of f_m(m)?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">125</span><span class="p">,</span><span class="mf">162.5</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
+<span class="n">fx</span><span class="o">=</span><span class="n">f_m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;f(xmin) = </span><span class="si">{:.2f}</span><span class="s1">, f(xmid) = </span><span class="si">{:.2f}</span><span class="s1">, f(xmax)=</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">fx</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f(xmin) = 0.41, f(xmid) = -0.36, f(xmax)=-0.86
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="bisect-function">
 <h2>Bisect Function<a class="headerlink" href="#bisect-function" title="Permalink to this headline">¶</a></h2>
@@ -968,14 +1009,14 @@ We reached a relative error of 5.0109798921069224e-05 with 20 iterations
 <p>We can use the definitions of <code class="docutils literal notranslate"><span class="pre">f_h</span></code> and <code class="docutils literal notranslate"><span class="pre">dfdh</span></code> to calculate the height, <span class="math notranslate nohighlight">\(h\)</span> to fill the tank.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xguess</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xguess</span> <span class="o">=</span> <span class="mf">3.079</span>
 <span class="n">deltax</span> <span class="o">=</span> <span class="o">-</span><span class="n">f_h</span><span class="p">(</span><span class="n">xguess</span><span class="p">)</span><span class="o">/</span><span class="n">dfdh</span><span class="p">(</span><span class="n">xguess</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">xguess</span><span class="o">+</span><span class="n">deltax</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.974413341499149
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0791382506987595
 </pre></div>
 </div>
 </div>
@@ -1065,7 +1106,7 @@ We reached a relative error of 5.0109798921069224e-05 with 20 iterations
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_Getting_to_the_root_29_0.png" src="../_images/04_Getting_to_the_root_29_0.png" />
+<img alt="../_images/04_Getting_to_the_root_31_0.png" src="../_images/04_Getting_to_the_root_31_0.png" />
 </div>
 </div>
 </div>
@@ -1151,7 +1192,7 @@ We reached a relative error of 5.0109798921069224e-05 with 20 iterations
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_Getting_to_the_root_32_0.png" src="../_images/04_Getting_to_the_root_32_0.png" />
+<img alt="../_images/04_Getting_to_the_root_34_0.png" src="../_images/04_Getting_to_the_root_34_0.png" />
 </div>
 </div>
 <p>The modified secant can converge as quick as the Newton-Raphson method, but there is no universal <span class="math notranslate nohighlight">\(\delta x\)</span> that works well for every problem. Typically, it is set as a small number and then varied based upon the conergence rate for the problem.</p>
@@ -1170,13 +1211,13 @@ We reached a relative error of 5.0109798921069224e-05 with 20 iterations
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;../data/fallingtennisball02.txt&#39;</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">tbounce</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">580</span><span class="p">:</span><span class="mi">1425</span><span class="p">]</span>
-<span class="n">ybounce</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">580</span><span class="p">:</span><span class="mi">1425</span><span class="p">]</span>
+<span class="n">tbounceb1</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">580</span><span class="p">:</span><span class="mi">1425</span><span class="p">]</span>
+<span class="n">ybounceb1</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">580</span><span class="p">:</span><span class="mi">1425</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounce</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ybounce</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounce</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ybounce</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ybounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounceb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ybounceb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tbounce</span><span class="p">,</span><span class="n">ybounce</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;after bounce 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tbounceb1</span><span class="p">,</span><span class="n">ybounceb1</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;after bounce 1&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time between bounce 1 and 2&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
@@ -1189,7 +1230,7 @@ We reached a relative error of 5.0109798921069224e-05 with 20 iterations
 at time t=1.42 s, y=-0.0110 m
 </pre></div>
 </div>
-<img alt="../_images/04_Getting_to_the_root_35_1.png" src="../_images/04_Getting_to_the_root_35_1.png" />
+<img alt="../_images/04_Getting_to_the_root_37_1.png" src="../_images/04_Getting_to_the_root_37_1.png" />
 </div>
 </div>
 <p>Now, let’s look at the <code class="docutils literal notranslate"><span class="pre">fall_drag</span></code> function you created that described the motion of the tennis ball. Remember, this function returns the derivative of the state. So if you input</p>
@@ -1256,7 +1297,7 @@ at time t=1.42 s, y=-0.0110 m
 <p>So you define a new function with <code class="docutils literal notranslate"><span class="pre">def</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_v</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="n">ybounce</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">yT</span><span class="o">=</span><span class="n">ybounce</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounce</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounce</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_v</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="n">ybounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">yT</span><span class="o">=</span><span class="n">ybounceb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounceb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; define a function f(v) that returns </span>
 <span class="sd">    ymeasured(T)-ypredicted(T)</span>
 <span class="sd">    here, the time span is based upon the tbounce variable defined above from </span>
@@ -1278,17 +1319,17 @@ at time t=1.42 s, y=-0.0110 m
     
     
     <span class="c1"># initialize array</span>
-    <span class="n">t_sol</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">dt</span><span class="o">=</span><span class="n">t_sol</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_sol</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">num_sol_drag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">t_solb1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">dt</span><span class="o">=</span><span class="n">t_solb1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_solb1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">num_sol_dragb1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 
     <span class="c1"># Set intial conditions</span>
-    <span class="n">num_sol_drag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
-    <span class="n">num_sol_drag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v0</span>
+    <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+    <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v0</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">num_sol_drag</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_drag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="n">num_sol_drag</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">yT</span>
+        <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_dragb1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">yT</span>
     <span class="c1">#plt.plot(t_sol,num_sol_drag[:,0])</span>
     <span class="k">return</span> <span class="n">error</span>
 </pre></div>
@@ -1308,15 +1349,15 @@ at time t=1.42 s, y=-0.0110 m
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize array</span>
 <span class="n">N</span><span class="o">=</span><span class="mi">50</span>
-<span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounce</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounce</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">t_sol</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
-<span class="n">dt</span><span class="o">=</span><span class="n">t_sol</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_sol</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">num_sol_drag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">num_sol_drag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ybounce</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">num_sol_drag</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounceb1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">t_solb1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
+<span class="n">dt</span><span class="o">=</span><span class="n">t_solb1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_solb1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">num_sol_dragb1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ybounceb1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">4.175915400675785</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">num_sol_drag</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_drag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_dragb1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1324,7 +1365,7 @@ at time t=1.42 s, y=-0.0110 m
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sol</span><span class="p">,</span><span class="n">num_sol_drag</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_solb1</span><span class="p">,</span><span class="n">num_sol_dragb1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted motion after bounce&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height y(t) (m)&#39;</span><span class="p">);</span>
@@ -1332,13 +1373,25 @@ at time t=1.42 s, y=-0.0110 m
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04_Getting_to_the_root_44_0.png" src="../_images/04_Getting_to_the_root_44_0.png" />
+<img alt="../_images/04_Getting_to_the_root_46_0.png" src="../_images/04_Getting_to_the_root_46_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="id5">
 <h2>Exercise<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>Enter your best guess for <code class="docutils literal notranslate"><span class="pre">v0</span></code>. What is the error between the measured <code class="docutils literal notranslate"><span class="pre">yT</span></code> and your predicted y(T)? <em>Hint: use your function, <code class="docutils literal notranslate"><span class="pre">f_v</span></code>, and plot the results.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">49</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-4.104383003273764
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="solving-the-engineering-problem">
 <h2>Solving the engineering problem<a class="headerlink" href="#solving-the-engineering-problem" title="Permalink to this headline">¶</a></h2>
@@ -1346,7 +1399,7 @@ at time t=1.42 s, y=-0.0110 m
 <p>Below is the solution. <em>Just one line of code!</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v0</span><span class="p">,</span><span class="n">out</span> <span class="o">=</span> <span class="n">mod_secant</span><span class="p">(</span><span class="n">f_v</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">es</span><span class="o">=</span><span class="mf">0.000001</span><span class="p">)</span> <span class="c1"># &lt;-- solution line</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v0</span><span class="p">,</span><span class="n">out</span> <span class="o">=</span> <span class="n">mod_secant</span><span class="p">(</span><span class="n">f_v</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">es</span><span class="o">=</span><span class="mf">0.00000001</span><span class="p">)</span> <span class="c1"># &lt;-- solution line</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="s1">&#39;m/s is the correct initial velocity to match the height at beginning and end of bounce&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the solve took &#39;</span><span class="p">,</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39; iterations&#39;</span><span class="p">)</span>
 </pre></div>
@@ -1408,6 +1461,124 @@ the solve took  3  iterations
 <p>a. Plot the function <span class="math notranslate nohighlight">\(\sigma(T)\)</span> for <span class="math notranslate nohighlight">\(T=0-100^{o}F\)</span>. Where do you see the function cross 50% (0.5)?</p>
 <p>b. Create two functions <code class="docutils literal notranslate"><span class="pre">f_T</span></code> and <code class="docutils literal notranslate"><span class="pre">dfdT</span></code> where <code class="docutils literal notranslate"><span class="pre">f_T</span></code>=<span class="math notranslate nohighlight">\(f(T)=\sigma(T) - 0.5\)</span> and <code class="docutils literal notranslate"><span class="pre">dfdT</span></code>=<span class="math notranslate nohighlight">\(\frac{df}{dT}\)</span></p>
 <p>c. Use the <code class="docutils literal notranslate"><span class="pre">incsearch</span></code> and <code class="docutils literal notranslate"><span class="pre">newtraph</span></code> functions to find the root of f(T). When does Newton-Raphson fail to converge? Why does it fail? <em>Hint: if you’re stuck here, take a look at this <a class="reference external" href="https://youtu.be/zyXRo8Qjj0A">youtube video finding an interval of convergence for the Newton-Raphson method</a>. Look at the animation of how the method converges and diverges.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigma_T</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">sigma_T</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a0</span><span class="o">-</span><span class="n">a1</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a0</span><span class="o">-</span><span class="n">a1</span><span class="o">*</span><span class="n">t</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sigma_T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span> <span class="o">=</span> <span class="mf">15.043</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="mf">0.232</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">3201</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sigma_T</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6d3b7e2f70&gt;]
+</pre></div>
+</div>
+<img alt="../_images/04_Getting_to_the_root_57_1.png" src="../_images/04_Getting_to_the_root_57_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_50</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sigma_T</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.001</span><span class="p">)</span>
+<span class="n">t</span><span class="p">[</span><span class="n">close_50</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([64.84375])
+</pre></div>
+</div>
+</div>
+</div>
+<p>By plotting the function sigma_T and using some quick conditional operators to narrow down values close to a 0.5 (50%) fail rate, we can estimate that the function crosses 50% at a temperature of 64.84 degrees</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_T</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">f_T</span> <span class="o">=</span> <span class="n">sigma_T</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">f_T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analytical derivative found using MATLAB</span>
+<span class="k">def</span> <span class="nf">dfdT</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">dfdt</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">t</span> <span class="o">+</span> <span class="n">a0</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a0</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">dfdt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_is</span> <span class="o">=</span> <span class="n">incsearch</span><span class="p">(</span><span class="n">f_T</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">ns</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;incsearch&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Upper bound on temperature = </span><span class="si">{:.2f}</span><span class="s1"> degrees&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">temp_is</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lower bound on temperature = </span><span class="si">{:.2f}</span><span class="s1"> degrees&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">temp_is</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>number of brackets:  1
+
+incsearch
+Upper bound on temperature = 65.66 degrees
+Lower bound on temperature = 64.65 degrees
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_nt</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">newtraph</span><span class="p">(</span><span class="n">f_T</span><span class="p">,</span> <span class="n">dfdT</span><span class="p">,</span> <span class="mf">64.84</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;newtraph&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The temperature is = </span><span class="si">{}</span><span class="s1"> degrees&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp_nt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>newtraph
+The temperature is = 64.8405172413793 degrees
+</pre></div>
+</div>
+</div>
+</div>
+<p>The newthgraph method fails to converge when ‘guess’ or estimated temperature plugged into the function is greater than 73 degrees or less than 56 degrees. Values outside of this range are outside of the interval of convergence. These values diverge from the solution. This interval depends on the Newton step used in the method. The result if using a ‘guess’ value outside of the convergence interval is shown below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temp_nt</span><span class="p">,</span> <span class="n">out</span> <span class="o">=</span> <span class="n">newtraph</span><span class="p">(</span><span class="n">f_T</span><span class="p">,</span> <span class="n">dfdT</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;newtraph&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The temperature is = </span><span class="si">{}</span><span class="s1"> degrees&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">temp_nt</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>newtraph
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The temperature is = nan degrees
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1949/2035930336.py:2: RuntimeWarning: overflow encountered in exp
+  sigma_T = (np.exp(a0-a1*t))/(1+np.exp(a0-a1*t))
+/tmp/ipykernel_1949/2035930336.py:2: RuntimeWarning: invalid value encountered in double_scalars
+  sigma_T = (np.exp(a0-a1*t))/(1+np.exp(a0-a1*t))
+</pre></div>
+</div>
+</div>
+</div>
 <ol>
 <li><p>In the examples shown above, you determined the initial velocity after the first bounce by specifying the beginning y(0) and end y(T) for an object subject to gravity and drag. Repeat this analysis for the time period just after the second bounce and just before the third bounce. The indices are given below for t[1430:2051] = 1.43-2.05 seconds.</p>
 <p>a. What is the velocity just after the second bounce?</p>
@@ -1416,24 +1587,114 @@ the solve took  3  iterations
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i0</span><span class="o">=</span><span class="mi">1430</span>
-<span class="n">ie</span><span class="o">=</span><span class="mi">2051</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i0</span><span class="p">],</span><span class="n">t</span><span class="p">[</span><span class="n">ie</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;../data/fallingtennisball02.txt&#39;</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tbounceb2</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">1430</span><span class="p">:</span><span class="mi">2051</span><span class="p">]</span>
+<span class="n">ybounceb2</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">1430</span><span class="p">:</span><span class="mi">2051</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">ybounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at time t=</span><span class="si">{:.2f}</span><span class="s1"> s, y=</span><span class="si">{:.4f}</span><span class="s1"> m&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tbounceb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">ybounceb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i0</span><span class="p">:</span><span class="n">ie</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">i0</span><span class="p">:</span><span class="n">ie</span><span class="p">],</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tbounceb2</span><span class="p">,</span><span class="n">ybounceb2</span><span class="p">,</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;after bounce 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time between bounce 2 and 3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height y(t) (m)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4300000000009008 2.051000000004969
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>at time t=1.43 s, y=0.0003 m
+at time t=2.05 s, y=-0.0062 m
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5d72955310&gt;]
+<img alt="../_images/04_Getting_to_the_root_67_1.png" src="../_images/04_Getting_to_the_root_67_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_v</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span><span class="n">y0</span><span class="o">=</span><span class="n">ybounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">yT</span><span class="o">=</span><span class="n">ybounceb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounceb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+
+    <span class="c1"># initialize array</span>
+    <span class="n">t_solb2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">dt</span><span class="o">=</span><span class="n">t_solb2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_solb2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">num_sol_dragb2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># Set intial conditions</span>
+    <span class="n">num_sol_dragb2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+    <span class="n">num_sol_dragb2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">num_sol_dragb2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_dragb2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">num_sol_dragb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">yT</span>
+    <span class="c1">#plt.plot(t_sol,num_sol_drag[:,0])</span>
+    <span class="k">return</span> <span class="n">error</span>
 </pre></div>
 </div>
-<img alt="../_images/04_Getting_to_the_root_56_2.png" src="../_images/04_Getting_to_the_root_56_2.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize array</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">T</span><span class="o">=</span><span class="p">(</span><span class="n">tbounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">tbounceb2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">t_solb2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">N</span><span class="p">)</span>
+<span class="n">dt</span><span class="o">=</span><span class="n">t_solb2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t_solb2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">num_sol_dragb2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">num_sol_dragb2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ybounceb2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">num_sol_dragb2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">3.042799919815441</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">num_sol_dragb2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">rk2_step</span><span class="p">(</span><span class="n">num_sol_dragb2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fall_drag</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_solb2</span><span class="p">,</span><span class="n">num_sol_dragb2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Predicted motion after bounce&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;height y(t) (m)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04_Getting_to_the_root_70_0.png" src="../_images/04_Getting_to_the_root_70_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v0</span><span class="p">,</span><span class="n">out</span> <span class="o">=</span> <span class="n">mod_secant</span><span class="p">(</span><span class="n">f_v</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">es</span><span class="o">=</span><span class="mf">0.00000001</span><span class="p">)</span> <span class="c1"># &lt;-- solution line</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="s1">&#39;m/s is the correct initial velocity to match the height at beginning and end of bounce 2&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;the solve took &#39;</span><span class="p">,</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39; iterations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.042799919815441 m/s is the correct initial velocity to match the height at beginning and end of bounce 2
+the solve took  3  iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value above is the velocity just after the second bounce</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># num_sol_dragb1[49,1] finds the exit velocity of the previous bounce that was calculated earlier in this notebook</span>
+<span class="n">coeff_res_bounce2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span> <span class="n">v0</span> <span class="o">/</span> <span class="n">num_sol_dragb1</span><span class="p">[</span><span class="mi">49</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The coefficient of resitution is:&#39;</span> <span class="p">,</span><span class="n">coeff_res_bounce2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient of resitution is: 0.7413537960244997
+</pre></div>
+</div>
+</div>
+</div>
+<p>This coefficient of restitution is quite similar to the value we obtained from the previous notebook 03-01 when we were analyzing this same problem.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1459,31 +1720,22 @@ the solve took  3  iterations
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="03_Get_Oscillations.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Get with the oscillations</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="03_Get_Oscillations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Get with the oscillations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../projects/03_IVP-project.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Initial Value Problems - Project</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="../projects/03_IVP-project.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Initial Value Problems - Project</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -1504,8 +1756,7 @@ the solve took  3  iterations
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

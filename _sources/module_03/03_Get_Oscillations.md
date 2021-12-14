@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.10.3
+    jupytext_version: 1.11.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -65,8 +65,7 @@ def eulerstep(state, rhs, dt):
 
 A prototypical mechanical system is a mass $m$ attached to a spring, in the simplest case without friction. The elastic constant of the spring, $k$, determines the restoring force it will apply to the mass when displaced by a distance $x$. The system then oscillates back and forth around its position of equilibrium.
 
-<img src="../images/spring-mass.png" style="width: 400px;"/> 
-
+<img src="../images/spring-mass.png" style="width: 400px;"/>
 
 +++
 
@@ -143,7 +142,7 @@ This worked example follows Reference [1], section 4.3 (note that the source is 
 ```{code-cell} ipython3
 w = 2
 period = 2*np.pi/w
-dt = period/20  # you choose 20 time intervals per period 
+dt = period/200  # you choose 20 time intervals per period 
 T = 3*period    # solve for 3 periods
 N = round(T/dt)
 ```
@@ -526,6 +525,10 @@ for j, dt in enumerate(dt_values):
 ```
 
 ```{code-cell} ipython3
+print(error_values)
+```
+
+```{code-cell} ipython3
 # plot of convergence for modified Euler's
 fig = plt.figure(figsize=(6,6))
 
@@ -558,7 +561,7 @@ $y_{i+1}=y_{i}+f(t_{i},y_{i}) \Delta t$
 $y_{i+1}=y_{i}+
 \frac{f(t_{i},y_{i})+f(t_{i+1},y_{i+1})}{2} \Delta t$
 
-The error is $ error \propto \Delta t^2.$ This is the same convergence as the Modified Euler's method. Let's compare the two methods. 
+The error is $ error \propto \Delta t^2.$ This is the same convergence as the Modified Euler's method. Let's compare the two methods.
 
 +++ {"slideshow": {"slide_type": "subslide"}}
 
@@ -576,9 +579,7 @@ This extra step introduces the topic of solving a nonlinear problem with
 a computer. How can you solve an equation if the value you want is also
 part of our function? You'll take a look at methods to solve this next
 module, but for now lets set a tolerance `etol` for the _implicit_ Heun
-method and see what the resulting solution is. 
-
-
+method and see what the resulting solution is.
 
 ```{code-cell} ipython3
 def heun_step(state,rhs,dt,etol=0.000001,maxiters = 100):
@@ -613,7 +614,7 @@ def heun_step(state,rhs,dt,etol=0.000001,maxiters = 100):
 
 The __benefit__ of an implicit solution is that it is a __stable__ solution. When you solve a set of differential equations, many times it may not be apparent what time step to choose. If you use an _implicit_ integration method, then it may converge at the same rate as an _explicit_ method, but it will always provide bounded errors. 
 
-Consider the spring-mass equation if timesteps are large, in this case you have 10 steps/time period, then the second order Runge-Kutta that you defined above has the same increasing error as the Euler method. 
+Consider the spring-mass equation if timesteps are large, in this case you have 10 steps/time period, then the second order Runge-Kutta that you defined above has the same increasing error as the Euler method.
 
 ```{code-cell} ipython3
 ---
@@ -664,7 +665,7 @@ plt.legend();
 
 ## Discussion
 
-Change the number of steps per time period in the above solutions for the second order Runge Kutta and the implicit Heun's method. Why do you think the implicit method does not have an increasing magnitude of oscillation? 
+Change the number of steps per time period in the above solutions for the second order Runge Kutta and the implicit Heun's method. Why do you think the implicit method does not have an increasing magnitude of oscillation?
 
 ```{code-cell} ipython3
 
@@ -699,10 +700,76 @@ Change the number of steps per time period in the above solutions for the second
 1. Show that the implicit Heun's method has the same second order convergence as the Modified Euler's method. _Hint: you can use the same code from above to create the log-log plot to get the error between $2\cos(\omega t)$ and the `heun_step` integration. Use the same initial conditions x(0) = 2 m and v(0)=0m/s and the same RHS function, `springmass`._
 
 ```{code-cell} ipython3
-
+def heun_step(state,rhs,dt,etol=0.000001,maxiters = 100):
+    e=1
+    eps=np.finfo('float64').eps
+    next_state = state + rhs(state)*dt
+    ################### New iterative correction #########################
+    for n in range(0,maxiters):
+        next_state_old = next_state
+        next_state = state + (rhs(state)+rhs(next_state))/2*dt
+        e=np.sum(np.abs(next_state-next_state_old)/np.abs(next_state+eps))
+        if e<etol:
+            break
+    ############### end of iterative correction #########################
+    return next_state
 ```
 
-<img src="../images/damped-spring.png" style="width: 400px;"/> 
+```{code-cell} ipython3
+dt_values = np.array([period/50, period/100, period/200,period/400,period/1000])
+T = 1*period
+
+num_heun_time = np.empty_like(dt_values, dtype=np.ndarray)
+
+
+for j, dt in enumerate(dt_values):
+
+    N = int(T/dt)
+    t = np.linspace(0, T, N)
+    
+    x0 = 2    # initial position
+    v0 = 0    # initial velocity
+    
+    #initialize solution array
+    num_heun = np.zeros([N,2])
+    
+    
+    #Set intial conditions
+    num_heun[0,0] = x0
+    num_heun[0,1] = v0
+    
+    for i in range(N-1):
+        num_heun[i+1] = heun_step(num_heun[i], springmass, dt)
+
+    num_heun_time[j] = num_heun.copy()
+```
+
+```{code-cell} ipython3
+heun_error_values = np.empty_like(dt_values)
+
+for j, dt in enumerate(dt_values):
+    
+    heun_error_values[j] = get_error(num_heun_time[j], T)
+```
+
+```{code-cell} ipython3
+# plot of convergence for Heun
+fig = plt.figure(figsize=(6,6))
+
+plt.loglog(dt_values, heun_error_values, 'ko-')
+plt.loglog(dt_values, 5*dt_values**2, 'k:')
+plt.grid(True)
+plt.axis('equal')
+plt.xlabel('$\Delta t$')
+plt.ylabel('Error')
+plt.title('Convergence of modified Heun\'s method (dotted line: slope 2)\n');
+```
+
+The work above shows that the implicit Heun's method has the same second order convergence as the Modified Euler's method we saw previously. The dashed line is a reference of a second order function on the log-log plot. Since the slope of our error line approximately matches this, it shows that the error convergence of our Heun's method is a second order function.
+
++++
+
+<img src="../images/damped-spring.png" style="width: 400px;"/>
 
 +++
 
@@ -733,9 +800,15 @@ def smd(state):
     -------
     derivs: array of two derivatives [v, zeta*w*v - w*w*x]^T
     '''
-    ## your work here ##
+    derivs = np.array([state[1], -z*w*state[1]-w**2*state[0]])
     
     return derivs
+```
+
+```{code-cell} ipython3
+w = 2
+z = 0.2
+smd([2,0])
 ```
 
 3. Use three methods to integrate your `smd` function for 3 time periods of oscillation ( $t=0...6\pi$ ) and initial conditions x(0)=2 m and v(0)=0 m/s. Plot the three solutions on one graph with labels. 
@@ -747,6 +820,232 @@ b. second order Runge Kutta method (modified Euler method)
 c. the implicit Heun's method
 
 How many time steps does each method need to converge to the same results? _Remember that each method has a certain convergence rate_
+
+```{code-cell} ipython3
+x0 = 2
+v0 = 0
+w = 2
+z = 0.2
+```
+
+```{code-cell} ipython3
+period = 2*np.pi/w
+dt = period/40
+T = 3*period
+N = round(T/dt)
+
+t = np.linspace(0,T,N)
+
+smd_euler = np.zeros([N,2])
+smd_euler[0,0] = x0
+smd_euler[0,1] = v0
+
+smd_eulercromer = np.zeros([N,2])
+smd_eulercromer[0,0] = x0
+smd_eulercromer[0,1] = v0
+
+smd_rk2 = np.zeros([N,2])
+smd_rk2[0,0] = x0
+smd_rk2[0,1] = v0
+
+smd_heun = np.zeros([N,2])
+smd_heun[0,0] = x0
+smd_heun[0,1] = v0
+
+
+for i in range(N-1):
+    smd_euler[i+1] = eulerstep(smd_euler[i], smd, dt)
+    smd_eulercromer[i+1] = euler_cromer(smd_eulercromer[i], smd, dt)
+    smd_rk2[i+1] = rk2_step(smd_rk2[i], smd, dt)
+    smd_heun[i+1] = heun_step(smd_heun[i], smd, dt)
+```
+
+```{code-cell} ipython3
+x_smd2 = np.exp(-0.2*t)*(0.2*np.sin(2*t)+2*np.cos(2*t))
+```
+
+```{code-cell} ipython3
+fig = plt.figure(figsize=(12,8))
+plt.plot(t, smd_euler[:,0], 'o-', label='Euler')
+plt.plot(t, smd_eulercromer[:,0], 'o-', label='Euler-cromer')
+plt.plot(t, smd_rk2[:,0], 's-', label='rk2')
+plt.plot(t, smd_heun[:,0], '-', label='Heun')
+plt.plot(t, x_smd2, '--', color='k', label='analytical')
+plt.title('Spring-mass system with various methods (dashed line).\n')
+plt.xlabel('Time [s]')
+plt.ylabel('$x$ [m]')
+plt.legend();
+```
+
+```{code-cell} ipython3
+x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T))
+x_smd_an
+```
+
+```{code-cell} ipython3
+smd_euler[-1,0] - x_smd_an
+```
+
+```{code-cell} ipython3
+smd_eulercromer[-1,0]  - x_smd_an
+```
+
+```{code-cell} ipython3
+smd_rk2[-1,0]
+```
+
+```{code-cell} ipython3
+smd_heun[-1,0]
+```
+
+```{code-cell} ipython3
+dt_values = np.array([period/40, period/100, period/200,
+                      period/400,period/1000,period/2000, 
+                      period/2500, period/2800, period/3000, 
+                      period/3500, period/3800, period/4000, 
+                      period/5000, period/6000, period/7000, period/8000, period/16000, period/32000, period/64000])
+T = 3*period
+
+smd_euler_time = np.empty_like(dt_values, dtype=np.ndarray)
+smd_eulercromer_time = np.empty_like(dt_values, dtype=np.ndarray)
+smd_rk2_time = np.empty_like(dt_values, dtype=np.ndarray)
+smd_heun_time = np.empty_like(dt_values, dtype=np.ndarray)
+
+
+for j, dt in enumerate(dt_values):
+
+    N = int(T/dt)
+    t = np.linspace(0, T, N)
+    
+    #initialize solution array
+    smd_euler = np.zeros([N,2])
+    smd_eulercromer = np.zeros([N,2])
+    smd_rk2 = np.zeros([N,2])
+    smd_heun = np.zeros([N,2])
+    
+    #Set intial conditions
+    smd_euler[0,0] = x0
+    smd_euler[0,1] = v0
+    smd_eulercromer[0,0] = x0
+    smd_eulercromer[0,1] = v0
+    smd_rk2[0,0] = x0
+    smd_rk2[0,1] = v0
+    smd_heun[0,0] = x0
+    smd_heun[0,1] = v0
+    
+    
+    for i in range(N-1):
+        smd_euler[i+1] = eulerstep(smd_euler[i], smd, dt)
+        smd_eulercromer[i+1] = euler_cromer(smd_eulercromer[i], smd, dt)
+        smd_rk2[i+1] = rk2_step(smd_rk2[i], smd, dt)
+        smd_heun[i+1] = heun_step(smd_heun[i], smd, dt)
+
+        
+    smd_euler_time[j] = smd_euler.copy()
+    smd_eulercromer_time[j] = smd_eulercromer.copy()
+    smd_rk2_time[j] = smd_rk2.copy()
+    smd_heun_time[j] = smd_heun.copy()
+```
+
+```{code-cell} ipython3
+def smd_error(num_sol, T):
+    
+    x_smd_an = np.exp(-0.2*T)*(0.2*np.sin(2*T)+2*np.cos(2*T)) # analytical solution at final time
+    
+    error =  np.abs(num_sol[-1,0] - x_smd_an)
+    
+    return error
+```
+
+```{code-cell} ipython3
+error_smd_euler = np.empty_like(dt_values)
+error_smd_eulercromer = np.empty_like(dt_values)
+error_smd_rk2 = np.empty_like(dt_values)
+error_smd_heun = np.empty_like(dt_values)
+
+for j, dt in enumerate(dt_values):
+    
+    error_smd_euler[j] = smd_error(smd_euler_time[j], T)
+    error_smd_eulercromer[j] = smd_error(smd_eulercromer_time[j], T)
+    error_smd_rk2[j] = smd_error(smd_rk2_time[j], T)
+    error_smd_heun[j] = smd_error(smd_heun_time[j], T)
+```
+
+```{code-cell} ipython3
+print(error_smd_euler)
+print(error_smd_eulercromer)
+print(error_smd_rk2)
+print(error_smd_heun)
+```
+
+```{code-cell} ipython3
+# plot of convergence
+fig = plt.figure(figsize=(12,8))
+
+plt.loglog(dt_values, error_smd_euler, 'go-', label='Euler Error')
+plt.loglog(dt_values, error_smd_eulercromer, 'ro-', label='Euler-Cromer Error')
+plt.loglog(dt_values, error_smd_rk2, 'ko-', label='RK2 Error')
+plt.loglog(dt_values, error_smd_heun, 'bo-', label='Heun Error')
+#plt.loglog(dt_values, dt_values, 'k:')
+plt.grid(True)
+plt.axis('equal')
+plt.xlabel('$\Delta t$')
+plt.ylabel('Error')
+plt.title('Convergence of various methods (dotted line: slope 2)\n')
+plt.legend();
+```
+
+```{code-cell} ipython3
+period = 2*np.pi/w
+dt = period/16000
+T = 3*period
+N = round(T/dt)
+
+t = np.linspace(0,T,N)
+
+smd_euler = np.zeros([N,2])
+smd_euler[0,0] = x0
+smd_euler[0,1] = v0
+
+smd_eulercromer = np.zeros([N,2])
+smd_eulercromer[0,0] = x0
+smd_eulercromer[0,1] = v0
+
+smd_rk2 = np.zeros([N,2])
+smd_rk2[0,0] = x0
+smd_rk2[0,1] = v0
+
+smd_heun = np.zeros([N,2])
+smd_heun[0,0] = x0
+smd_heun[0,1] = v0
+
+
+for i in range(N-1):
+    smd_euler[i+1] = eulerstep(smd_euler[i], smd, dt)
+    smd_eulercromer[i+1] = euler_cromer(smd_eulercromer[i], smd, dt)
+    smd_rk2[i+1] = rk2_step(smd_rk2[i], smd, dt)
+    smd_heun[i+1] = heun_step(smd_heun[i], smd, dt)
+```
+
+```{code-cell} ipython3
+#x_smd2 = np.exp(-0.2*t)*(0.2*np.sin(2*t)+2*np.cos(2*t))
+x_smd2 = np.exp(-0.2*t)*(0.201008*np.sin(1.98997*t)+2*np.cos(1.98997*t))
+```
+
+```{code-cell} ipython3
+fig = plt.figure(figsize=(12,8))
+plt.plot(t, smd_euler[:,0], 'o-', label='Euler')
+plt.plot(t, smd_eulercromer[:,0], 'o-', label='Euler-cromer')
+plt.plot(t, smd_rk2[:,0], 's-', label='rk2')
+plt.plot(t, smd_heun[:,0], '-', label='Heun')
+plt.plot(t, x_smd2, '--', color='k', label='analytical')
+plt.title('Spring-mass system with various methods (dashed line).\n')
+plt.xlabel('Time [s]')
+plt.ylabel('$x$ [m]')
+plt.xlim(9.42,9.43)
+plt.ylim(0.295,0.305)
+plt.legend();
+```
 
 ```{code-cell} ipython3
 
